@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0052CC">
+    <title>MultiHerramientas Cu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *::before, *::after { box-sizing: border-box; }
+
+        :root {
+            --primary: #0052CC;
+            --primary-dark: #003E99;
+            --primary-light: #DEEBFF;
+            --accent: #00A86B;
+            --danger: #E74C3C;
+            --warning: #F5A623;
+            --purple: #7C3AED;
+            --bg: #F0F2F5;
+            --card: #FFFFFF;
+            --text: #0F172A;
+            --text-sec: #64748B;
+            --border: #E2E8F0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 14px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0F172A;
+            --card: #1E293B;
+            --text: #F1F5F9;
+            --text-sec: #94A3B8;
+            --border: #334155;
+            --primary-light: #1E3A5F;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            line-height: 1.4;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 18px 20px;
+            padding-top: 48px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,82,204,0.3);
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .header-sub {
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        /* ===== SEARCH ===== */
+        .search-wrap {
+            padding: 14px 20px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 82px;
+            z-index: 99;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 10px 14px;
+            gap: 10px;
+            border: 1.5px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            background: var(--card);
+        }
+
+        .search-box i {
+            color: var(--text-sec);
+            font-size: 14px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            flex: 1;
+            font-size: 14px;
+            outline: none;
+            color: var(--text);
+        }
+
+        .search-box input::placeholder {
+            color: #94A3B8;
+        }
+
+        /* ===== TABS ===== */
+        .tab-nav {
+            display: flex;
+            gap: 6px;
+            padding: 14px 20px;
+            overflow-x: auto;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 129px;
+            z-index: 98;
+        }
+
+        .tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            padding: 7px 14px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border);
+            background: var(--card);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+            color: var(--text-sec);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .tab-btn i {
+            font-size: 11px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            padding-bottom: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ===== FAVORITES ===== */
+        .favorites-bar {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            overflow-x: auto;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .favorites-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .fav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            background: var(--bg);
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            min-width: 60px;
+            text-align: center;
+            border: none;
+            color: var(--text);
+        }
+
+        .fav-item:active {
+            background: var(--primary-light);
+        }
+
+        .fav-item .fav-code {
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--primary);
+        }
+
+        .fav-item .fav-name {
+            color: var(--text-sec);
+        }
+
+        /* ===== QUICK GRID ===== */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 16px 20px;
+        }
+
+        .quick-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: var(--card);
+            border: none;
+            border-radius: var(--radius);
+            padding: 14px 6px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            color: var(--text);
+        }
+
+        .quick-item:active {
+            transform: scale(0.94);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quick-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .qi-saldo { background: #DCFCE7; color: #16A34A; }
+        .qi-bono { background: #FEF3C7; color: #D97706; }
+        .qi-data { background: #DBEAFE; color: #2563EB; }
+        .qi-voice { background: #F3E8FF; color: #9333EA; }
+        .qi-transfer { background: #FEE2E2; color: #DC2626; }
+        .qi-roam { background: #CCFBF1; color: #0D9488; }
+        .qi-plan { background: #FFF7ED; color: #EA580C; }
+        .qi-num { background: #ECFCCB; color: #65A30D; }
+
+        .quick-item span {
+            font-size: 10.5px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 0 20px 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .ussd-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .ussd-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            color: var(--text);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .ussd-card:active {
+            transform: scale(0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .card-info {
+            flex: 1;
+            padding-right: 80px;
+            min-width: 0;
+        }
+
+        .card-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-info p {
+            font-size: 11.5px;
+            color: var(--text-sec);
+            line-height: 1.3;
+        }
+
+        .card-code {
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 4px 8px;
+            border-radius: 6px;
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+        }
+
+        /* ===== BANNERS ===== */
+        .info-banner {
+            margin: 0 20px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .info-banner strong {
+            display: block;
+            font-size: 13.5px;
+            margin-bottom: 3px;
+        }
+
+        .ussd-note {
+            margin: 0 20px 16px;
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 12px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #92400E;
+        }
+
+        [data-theme="dark"] .ussd-note {
+            background: #422006;
+            color: #FCD34D;
+            border-left-color: #F59E0B;
+        }
+
+        .ussd-note i {
+            margin-right: 6px;
+        }
+
+        /* ===== NAUTA GRID ===== */
+        .nauta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 0 20px 20px;
+        }
+
+        .nauta-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .nauta-card:active {
+            transform: scale(0.96);
+            box-shadow: var(--shadow-md);
+        }
+
+        .n-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .n-icon-mail { background: #DBEAFE; color: #2563EB; }
+        .n-icon-web { background: #DCFCE7; color: #16A34A; }
+        .n-icon-portal { background: #F3E8FF; color: #9333EA; }
+        .n-icon-wifi { background: #FEF3C7; color: #D97706; }
+        .n-icon-help { background: #CCFBF1; color: #0D9488; }
+        .n-icon-claim { background: #FEE2E2; color: #DC2626; }
+        .n-icon-shop { background: #E0E7FF; color: #4F46E5; }
+        .n-icon-tariff { background: #FFF7ED; color: #EA580C; }
+        .n-icon-directory { background: #F1F5F9; color: #475569; }
+        .n-icon-app { background: #E0F2FE; color: #0284C7; }
+
+        .nauta-card h4 {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .nauta-card p {
+            font-size: 10px;
+            color: var(--text-sec);
+            line-height: 1.3;
+        }
+
+        /* ===== SPEED TEST ===== */
+        .speed-container {
+            margin: 16px 20px;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .speed-container h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .speed-container h3 i {
+            color: var(--primary);
+        }
+
+        .speed-container p {
+            font-size: 12px;
+            color: var(--text-sec);
+            margin-bottom: 20px;
+        }
+
+        .speed-gauge {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(#22C55E 0deg 60deg, #84CC16 60deg 120deg, #EAB308 120deg 180deg, #F97316 180deg 240deg, #EF4444 240deg 300deg, #DC2626 300deg 360deg);
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speed-gauge.testing {
+            animation: hueRotate 1.5s linear infinite;
+        }
+
+        @keyframes hueRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .speed-gauge-inner {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--card);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speed-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .speed-unit {
+            font-size: 12px;
+            color: var(--text-sec);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .speed-label {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .speed-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .speed-detail {
+            text-align: center;
+        }
+
+        .speed-detail .label {
+            font-size: 10px;
+            color: var(--text-sec);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .speed-detail .value {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .btn-speed {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 32px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .btn-speed:active {
+            background: var(--primary-dark);
+            transform: scale(0.96);
+        }
+
+        .btn-speed.running {
+            background: var(--text-sec);
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(0,82,204,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0,82,204,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,82,204,0); }
+        }
+
+        .pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        /* ===== CALCULATOR ===== */
+        .calc-container {
+            margin: 0 20px 20px;
+            background: var(--card);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .calc-container h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calc-container h3 i {
+            color: var(--primary);
+        }
+
+        .calc-desc {
+            font-size: 12px;
+            color: var(--text-sec);
+            margin-bottom: 16px;
+        }
+
+        .calc-group {
+            margin-bottom: 14px;
+        }
+
+        .calc-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-sec);
+        }
+
+        .calc-group select,
+        .calc-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: var(--card);
+            color: var(--text);
+        }
+
+        .calc-group select:focus,
+        .calc-group input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-calc {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-calc:active {
+            background: var(--primary-dark);
+        }
+
+        .calc-result {
+            background: var(--primary-light);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .calc-result .result-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .calc-result .result-label {
+            font-size: 11px;
+            color: var(--text-sec);
+            margin-top: 2px;
+        }
+
+        /* ===== UTILITIES GRID ===== */
+        .utils-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 0 20px 20px;
+        }
+
+        .util-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: none;
+            color: var(--text);
+        }
+
+        .util-card:active {
+            transform: scale(0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .util-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .util-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .util-card p {
+            font-size: 11px;
+            color: var(--text-sec);
+            line-height: 1.3;
+        }
+
+        /* ===== PLAN CARDS ===== */
+        .plan-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: var(--shadow);
+            margin-bottom: 10px;
+            border-left: 4px solid var(--primary);
+            cursor: pointer;
+        }
+
+        .plan-card:active {
+            transform: scale(0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .plan-card.combinado { border-left-color: #7C3AED; }
+        .plan-card.datos { border-left-color: #2563EB; }
+        .plan-card.voz { border-left-color: #16A34A; }
+        .plan-card.sms { border-left-color: #D97706; }
+        .plan-card.info { border-left-color: var(--warning); }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+
+        .plan-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .plan-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .plan-desc {
+            font-size: 11px;
+            color: var(--text-sec);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .plan-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+
+        .plan-feature {
+            font-size: 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .plan-validity {
+            font-size: 10px;
+            color: var(--text-sec);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .plan-validity i {
+            color: var(--warning);
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .plan-btn:active {
+            background: var(--primary-dark);
+        }
+
+        /* ===== INFO GRID ===== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            padding: 0 20px 20px;
+        }
+
+        .info-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .info-card ul {
+            padding-left: 18px;
+            font-size: 12px;
+            color: var(--text-sec);
+            line-height: 1.6;
+        }
+
+        .info-card li {
+            margin-bottom: 4px;
+        }
+
+        .info-card strong {
+            color: var(--text);
+        }
+
+        .price-disclaimer {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 11px;
+            color: #92400E;
+            margin: 8px 0;
+        }
+
+        [data-theme="dark"] .price-disclaimer {
+            background: #422006;
+            color: #FCD34D;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--card);
+            border-radius: 20px 20px 0 0;
+            padding: 20px 24px 30px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-handle {
+            width: 36px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            margin: 0 auto 16px;
+        }
+
+        .modal h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal .modal-desc {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-sec);
+            margin-bottom: 16px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 15px;
+            margin-bottom: 10px;
+            outline: none;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .modal input:focus {
+            border-color: var(--primary);
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .modal-btn-primary:active {
+            background: var(--primary-dark);
+        }
+
+        .modal-btn-cancel {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* ===== SETTINGS & HISTORY ===== */
+        .settings-list, .history-list {
+            padding: 0 20px 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .setting-info p {
+            font-size: 11px;
+            color: var(--text-sec);
+        }
+
+        .setting-toggle {
+            width: 48px;
+            height: 28px;
+            background: var(--border);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .setting-toggle.active {
+            background: var(--primary);
+        }
+
+        .setting-toggle::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.2s;
+        }
+
+        .setting-toggle.active::after {
+            left: 22px;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 14px;
+            background: var(--card);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .history-item:active {
+            transform: scale(0.98);
+        }
+
+        .history-item .h-code {
+            font-family: monospace;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .history-item .h-time {
+            font-size: 11px;
+            color: var(--text-sec);
+        }
+
+        .history-item .h-name {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ===== CONFIRM DIALOG ===== */
+        .confirm-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .confirm-dialog.show {
+            display: flex;
+        }
+
+        .confirm-box {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .confirm-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .confirm-box p {
+            font-size: 13px;
+            color: var(--text-sec);
+            margin-bottom: 20px;
+        }
+
+        .confirm-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .confirm-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .confirm-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .confirm-btn.cancel {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #1E293B;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 2000;
+            transition: transform 0.25s;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            max-width: 90vw;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success { background: #16A34A; }
+        .toast.error { background: #DC2626; }
+        .toast.warning { background: #D97706; }
+
+        /* ===== OFFLINE BANNER ===== */
+        .offline-banner {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 10px 20px;
+            font-size: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .offline-banner.show {
+            display: block;
+        }
+
+        [data-theme="dark"] .offline-banner {
+            background: #451A1A;
+            color: #FCA5A5;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 500px) {
+            body {
+                max-width: 500px;
+                margin: 0 auto;
+                box-shadow: 0 0 60px rgba(0,0,0,0.08);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OFFLINE BANNER -->
+    <div class="offline-banner" id="offlineBanner">
+        <i class="fa-solid fa-wifi-slash"></i> Sin conexion. Los codigos USSD siguen funcionando.
+    </div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>MultiHerramientas Cu</h1>
+        <div class="header-sub">Servicios ETECSA</div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-wrap">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="searchInput" placeholder="Buscar servicio o codigo...">
+        </div>
+    </div>
+
+    <!-- FAVORITES -->
+    <div class="favorites-bar" id="favoritesBar">
+        <button class="fav-item" onclick="makeUSSD('*222#')">
+            <span class="fav-code">*222#</span><span class="fav-name">Saldo</span>
+        </button>
+        <button class="fav-item" onclick="makeUSSD('*133#')">
+            <span class="fav-code">*133#</span><span class="fav-name">Tienda</span>
+        </button>
+        <button class="fav-item" onclick="showTransferModal()">
+            <span class="fav-code">*234#</span><span class="fav-name">Transferir</span>
+        </button>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-nav" id="tabNav">
+        <button class="tab-btn active" data-tab="all"><i class="fa-solid fa-border-all"></i> Todos</button>
+        <button class="tab-btn" data-tab="consultas"><i class="fa-solid fa-magnifying-glass"></i> Consultas</button>
+        <button class="tab-btn" data-tab="planes"><i class="fa-solid fa-box"></i> Planes</button>
+        <button class="tab-btn" data-tab="tienda"><i class="fa-solid fa-cart-shopping"></i> Tienda</button>
+        <button class="tab-btn" data-tab="portales"><i class="fa-solid fa-globe"></i> Portales</button>
+        <button class="tab-btn" data-tab="utils"><i class="fa-solid fa-wrench"></i> Utilidades</button>
+    </div>
+
+    <!-- NOTE -->
+    <div class="ussd-note">
+        <i class="fa-solid fa-circle-info"></i>
+        Al pulsar un codigo USSD se abrira la app de telefono. Pulsa "Llamar" para ejecutar.
+    </div>
+
+    <!-- ============ TAB: ALL ============ -->
+    <div class="tab-content active" id="tab-all">
+        <div class="quick-grid">
+            <button class="quick-item" onclick="makeUSSD('*222#')"><div class="quick-icon qi-saldo"><i class="fa-solid fa-coins"></i></div><span>Saldo</span></button>
+            <button class="quick-item" onclick="makeUSSD('*222*328#')"><div class="quick-icon qi-data"><i class="fa-solid fa-wifi"></i></div><span>Datos</span></button>
+            <button class="quick-item" onclick="makeUSSD('*133#')"><div class="quick-icon qi-plan"><i class="fa-solid fa-store"></i></div><span>Tienda</span></button>
+            <button class="quick-item" onclick="showTransferModal()"><div class="quick-icon qi-transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i></div><span>Transferir</span></button>
+            <button class="quick-item" onclick="showRecargaModal()"><div class="quick-icon qi-bono"><i class="fa-solid fa-credit-card"></i></div><span>Recargar</span></button>
+            <button class="quick-item" onclick="makeUSSD('*222*264#')"><div class="quick-icon qi-voice"><i class="fa-solid fa-users"></i></div><span>Amigos</span></button>
+            <button class="quick-item" onclick="makeUSSD('*2266#')"><div class="quick-icon qi-voice"><i class="fa-solid fa-headset"></i></div><span>Atencion</span></button>
+            <button class="quick-item" onclick="makeUSSD('*123#')"><div class="quick-icon qi-num"><i class="fa-solid fa-voicemail"></i></div><span>Buzon</span></button>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-magnifying-glass"></i> Consultas Principales</h2>
+            <div class="ussd-list">
+                <button class="ussd-card" onclick="makeUSSD('*222#')"><div class="card-icon qi-saldo"><i class="fa-solid fa-coins"></i></div><div class="card-info"><h3>Saldo Principal</h3><p>Saldo, recursos de voz, SMS, datos y vigencia</p></div><span class="card-code">*222#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*328#')"><div class="card-icon qi-data"><i class="fa-solid fa-wifi"></i></div><div class="card-info"><h3>Plan de Datos</h3><p>Recursos y vigencia del plan de datos</p></div><span class="card-code">*222*328#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*869#')"><div class="card-icon qi-voice"><i class="fa-solid fa-phone"></i></div><div class="card-info"><h3>Plan de Voz</h3><p>Minutos disponibles y vigencia</p></div><span class="card-code">*222*869#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*767#')"><div class="card-icon qi-voice"><i class="fa-solid fa-comment"></i></div><div class="card-info"><h3>Plan de SMS</h3><p>Mensajes restantes y vigencia</p></div><span class="card-code">*222*767#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*266#')"><div class="card-icon qi-bono"><i class="fa-solid fa-gift"></i></div><div class="card-info"><h3>Bonos y USD</h3><p>Planes en dolares y bonos promocionales</p></div><span class="card-code">*222*266#</span></button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-cart-shopping"></i> Gestion y Servicios</h2>
+            <div class="ussd-list">
+                <button class="ussd-card" onclick="makeUSSD('*133#')"><div class="card-icon qi-plan"><i class="fa-solid fa-store"></i></div><div class="card-info"><h3>Menu Tienda</h3><p>Compra planes, voz, SMS y amigos</p></div><span class="card-code">*133#</span></button>
+                <button class="ussd-card" onclick="showRecargaModal()"><div class="card-icon qi-bono"><i class="fa-solid fa-credit-card"></i></div><div class="card-info"><h3>Recarga Fisica</h3><p>Ingresa codigo de tarjeta de recarga</p></div><span class="card-code">*662*</span></button>
+                <button class="ussd-card" onclick="showTransferModal()"><div class="card-icon qi-transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i></div><div class="card-info"><h3>Transferir Saldo</h3><p>Envio a otros numeros Cubacel</p></div><span class="card-code">*234#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*264#')"><div class="card-icon qi-voice"><i class="fa-solid fa-users"></i></div><div class="card-info"><h3>Plan Amigos</h3><p>Estado y gestion de numeros</p></div><span class="card-code">*222*264#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*468#')"><div class="card-icon qi-data"><i class="fa-solid fa-signal"></i></div><div class="card-info"><h3>Compatibilidad Red</h3><p>Verifica acceso a servicios 4G/LTE</p></div><span class="card-code">*222*468#</span></button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-gear"></i> Utilidades de Llamada</h2>
+            <div class="ussd-list">
+                <button class="ussd-card" onclick="makeUSSD('*2266#')"><div class="card-icon qi-voice"><i class="fa-solid fa-headset"></i></div><div class="card-info"><h3>Atencion al Cliente</h3><p>Soporte ETECSA</p></div><span class="card-code">*2266#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*123#')"><div class="card-icon qi-num"><i class="fa-solid fa-voicemail"></i></div><div class="card-info"><h3>Buzon de Voz</h3><p>Acceso directo al buzon</p></div><span class="card-code">*123#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*666#')"><div class="card-icon qi-bono"><i class="fa-solid fa-phone-volume"></i></div><div class="card-info"><h3>Recarga Directa</h3><p>Marcar para recargar por voz</p></div><span class="card-code">*666#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*#06#')"><div class="card-icon qi-num"><i class="fa-solid fa-fingerprint"></i></div><div class="card-info"><h3>IMEI</h3><p>Identificador del dispositivo</p></div><span class="card-code">*#06#</span></button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ TAB: CONSULTAS ============ -->
+    <div class="tab-content" id="tab-consultas">
+        <section class="section">
+            <div class="ussd-list">
+                <button class="ussd-card" onclick="makeUSSD('*222#')"><div class="card-icon qi-saldo"><i class="fa-solid fa-coins"></i></div><div class="card-info"><h3>Saldo Principal</h3><p>Estado de linea y recursos</p></div><span class="card-code">*222#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*328#')"><div class="card-icon qi-data"><i class="fa-solid fa-wifi"></i></div><div class="card-info"><h3>Datos Disponibles</h3><p>Megas restantes</p></div><span class="card-code">*222*328#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*869#')"><div class="card-icon qi-voice"><i class="fa-solid fa-phone"></i></div><div class="card-info"><h3>Voz Disponible</h3><p>Minutos restantes</p></div><span class="card-code">*222*869#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*767#')"><div class="card-icon qi-voice"><i class="fa-solid fa-comment"></i></div><div class="card-info"><h3>SMS Disponibles</h3><p>Mensajes restantes</p></div><span class="card-code">*222*767#</span></button>
+                <button class="ussd-card" onclick="makeUSSD('*222*266#')"><div class="card-icon qi-bono"><i class="fa-solid fa-gift"></i></div><div class="card-info"><h3>Bonos USD</h3><p>Recargas internacionales y promos</p></div><span class="card-code">*222*266#</span></button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ TAB: PLANES ============ -->
+    <div class="tab-content" id="tab-planes">
+        <div class="info-banner"><strong><i class="fa-solid fa-circle-info"></i> Informacion Oficial ETECSA</strong>Los planes se adquieren marcando *133# o desde Transfermovil/Servicios en Linea. Todos tienen vigencia de 35 dias desde el primer uso.</div>
+
+        <section class="section">
+            <h2 class="section-title"><i class="fa-solid fa-box-open"></i> Planes con Datos</h2>
+        </section>
+        <section class="section" style="padding-top:0;">
+            <div class="plan-card datos" onclick="makeUSSD('*133#')">
+                <div class="plan-header"><span class="plan-title">Plan ToDus</span><span class="plan-price">Consultar</span></div>
+                <p class="plan-desc">1 GB para acceder a correo nauta y servicios de la plataforma toDus.</p>
+                <div class="plan-features"><span class="plan-feature">1 GB</span><span class="plan-feature">Solo toDus + nauta</span></div>
+                <div class="plan-validity"><i class="fa-regular fa-clock"></i> 35 dias</div>
+                <div class="price-disclaimer">Precio: Consultar en *133# o tienda.etecsa.cu</div>
+                <button class="plan-btn"><i class="fa-solid fa-cart-plus"></i> Comprar via *133#</button>
+            </div>
+            <div class="plan-card info">
+                <div class="plan-header"><span class="plan-title">Planes de Datos Adicionales</span><span class="plan-price">Variable</span></div>
+                <p class="plan-desc">Disponibles en CUP desde Transfermovil, Monedero MiTransfer y Servicios en Linea. Compra unica cada 30 dias.</p>
+                <div class="plan-features"><span class="plan-feature">1 compra/mes</span><span class="plan-feature">Vigencia 35 dias</span></div>
+                <button class="plan-btn" onclick="openLink('https://tienda.etecsa.cu')"><i class="fa-solid fa-globe"></i> Ver en Tienda Web</button>
+            </div>
+            <div class="plan-card info">
+                <div class="plan-header"><span class="plan-title">Planes de Datos Extra</span><span class="plan-price">CUP / USD</span></div>
+                <p class="plan-desc">Ofertas adicionales en CUP (Transfermovil, MiTransfer, red comercial) y en USD (Monedero MiTransfer, tarjetas internacionales).</p>
+                <div class="plan-features"><span class="plan-feature">Pago en CUP o USD</span><span class="plan-feature">Segun disponibilidad</span></div>
+                <button class="plan-btn" onclick="openLink('https://tienda.etecsa.cu')"><i class="fa-solid fa-globe"></i> Ver en Tienda Web</button>
+            </div>
+            <div class="plan-card datos" onclick="makeUSSD('*133#')">
+                <div class="plan-header"><span class="plan-title">Plan Sectorial</span><span class="plan-price">Consultar</span></div>
+                <p class="plan-desc">Para estudiantes universitarios aprobados por su institucion. Mayor de 18 anos, titular de la linea.</p>
+                <div class="plan-features"><span class="plan-feature">Estudiantes</span><span class="plan-feature">1 compra/mes</span></div>
+                <div class="plan-validity"><i class="fa-regular fa-clock"></i> 35 dias</div>
+                <div class="price-disclaimer">Requisitos: Aprobacion institucional + titularidad</div>
+                <button class="plan-btn"><i class="fa-solid fa-cart-plus"></i> Gestionar via *133#</button>
+            </div>
+        </section>
+
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-comment"></i> Planes de SMS</h2></section>
+        <section class="section" style="padding-top:0;">
+            <div class="plan-card sms" onclick="makeUSSD('*133#')">
+                <div class="plan-header"><span class="plan-title">Planes de SMS</span><span class="plan-price">Consultar</span></div>
+                <p class="plan-desc">Mensajes nacionales a tarifa preferencial. Disponibles en *133#, Transfermovil, Servicios en Linea y red comercial.</p>
+                <div class="plan-features"><span class="plan-feature">Nacional</span><span class="plan-feature">Tarifa preferencial</span></div>
+                <div class="price-disclaimer">Adquirir en plataformas de autogestion para reservar saldo movil para otros planes</div>
+                <button class="plan-btn"><i class="fa-solid fa-cart-plus"></i> Comprar via *133#</button>
+            </div>
+        </section>
+
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-phone"></i> Planes de Voz</h2></section>
+        <section class="section" style="padding-top:0;">
+            <div class="plan-card voz" onclick="makeUSSD('*133#')">
+                <div class="plan-header"><span class="plan-title">Planes de Voz</span><span class="plan-price">Consultar</span></div>
+                <p class="plan-desc">Minutos para llamadas nacionales. Disponibles en *133#, Transfermovil, Servicios en Linea y red comercial.</p>
+                <div class="plan-features"><span class="plan-feature">Nacional</span><span class="plan-feature">Minutos incluidos</span></div>
+                <div class="price-disclaimer">Adquirir en plataformas de autogestion para reservar saldo movil para otros planes</div>
+                <button class="plan-btn"><i class="fa-solid fa-cart-plus"></i> Comprar via *133#</button>
+            </div>
+        </section>
+
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-users"></i> Plan Amigos</h2></section>
+        <section class="section" style="padding-top:0;">
+            <div class="plan-card combinado" onclick="makeUSSD('*133*4#')">
+                <div class="plan-header"><span class="plan-title">Plan Amigos</span><span class="plan-price">25 CUP activacion</span></div>
+                <p class="plan-desc">Tarifa especial de 5 CUP/min para comunicarte con tus contactos mas frecuentes (7:00 am - 10:59 pm).</p>
+                <div class="plan-features"><span class="plan-feature">Max 20 numeros</span><span class="plan-feature">3 primeras suscripciones gratis</span><span class="plan-feature">+2.50 CUP por inscripcion adicional</span></div>
+                <div class="plan-validity"><i class="fa-regular fa-clock"></i> Gestion permanente</div>
+                <button class="plan-btn"><i class="fa-solid fa-gear"></i> Gestionar via *133# opcion 4</button>
+            </div>
+            <button class="ussd-card" onclick="makeUSSD('*133*4*3#')" style="margin-top:10px;">
+                <div class="card-icon qi-voice"><i class="fa-solid fa-list-check"></i></div>
+                <div class="card-info"><h3>Consultar Numeros Registrados</h3><p>Ver tus contactos del Plan Amigos</p></div>
+                <span class="card-code">*133*4*3#</span>
+            </button>
+        </section>
+
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-circle-info"></i> Reglas Importantes</h2></section>
+        <div class="info-grid">
+            <div class="info-card" style="border-left: 4px solid var(--primary);">
+                <h4><i class="fa-solid fa-list-ol" style="margin-right:8px;"></i>Adquisicion de Planes</h4>
+                <ul>
+                    <li>Puedes adquirir <strong>tantos planes como desees</strong>, siempre que dispongas de saldo o fondos.</li>
+                    <li>Todos los planes tienen <strong>vigencia de 35 dias</strong> desde su primer uso.</li>
+                    <li>Consume los recursos antes del vencimiento para no perderlos.</li>
+                    <li>Si compras un nuevo plan con otro activo, <strong>los recursos se suman y la vigencia se extiende</strong>.</li>
+                </ul>
+            </div>
+            <div class="info-card" style="border-left: 4px solid var(--accent);">
+                <h4><i class="fa-solid fa-money-bill-wave" style="margin-right:8px;"></i>Vias de Pago</h4>
+                <ul>
+                    <li><strong>*133#:</strong> Pago con saldo principal movil.</li>
+                    <li><strong>Transfermovil / Servicios en Linea:</strong> Reserva tu saldo movil para planes exclusivos de esta via.</li>
+                    <li><strong>Red comercial / Agente:</strong> Atencion presencial.</li>
+                    <li><strong>Monedero MiTransfer:</strong> Para planes en USD.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TAB: TIENDA ============ -->
+    <div class="tab-content" id="tab-tienda">
+        <div class="info-banner"><strong><i class="fa-solid fa-circle-info"></i> Canales de Compra Oficiales</strong>Adquiere tus planes a traves de los canales autorizados por ETECSA.</div>
+        <div class="nauta-grid">
+            <button class="nauta-card" onclick="makeUSSD('*133#')"><div class="n-icon-portal"><i class="fa-solid fa-store"></i></div><h4>Menu USSD *133#</h4><p>Compra rapida con saldo principal</p></button>
+            <button class="nauta-card" onclick="openLink('https://tienda.etecsa.cu')"><div class="n-icon-shop"><i class="fa-solid fa-cart-shopping"></i></div><h4>Tienda Web ETECSA</h4><p>Gestiona planes y paga facturas</p></button>
+            <button class="nauta-card" onclick="openLink('https://mi.cubacel.net')"><div class="n-icon-web"><i class="fa-solid fa-user"></i></div><h4>MiCubacel</h4><p>Portal de autoservicio</p></button>
+            <button class="nauta-card" onclick="openLink('https://www.etecsa.cu/aplicaciones/transfermovil/')"><div class="n-icon-app"><i class="fa-solid fa-money-bill-transfer"></i></div><h4>Transfermovil</h4><p>Pagos con tarjeta bancaria</p></button>
+        </div>
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> Nota sobre Precios</h2></section>
+        <div class="ussd-note">
+            <i class="fa-solid fa-circle-info"></i>
+            Los precios de los planes pueden variar. Para consultar tarifas actualizadas:
+            <br>• Marca <strong>*133#</strong> desde tu movil
+            <br>• Visita <strong>tienda.etecsa.cu</strong>
+            <br>• Consulta en <strong>Transfermovil</strong> o <strong>Servicios en Linea</strong>
+        </div>
+    </div>
+
+    <!-- ============ TAB: PORTALES ============ -->
+    <div class="tab-content" id="tab-portales">
+        <div class="info-banner"><strong><i class="fa-solid fa-circle-info"></i> Portales Oficiales ETECSA</strong>Accede a los servicios en linea.</div>
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-globe"></i> Portales Principales</h2></section>
+        <div class="nauta-grid">
+            <button class="nauta-card" onclick="openLink('https://www.etecsa.cu')"><div class="n-icon-portal"><i class="fa-solid fa-building"></i></div><h4>Sitio Oficial</h4><p>Noticias y promociones</p></button>
+            <button class="nauta-card" onclick="openLink('https://tienda.etecsa.cu')"><div class="n-icon-shop"><i class="fa-solid fa-cart-shopping"></i></div><h4>Tienda ETECSA</h4><p>Autogestion y pagos</p></button>
+            <button class="nauta-card" onclick="openLink('https://mi.cubacel.net')"><div class="n-icon-web"><i class="fa-solid fa-user"></i></div><h4>MiCubacel</h4><p>Gestion de servicios</p></button>
+            <button class="nauta-card" onclick="openLink('https://www.pamarillas.cu')"><div class="n-icon-directory"><i class="fa-solid fa-book"></i></div><h4>Paginas Amarillas</h4><p>Directorio comercial</p></button>
+        </div>
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-circle-question"></i> Soporte</h2></section>
+        <div class="nauta-grid">
+            <button class="nauta-card" onclick="openLink('https://www.etecsa.cu/consultas-y-reclamos/')"><div class="n-icon-claim"><i class="fa-solid fa-clipboard-question"></i></div><h4>Reclamos</h4><p>Consultas online</p></button>
+            <button class="nauta-card" onclick="openLink('https://www.etecsa.cu/centro-de-ayuda/')"><div class="n-icon-help"><i class="fa-solid fa-circle-question"></i></div><h4>Centro de Ayuda</h4><p>Soporte tecnico</p></button>
+            <button class="nauta-card" onclick="makeUSSD('*2266#')"><div class="n-icon-help"><i class="fa-solid fa-headset"></i></div><h4>Llamar *2266</h4><p>Atencion cliente</p></button>
+            <button class="nauta-card" onclick="openLink('https://www.etecsa.cu/tarifas/')"><div class="n-icon-tariff"><i class="fa-solid fa-receipt"></i></div><h4>Tarifas</h4><p>Consulta vigente</p></button>
+        </div>
+    </div>
+
+    <!-- ============ TAB: UTILIDADES ============ -->
+    <div class="tab-content" id="tab-utils">
+        <section class="speed-container">
+            <h3><i class="fa-solid fa-gauge-high"></i> Test de Velocidad</h3>
+            <p>Mide la velocidad de tu conexion</p>
+            <div class="speed-gauge" id="speedGauge">
+                <div class="speed-gauge-inner">
+                    <div class="speed-value" id="speedValue">--</div>
+                    <div class="speed-unit">Mbps</div>
+                </div>
+            </div>
+            <div class="speed-label" id="speedLabel">Pulsa para iniciar</div>
+            <div class="speed-details">
+                <div class="speed-detail"><div class="label">Descarga</div><div class="value" id="dlValue">--</div></div>
+                <div class="speed-detail"><div class="label">Latencia</div><div class="value" id="pingValue">--</div></div>
+                <div class="speed-detail"><div class="label">Calidad</div><div class="value" id="qualityValue">--</div></div>
+            </div>
+            <button class="btn-speed pulse" id="btnSpeed">Iniciar Test</button>
+        </section>
+
+        <section class="calc-container">
+            <h3><i class="fa-solid fa-calculator"></i> Calculadora de Datos</h3>
+            <p class="calc-desc">Tiempo de navegacion segun tu plan</p>
+            <div class="calc-group"><label>Cantidad de datos</label><input type="number" id="calcMB" placeholder="Ej: 600" inputmode="numeric"></div>
+            <div class="calc-group"><label>Unidad</label><select id="calcUnit"><option value="1">MB</option><option value="1024">GB</option></select></div>
+            <div class="calc-group"><label>Actividad</label><select id="calcActivity"><option value="0.7">Navegacion basica</option><option value="1.5">Redes sociales</option><option value="3">Video baja calidad</option><option value="7">Video HD</option><option value="0.3">Musica</option><option value="5">Videollamada</option><option value="0.05">WhatsApp texto</option></select></div>
+            <button class="btn-calc" id="btnCalc">Calcular</button>
+            <div class="calc-result" id="calcResult"><div class="result-value" id="resultTime">--</div><div class="result-label">Tiempo estimado</div></div>
+        </section>
+
+        <section class="section"><h2 class="section-title"><i class="fa-solid fa-wrench"></i> Mas Utilidades</h2></section>
+        <div class="utils-grid">
+            <button class="util-card" onclick="showAPNModal()"><div class="util-icon"><i class="fa-solid fa-network-wired"></i></div><h4>Configurar APN</h4><p>Parametros de red NAUTA</p></button>
+            <button class="util-card" onclick="showHistory()"><div class="util-icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h4>Historial USSD</h4><p>Codigos recientes</p></button>
+            <button class="util-card" onclick="exportCodes()"><div class="util-icon"><i class="fa-solid fa-file-export"></i></div><h4>Exportar Codigos</h4><p>Lista completa USSD</p></button>
+            <button class="util-card" onclick="showSettings()"><div class="util-icon"><i class="fa-solid fa-gear"></i></div><h4>Ajustes</h4><p>Configuracion app</p></button>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <div class="modal-overlay" id="transferModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <h2><i class="fa-solid fa-arrow-right-arrow-left" style="color:var(--primary)"></i> Transferir Saldo</h2>
+            <p class="modal-desc">Menu USSD para transferencias</p>
+            <button class="modal-btn modal-btn-primary pulse" id="btnTransfer">Abrir *234#</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeAllModals()">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="recargaModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <h2><i class="fa-solid fa-credit-card" style="color:#16A34A"></i> Recarga Fisica</h2>
+            <p class="modal-desc">Ingresa el codigo de tu tarjeta</p>
+            <input type="tel" id="recargaCode" placeholder="Codigo de 16 digitos" maxlength="16" inputmode="numeric">
+            <button class="modal-btn modal-btn-primary" id="btnRecarga">Marcar *662*...</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeAllModals()">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="apnModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <h2><i class="fa-solid fa-network-wired" style="color:#4F46E5"></i> APN NAUTA</h2>
+            <p class="modal-desc">Configuracion oficial de ETECSA</p>
+            <div style="background:var(--bg);border-radius:10px;padding:14px;margin-bottom:10px;font-size:12px;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:var(--text-sec);">Nombre</span><span style="font-weight:700;">NAUTA</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:var(--text-sec);">APN</span><span style="font-weight:700;">nauta</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:var(--text-sec);">Tipo</span><span style="font-weight:700;">default,supl</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:var(--text-sec);">Protocolo</span><span style="font-weight:700;">IPv4/IPv6</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-sec);">MCC/MNC</span><span style="font-weight:700;">368/01</span></div>
+            </div>
+            <button class="modal-btn modal-btn-primary" id="btnCopyAPN">Copiar Config</button>
+            <button class="modal-btn modal-btn-cancel" onclick="closeAllModals()">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <h2><i class="fa-solid fa-gear"></i> Ajustes</h2>
+            <p class="modal-desc">Configuracion de la aplicacion</p>
+            <div class="settings-list">
+                <div class="setting-item">
+                    <div class="setting-info"><h4>Modo Oscuro</h4><p>Tema oscuro</p></div>
+                    <div class="setting-toggle" id="darkToggle"></div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info"><h4>Confirmar Llamadas</h4><p>Preguntar antes de marcar</p></div>
+                    <div class="setting-toggle active" id="confirmToggle"></div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info"><h4>Historial USSD</h4><p>Guardar codigos usados</p></div>
+                    <div class="setting-toggle active" id="historyToggle"></div>
+                </div>
+                <div class="setting-item" style="padding-top:16px;">
+                    <button class="modal-btn modal-btn-cancel" id="btnClearHistory" style="background:#FEE2E2;color:#DC2626;"><i class="fa-solid fa-trash"></i> Limpiar Historial</button>
+                </div>
+            </div>
+            <button class="modal-btn modal-btn-cancel" onclick="closeAllModals()">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal">
+            <div class="modal-handle"></div>
+            <h2><i class="fa-solid fa-clock-rotate-left"></i> Historial</h2>
+            <p class="modal-desc">Codigos recientes</p>
+            <div class="history-list" id="historyList"></div>
+            <button class="modal-btn modal-btn-cancel" onclick="closeAllModals()">Cerrar</button>
+        </div>
+    </div>
+
+    <div class="confirm-dialog" id="confirmDialog">
+        <div class="confirm-box">
+            <h3>Confirmar Llamada</h3>
+            <p id="confirmText">¿Marcar codigo?</p>
+            <div class="confirm-btns">
+                <button class="confirm-btn cancel" id="btnCancelConfirm">Cancelar</button>
+                <button class="confirm-btn primary" id="btnConfirmCall">Llamar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ===== APP STATE =====
+        var AppState = {
+            darkMode: localStorage.getItem('darkMode') === 'true',
+            confirmCalls: localStorage.getItem('confirmCalls') !== 'false',
+            saveHistory: localStorage.getItem('saveHistory') !== 'false',
+            history: [],
+            pendingUSSD: null,
+            speedTestRunning: false
+        };
+
+        // Load history
+        try {
+            AppState.history = JSON.parse(localStorage.getItem('ussdHistory') || '[]');
+        } catch(e) {
+            AppState.history = [];
+        }
+
+        // Initialize
+        function init() {
+            if (AppState.darkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            updateToggles();
+            setupEventListeners();
+            updateOnlineStatus();
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+        }
+
+        // ===== EVENT LISTENERS =====
+        function setupEventListeners() {
+            // Tab navigation
+            var tabBtns = document.querySelectorAll('.tab-btn');
+            for (var i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].addEventListener('click', function() {
+                    var tab = this.getAttribute('data-tab');
+                    switchTab(tab, this);
+                });
+            }
+
+            // Search with debounce
+            var searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(filterAll, 150);
+            });
+
+            // Speed test button
+            document.getElementById('btnSpeed').addEventListener('click', runSpeedTest);
+
+            // Calculator button
+            document.getElementById('btnCalc').addEventListener('click', calculateData);
+
+            // Transfer button
+            document.getElementById('btnTransfer').addEventListener('click', function() {
+                closeAllModals();
+                setTimeout(function() { makeUSSD('*234#', 'Transferir'); }, 300);
+            });
+
+            // Recarga button
+            document.getElementById('btnRecarga').addEventListener('click', executeRecarga);
+
+            // APN copy button
+            document.getElementById('btnCopyAPN').addEventListener('click', function() {
+                copyToClipboard('Nombre: NAUTA\nAPN: nauta\nTipo: default,supl\nProtocolo: IPv4/IPv6\nMCC/MNC: 368/01', 'APN copiado');
+            });
+
+            // Settings toggles
+            document.getElementById('darkToggle').addEventListener('click', toggleDarkMode);
+            document.getElementById('confirmToggle').addEventListener('click', toggleConfirm);
+            document.getElementById('historyToggle').addEventListener('click', toggleHistory);
+            document.getElementById('btnClearHistory').addEventListener('click', clearHistory);
+
+            // Confirm dialog buttons
+            document.getElementById('btnConfirmCall').addEventListener('click', proceedUSSD);
+            document.getElementById('btnCancelConfirm').addEventListener('click', closeConfirm);
+
+            // Close modals on overlay click
+            var overlays = document.querySelectorAll('.modal-overlay');
+            for (var j = 0; j < overlays.length; j++) {
+                overlays[j].addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeAllModals();
+                    }
+                });
+            }
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                }
+            });
+        }
+
+        // ===== TABS =====
+        function switchTab(tab, btn) {
+            var tabBtns = document.querySelectorAll('.tab-btn');
+            for (var i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove('active');
+            }
+            btn.classList.add('active');
+
+            var contents = document.querySelectorAll('.tab-content');
+            for (var j = 0; j < contents.length; j++) {
+                contents[j].classList.remove('active');
+            }
+
+            var target = document.getElementById('tab-' + tab);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        // ===== SEARCH =====
+        function filterAll() {
+            var q = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!q) {
+                var allCards = document.querySelectorAll('.ussd-card, .nauta-card, .quick-item, .util-card, .plan-card, .info-card, .fav-item');
+                for (var i = 0; i < allCards.length; i++) {
+                    allCards[i].style.display = '';
+                }
+                return;
+            }
+
+            // Switch to all tab
+            switchTab('all', document.querySelector('.tab-btn[data-tab="all"]'));
+
+            var elements = document.querySelectorAll('.ussd-card, .nauta-card, .quick-item, .util-card, .plan-card, .info-card, .fav-item');
+            for (var j = 0; j < elements.length; j++) {
+                var text = elements[j].textContent.toLowerCase();
+                var code = '';
+                var codeEl = elements[j].querySelector('.card-code');
+                if (codeEl) {
+                    code = codeEl.textContent;
+                }
+                if ((text + ' ' + code).indexOf(q) !== -1) {
+                    elements[j].style.display = '';
+                } else {
+                    elements[j].style.display = 'none';
+                }
+            }
+        }
+
+        // ===== USSD CALL =====
+        function makeUSSD(code, name) {
+            if (!name) name = code;
+
+            // Save to history
+            if (AppState.saveHistory) {
+                AppState.history.unshift({ code: code, name: name, time: new Date().toISOString() });
+                if (AppState.history.length > 20) {
+                    AppState.history = AppState.history.slice(0, 20);
+                }
+                try {
+                    localStorage.setItem('ussdHistory', JSON.stringify(AppState.history));
+                } catch(e) {}
+            }
+
+            // Confirmation dialog
+            if (AppState.confirmCalls) {
+                AppState.pendingUSSD = { code: code, name: name };
+                document.getElementById('confirmText').textContent = '¿Marcar ' + code + '?';
+                document.getElementById('confirmDialog').classList.add('show');
+                return;
+            }
+
+            executeUSSD(code);
+        }
+
+        function executeUSSD(code) {
+            var encoded = code.replace(/#/g, '%23');
+            var telUri = 'tel:' + encoded;
+            showToast('Marcando: ' + code, 'success');
+
+            // Method 1: Direct href
+            try { window.location.href = telUri; } catch(e) {}
+
+            // Method 2: iframe fallback
+            setTimeout(function() {
+                try {
+                    var iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = telUri;
+                    document.body.appendChild(iframe);
+                    setTimeout(function() {
+                        if (iframe.parentNode) {
+                            iframe.parentNode.removeChild(iframe);
+                        }
+                    }, 1500);
+                } catch(e) {}
+            }, 500);
+
+            // Method 3: window.open
+            setTimeout(function() {
+                try { window.open(telUri, '_blank'); } catch(e) {}
+            }, 800);
+        }
+
+        function proceedUSSD() {
+            if (AppState.pendingUSSD) {
+                executeUSSD(AppState.pendingUSSD.code);
+                AppState.pendingUSSD = null;
+            }
+            closeConfirm();
+        }
+
+        function closeConfirm() {
+            document.getElementById('confirmDialog').classList.remove('show');
+            AppState.pendingUSSD = null;
+        }
+
+        // ===== LINKS =====
+        function openLink(url) {
+            showToast('Abriendo enlace...');
+            try {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            } catch(e) {}
+        }
+
+        // ===== MODALS =====
+        function closeAllModals() {
+            var modals = document.querySelectorAll('.modal-overlay');
+            for (var i = 0; i < modals.length; i++) {
+                modals[i].classList.remove('show');
+            }
+        }
+
+        function showTransferModal() {
+            closeAllModals();
+            document.getElementById('transferModal').classList.add('show');
+        }
+
+        function showRecargaModal() {
+            closeAllModals();
+            document.getElementById('recargaModal').classList.add('show');
+            var input = document.getElementById('recargaCode');
+            if (input) {
+                input.value = '';
+                setTimeout(function() { input.focus(); }, 100);
+            }
+        }
+
+        function showAPNModal() {
+            closeAllModals();
+            document.getElementById('apnModal').classList.add('show');
+        }
+
+        function showSettings() {
+            closeAllModals();
+            document.getElementById('settingsModal').classList.add('show');
+        }
+
+        function showHistory() {
+            renderHistory();
+            closeAllModals();
+            document.getElementById('historyModal').classList.add('show');
+        }
+
+        function executeRecarga() {
+            var code = document.getElementById('recargaCode').value.trim();
+            if (!code || code.length < 12) {
+                showToast('Ingresa un codigo valido', 'error');
+                return;
+            }
+            closeAllModals();
+            setTimeout(function() { makeUSSD('*662*' + code + '#', 'Recarga'); }, 300);
+        }
+
+        // ===== SETTINGS =====
+        function toggleDarkMode() {
+            AppState.darkMode = !AppState.darkMode;
+            try { localStorage.setItem('darkMode', AppState.darkMode); } catch(e) {}
+            if (AppState.darkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            updateToggles();
+        }
+
+        function toggleConfirm() {
+            AppState.confirmCalls = !AppState.confirmCalls;
+            try { localStorage.setItem('confirmCalls', AppState.confirmCalls); } catch(e) {}
+            updateToggles();
+        }
+
+        function toggleHistory() {
+            AppState.saveHistory = !AppState.saveHistory;
+            try { localStorage.setItem('saveHistory', AppState.saveHistory); } catch(e) {}
+            updateToggles();
+        }
+
+        function updateToggles() {
+            var darkToggle = document.getElementById('darkToggle');
+            var confirmToggle = document.getElementById('confirmToggle');
+            var historyToggle = document.getElementById('historyToggle');
+
+            if (darkToggle) {
+                if (AppState.darkMode) darkToggle.classList.add('active');
+                else darkToggle.classList.remove('active');
+            }
+            if (confirmToggle) {
+                if (AppState.confirmCalls) confirmToggle.classList.add('active');
+                else confirmToggle.classList.remove('active');
+            }
+            if (historyToggle) {
+                if (AppState.saveHistory) historyToggle.classList.add('active');
+                else historyToggle.classList.remove('active');
+            }
+        }
+
+        function clearHistory() {
+            AppState.history = [];
+            try { localStorage.setItem('ussdHistory', '[]'); } catch(e) {}
+            showToast('Historial limpio', 'success');
+            renderHistory();
+        }
+
+        function renderHistory() {
+            var list = document.getElementById('historyList');
+            if (!list) return;
+
+            if (AppState.history.length === 0) {
+                list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-sec);font-size:13px;">Sin historial</div>';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < AppState.history.length; i++) {
+                var item = AppState.history[i];
+                var time = new Date(item.time).toLocaleTimeString('es-CU', { hour: '2-digit', minute: '2-digit' });
+                html += '<button class="history-item" onclick="makeUSSD(\'' + item.code.replace(/'/g, "\\'") + '\',\'' + item.name.replace(/'/g, "\\'") + '\')">';
+                html += '<div><div class="h-name">' + item.name + '</div><div class="h-code">' + item.code + '</div></div>';
+                html += '<div style="text-align:right"><div class="h-time">' + time + '</div><i class="fa-solid fa-chevron-right" style="color:var(--text-sec);font-size:12px;"></i></div>';
+                html += '</button>';
+            }
+            list.innerHTML = html;
+        }
+
+        // ===== COPY & EXPORT =====
+        function copyToClipboard(text, msg) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text)
+                    .then(function() { showToast(msg, 'success'); })
+                    .catch(function() { fallbackCopy(text, msg); });
+            } else {
+                fallbackCopy(text, msg);
+            }
+        }
+
+        function fallbackCopy(text, msg) {
+            try {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(msg, 'success');
+            } catch(e) {
+                showToast('No se pudo copiar', 'error');
+            }
+        }
+
+        function exportCodes() {
+            var codes = '*222# Saldo\n*133# Tienda\n*234# Transferir\n*222*328# Datos\n*222*869# Voz\n*222*767# SMS\n*222*264# Amigos\n*2266# Atencion\n*123# Buzon\n*662*COD# Recarga';
+            copyToClipboard(codes, 'Codigos exportados');
+        }
+
+        // ===== TOAST =====
+        var toastTimeout;
+        function showToast(msg, type) {
+            if (!type) type = '';
+            var t = document.getElementById('toast');
+            if (!t) return;
+            t.textContent = msg;
+            t.className = 'toast show ' + type;
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(function() {
+                t.classList.remove('show');
+            }, 2500);
+        }
+
+        // ===== SPEED TEST =====
+        function runSpeedTest() {
+            if (AppState.speedTestRunning) return;
+            AppState.speedTestRunning = true;
+
+            var btn = document.getElementById('btnSpeed');
+            var gauge = document.getElementById('speedGauge');
+            var valEl = document.getElementById('speedValue');
+            var label = document.getElementById('speedLabel');
+            var dl = document.getElementById('dlValue');
+            var ping = document.getElementById('pingValue');
+            var q = document.getElementById('qualityValue');
+
+            btn.classList.add('running');
+            btn.innerHTML = '<span class="spinner"></span> Midiendo...';
+            gauge.classList.add('testing');
+            label.textContent = 'Iniciando...';
+            if (valEl) valEl.textContent = '--';
+            if (dl) dl.textContent = '--';
+            if (ping) ping.textContent = '--';
+            if (q) q.textContent = '--';
+
+            // Ping test
+            label.textContent = 'Midiendo latencia...';
+            var p1 = performance.now();
+            fetch('https://www.google.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
+                .then(function() {
+                    if (ping) ping.textContent = Math.round(performance.now() - p1) + ' ms';
+                })
+                .catch(function() {
+                    if (ping) ping.textContent = 'N/A';
+                })
+                .then(function() {
+                    // Download test
+                    label.textContent = 'Descarga...';
+                    var url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/200000px-Fronalpstock_big.jpg?_=' + Date.now();
+                    var s = performance.now();
+
+                    return fetch(url, { mode: 'no-cors', cache: 'no-store' })
+                        .then(function() {
+                            var d = (performance.now() - s) / 1000;
+                            var sp = d > 0 ? (150000 * 8) / (d * 1e6) : 0;
+                            if (valEl) valEl.textContent = sp.toFixed(1);
+                            if (dl) dl.textContent = sp.toFixed(1) + ' Mbps';
+
+                            var ql = 'N/A', cl = '#94A3B8';
+                            if (sp > 10) { ql = 'Excelente'; cl = '#22C55E'; }
+                            else if (sp > 5) { ql = 'Buena'; cl = '#84CC16'; }
+                            else if (sp > 2) { ql = 'Regular'; cl = '#EAB308'; }
+                            else if (sp > 0.5) { ql = 'Lenta'; cl = '#F97316'; }
+                            else if (sp > 0) { ql = 'Muy lenta'; cl = '#EF4444'; }
+
+                            if (q) { q.textContent = ql; q.style.color = cl; }
+                            label.textContent = 'Listo';
+                            showToast(sp.toFixed(1) + ' Mbps', 'success');
+                        })
+                        .catch(function() {
+                            label.textContent = 'Error';
+                            showToast('Error en test', 'error');
+                        });
+                })
+                .catch(function() {
+                    label.textContent = 'Error';
+                    showToast('Error en test', 'error');
+                })
+                .finally(function() {
+                    gauge.classList.remove('testing');
+                    btn.classList.remove('running');
+                    btn.innerHTML = 'Repetir Test';
+                    AppState.speedTestRunning = false;
+                });
+        }
+
+        // ===== CALCULATOR =====
+        function calculateData() {
+            var mb = parseFloat(document.getElementById('calcMB').value);
+            var u = parseFloat(document.getElementById('calcUnit').value);
+            var r = parseFloat(document.getElementById('calcActivity').value);
+
+            if (!mb || isNaN(mb) || mb <= 0 || !u || !r) {
+                showToast('Ingresa valores validos', 'error');
+                return;
+            }
+
+            var tot = mb * u;
+            var min = tot / r;
+            var resultText = min < 60 ? Math.round(min) + ' min' : Math.floor(min / 60) + 'h ' + Math.round(min % 60) + 'min';
+
+            document.getElementById('resultTime').textContent = resultText;
+            document.getElementById('calcResult').style.display = 'block';
+        }
+
+        // ===== ONLINE STATUS =====
+        function updateOnlineStatus() {
+            var banner = document.getElementById('offlineBanner');
+            if (banner) {
+                if (!navigator.onLine) {
+                    banner.classList.add('show');
+                } else {
+                    banner.classList.remove('show');
+                }
+            }
+        }
+
+        // Initialize app
+        init();
+    </script>
+</body>
+</html>
