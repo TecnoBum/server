@@ -1,1 +1,2 @@
-Plan toDus incrementa el volumen de datos a 1 GB, conserva su precio actual de 25 CUP y mantiene su vigencia de 35 días a partir del primer uso, con posibilidad de extenderla y acumular datos al adquirir varios planes de este tipo dentro del periodo establecido.
+Estamos trabajando en traerles nuevas secciones y mejoras en la aplicación.
+Ya se encuentran disponibles nuevas funciones en la sección de Utilidades.
