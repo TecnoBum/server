@@ -1,0 +1,2 @@
+CubaOnline una aplicación de mensajería que solo requiere un nombre para iniciar sesión resulta práctica y accesible. Los mensajes no se almacenan por largo tiempo, lo justo para comunicarse, respetando la privacidad de los usuarios.
+
