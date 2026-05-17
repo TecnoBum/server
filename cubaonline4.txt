@@ -1,1 +1,1 @@
-Una solución de mensajería ligera y funcional para Cuba: registro mínimo con solo el nombre, chat abierto con todos los usuarios, y eliminación automática de los mensajes tras un breve tiempo. Suficiente para comunicarse y compartir historias, sin acumular información personal.
+
