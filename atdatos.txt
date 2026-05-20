@@ -1,3 +1,4 @@
 Aplicación Alerta Temprana
-Desarrollada por TecnoBum
+-------------------------------
+Desarrollada por TecnoBum en colaboración con Henry Morejón Roque
 Versión 1.0.0
