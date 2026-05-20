@@ -1,2 +1,3 @@
-Aplicación Alerta Temprana
-Versión 1.0.0
+AplicaciÃ³n Alerta Temprana
+Desarrollada por TecnoBum
+VersiÃ³n 1.0.0
