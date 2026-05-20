@@ -2,6 +2,5 @@ Aplicación Alerta Temprana
 -------------------------------
 Desarrollada por TecnoBum en colaboración con el Especialista en Meteorología Henry Morejón Roque
 
-
 Versión 1.0.0
 2026
