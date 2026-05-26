@@ -1,6 +1,5 @@
-CubaOnline está de vuelta.
-
-
-Versión 1.0.3. Historial de Cambios
+💙 CubaOnline está de vuelta.
+Actualización disponible Versión 1.0.3
+✅ Historial de Cambios
 - Nuevo diseño, cambios en el sistema de conectividad, nuevos elementos en la interfaz. En esta versión los estados no están disponibles. Estarán disponibles más adelante con nuevas funciones.
-❌Nota Importante: Las versiones anteriores a la 1.0.3 no están funcionando. Actualización Obligatoria 
+❌ Nota Importante: Las versiones anteriores a la 1.0.3 no están funcionando. La Actualización es Obligatoria 
