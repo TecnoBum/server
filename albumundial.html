@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Álbum Mundial 2026 - Completa el Estadio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -38,6 +39,13 @@
             font-size: 3em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h1 i {
             background: linear-gradient(45deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -126,6 +134,7 @@
         .card-icon {
             font-size: 3em;
             margin-bottom: 15px;
+            color: #ffd700;
         }
 
         .card h3 {
@@ -188,6 +197,8 @@
             border: 3px solid #ffd700;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: slideIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes slideIn {
@@ -287,6 +298,7 @@
             font-size: 2em;
             opacity: 0;
             transition: all 0.3s ease;
+            color: #2ed573;
         }
 
         .card.completed .sticker {
@@ -323,18 +335,115 @@
             margin-top: 40px;
         }
 
+        .completion-badge {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            text-align: center;
+            animation: badgePop 0.6s ease;
+            border: 5px solid #fff;
+        }
+
+        @keyframes badgePop {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .badge-icon {
+            font-size: 8em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            animation: rotate 2s ease infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .badge-title {
+            font-size: 2.5em;
+            color: #1e3c72;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .badge-subtitle {
+            font-size: 1.3em;
+            color: #1e3c72;
+            margin-bottom: 25px;
+        }
+
+        .badge-close {
+            background: #1e3c72;
+            color: #ffd700;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .badge-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover {
+            background: rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        .page-btn.active {
+            background: #ffd700;
+            color: #1e3c72;
+            border-color: #ffd700;
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .game-section { grid-template-columns: 1fr; }
             .modal-content { padding: 25px; }
+            .completion-badge { padding: 30px; }
+            .badge-icon { font-size: 5em; }
+            .badge-title { font-size: 1.8em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🏆 ÁLBUM MUNDIAL 2026 🏆</h1>
-            <p class="subtitle">Completa el álbum respondiendo preguntas y descubriendo curiosidades</p>
+            <h1><i class="fas fa-trophy"></i> ÁLBUM MUNDIAL 2026 <i class="fas fa-trophy"></i></h1>
+            <p class="subtitle">Completa el álbum respondiendo 100 preguntas y descubriendo curiosidades</p>
         </header>
 
         <div class="stadium-container">
@@ -348,20 +457,20 @@
         <div class="stats">
             <div class="stat-item">
                 <span class="stat-number" id="completedCards">0</span>
-                <span class="stat-label">Estadios Completados</span>
+                <span class="stat-label"><i class="fas fa-check-circle"></i> Preguntas Completadas</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="correctAnswers">0</span>
-                <span class="stat-label">Respuestas Correctas</span>
+                <span class="stat-label"><i class="fas fa-star"></i> Respuestas Correctas</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number" id="totalQuestions">8</span>
-                <span class="stat-label">Total de Preguntas</span>
+                <span class="stat-number">100</span>
+                <span class="stat-label"><i class="fas fa-question-circle"></i> Total de Preguntas</span>
             </div>
         </div>
 
         <div class="curiosity-box">
-            <strong>💡 Curiosidad del Día:</strong>
+            <strong><i class="fas fa-lightbulb"></i> Curiosidad del Día:</strong>
             <span id="dailyCuriosity">El Mundial 2026 será el primero en la historia con 48 equipos participantes, expandiéndose de los 32 tradicionales.</span>
         </div>
 
@@ -369,16 +478,20 @@
             <!-- Cards will be generated by JavaScript -->
         </div>
 
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be generated by JavaScript -->
+        </div>
+
         <footer>
-            <p> FIFA World Cup 2026 - Estados Unidos, México y Canadá 🌎</p>
-            <p style="margin-top: 10px; opacity: 0.8;">¡Completa todos los estadios para ganar!</p>
+            <p><i class="fas fa-globe-americas"></i> FIFA World Cup 2026 - Estados Unidos, México y Canadá</p>
+            <p style="margin-top: 10px; opacity: 0.8;"><i class="fas fa-medal"></i> ¡Completa todas las preguntas para ganar tu insignia!</p>
         </footer>
     </div>
 
     <!-- Modal for Questions -->
     <div class="modal" id="questionModal">
         <div class="modal-content">
-            <h2 id="modalTitle">Pregunta del Estadio</h2>
+            <h2 id="modalTitle">Pregunta</h2>
             <div class="question" id="modalQuestion"></div>
             <div class="options" id="modalOptions"></div>
             <div class="close-modal">
@@ -387,88 +500,130 @@
         </div>
     </div>
 
+    <!-- Completion Badge -->
+    <div class="completion-badge" id="completionBadge">
+        <div class="badge-icon">
+            <i class="fas fa-award"></i>
+        </div>
+        <div class="badge-title">¡FELICITACIONES!</div>
+        <div class="badge-subtitle">Has completado las 100 preguntas del Álbum Mundial 2026</div>
+        <p style="color: #1e3c72; margin-bottom: 20px;">Eres un verdadero experto del Mundial</p>
+        <button class="badge-close" onclick="closeBadge()">
+            <i class="fas fa-times"></i> Cerrar
+        </button>
+    </div>
+
     <script>
-        const cardsData = [
-            {
-                id: 1,
-                icon: "🏟️",
-                title: "MetLife Stadium",
-                location: "Nueva Jersey, USA",
-                question: "¿Cuál será la capacidad del MetLife Stadium para el Mundial 2026?",
-                options: ["75,000 espectadores", "82,500 espectadores", "90,000 espectadores", "100,000 espectadores"],
-                correct: 1,
-                curiosity: "El MetLife Stadium será la sede de la final del Mundial 2026. Es el estadio más grande de la NFL."
-            },
-            {
-                id: 2,
-                icon: "🌮",
-                title: "Estadio Azteca",
-                location: "Ciudad de México, México",
-                question: "¿Qué récord histórico tendrá el Estadio Azteca en 2026?",
-                options: ["Ser el estadio más antiguo", "Primera sede en albergar 3 mundiales", "El estadio con mayor altitud", "El estadio más grande de Latinoamérica"],
-                correct: 1,
-                curiosity: "El Azteca será el primer estadio en la historia en albergar tres Copas del Mundo (1970, 1986 y 2026)."
-            },
-            {
-                id: 3,
-                icon: "🍁",
-                title: "BMO Field",
-                location: "Toronto, Canadá",
-                question: "¿Cuántos partidos se jugarán en Canadá durante el Mundial?",
-                options: ["5 partidos", "8 partidos", "10 partidos", "13 partidos"],
-                correct: 2,
-                curiosity: "Canadá será sede de 10 partidos, incluyendo Toronto y Vancouver como ciudades anfitrionas."
-            },
-            {
-                id: 4,
-                icon: "⭐",
-                title: "AT&T Stadium",
-                location: "Dallas, USA",
-                question: "¿Qué característica única tiene el AT&T Stadium?",
-                options: ["Tiene techo retráctil", "Es completamente subterráneo", "Tiene la pantalla más grande del mundo", "Está construido sobre el agua"],
-                correct: 2,
-                curiosity: "El AT&T Stadium cuenta con una pantalla de video central de 73 metros de ancho, la más grande del mundo."
-            },
-            {
-                id: 5,
-                icon: "🌊",
-                title: "Levi's Stadium",
-                location: "San Francisco, USA",
-                question: "¿En qué año se inauguró el Levi's Stadium?",
-                options: ["2012", "2014", "2016", "2018"],
-                correct: 1,
-                curiosity: "Inaugurado en 2014, el Levi's Stadium es conocido por ser uno de los estadios más ecológicos de la NFL."
-            },
-            {
-                id: 6,
-                icon: "🎭",
-                title: "Rose Bowl",
-                location: "Los Ángeles, USA",
-                question: "¿Cuántas personas han asistido históricamente al Rose Bowl en un solo partido?",
-                options: ["85,000", "93,000", "101,799", "120,000"],
-                correct: 2,
-                curiosity: "El récord de asistencia en el Rose Bowl es de 101,799 espectadores, establecido en un partido de la Copa Mundial 1994."
-            },
-            {
-                id: 7,
-                icon: "🏔️",
-                title: "BC Place",
-                location: "Vancouver, Canadá",
-                question: "¿Qué tipo de techo tiene el BC Place?",
-                options: ["Techo de cristal", "Techo retráctil inflable", "Techo solar", "Techo verde con plantas"],
-                correct: 1,
-                curiosity: "El BC Place tiene un techo retráctil inflable único en el mundo, sostenido por presión de aire."
-            },
-            {
-                id: 8,
-                icon: "🎪",
-                title: "Arrowhead Stadium",
-                location: "Kansas City, USA",
-                question: "¿Por qué es famoso el Arrowhead Stadium?",
-                options: ["Por ser el estadio más ruidoso del mundo", "Por tener el césped más rápido", "Por ser el más frío", "Por su forma de flecha"],
-                correct: 0,
-                curiosity: "El Arrowhead Stadium ostenta el récord Guinness del estadio más ruidoso del mundo, alcanzando 142.2 decibeles."
-            }
+        const questionsData = [
+            // Estadios y Sedes (1-20)
+            { id: 1, icon: "fas fa-stadium", title: "MetLife Stadium", question: "¿En qué estado se encuentra el MetLife Stadium?", options: ["Nueva York", "Nueva Jersey", "Pensilvania", "Connecticut"], correct: 1, curiosity: "El MetLife Stadium será la sede de la final del Mundial 2026." },
+            { id: 2, icon: "fas fa-futbol", title: "Estadio Azteca", question: "¿En qué año se inauguró el Estadio Azteca?", options: ["1962", "1966", "1970", "1975"], correct: 1, curiosity: "El Azteca será el primer estadio en albergar tres Copas del Mundo." },
+            { id: 3, icon: "fas fa-map-marker-alt", title: "Ciudades Sede", question: "¿Cuántas ciudades sede tendrá el Mundial 2026?", options: ["12", "14", "16", "18"], correct: 2, curiosity: "Será el Mundial con más ciudades sede en la historia." },
+            { id: 4, icon: "fas fa-flag", title: "Países Sede", question: "¿Cuáles son los tres países sede del Mundial 2026?", options: ["USA, Brasil, Argentina", "USA, México, Canadá", "USA, España, Portugal", "México, Canadá, Costa Rica"], correct: 1, curiosity: "Será el primer Mundial con tres países sede simultáneamente." },
+            { id: 5, icon: "fas fa-users", title: "Capacidad", question: "¿Cuál es la capacidad aproximada del AT&T Stadium?", options: ["70,000", "80,000", "90,000", "100,000"], correct: 1, curiosity: "El AT&T Stadium tiene la pantalla de video más grande del mundo." },
+            { id: 6, icon: "fas fa-building", title: "SoFi Stadium", question: "¿En qué ciudad se encuentra el SoFi Stadium?", options: ["San Francisco", "Los Ángeles", "Las Vegas", "Seattle"], correct: 1, curiosity: "El SoFi Stadium es uno de los más modernos y costosos del mundo." },
+            { id: 7, icon: "fas fa-mountain", title: "Estadio BBVA", question: "¿En qué ciudad mexicana se encuentra el Estadio BBVA?", options: ["CDMX", "Guadalajara", "Monterrey", "Puebla"], correct: 2, curiosity: "El Estadio BBVA es conocido por su ubicación cerca de las montañas." },
+            { id: 8, icon: "fas fa-tree", title: "Lumen Field", question: "¿En qué ciudad se encuentra el Lumen Field?", options: ["Portland", "Seattle", "Vancouver", "San Francisco"], correct: 1, curiosity: "El Lumen Field es conocido por el ruido de sus aficionados." },
+            { id: 9, icon: "fas fa-sun", title: "Estadio de Guadalajara", question: "¿Cómo se llama el estadio de Guadalajara para el Mundial?", options: ["Estadio Jalisco", "Estadio Akron", "Estadio Omnilife", "Estadio Tres de Marzo"], correct: 1, curiosity: "El Estadio Akron fue renovado para el Mundial 2026." },
+            { id: 10, icon: "fas fa-water", title: "Hard Rock Stadium", question: "¿En qué ciudad se encuentra el Hard Rock Stadium?", options: ["Orlando", "Tampa", "Miami", "Jacksonville"], correct: 2, curiosity: "El Hard Rock Stadium fue sede del Super Bowl XLIV." },
+            { id: 11, icon: "fas fa-leaf", title: "BC Place", question: "¿Qué tipo de techo tiene el BC Place de Vancouver?", options: ["Fijo", "Retráctil", "Inflable", "Transparente"], correct: 2, curiosity: "El BC Place tiene un techo retráctil inflable único en el mundo." },
+            { id: 12, icon: "fas fa-city", title: "BMO Field", question: "¿En qué ciudad canadiense se encuentra el BMO Field?", options: ["Vancouver", "Montreal", "Toronto", "Ottawa"], correct: 2, curiosity: "El BMO Field fue expandido para el Mundial 2026." },
+            { id: 13, icon: "fas fa-football-ball", title: "NRG Stadium", question: "¿En qué ciudad se encuentra el NRG Stadium?", options: ["Dallas", "Houston", "Austin", "San Antonio"], correct: 1, curiosity: "El NRG Stadium tiene techo retráctil y es sede de los Texans." },
+            { id: 14, icon: "fas fa-glass-cheers", title: "Mercedes-Benz Stadium", question: "¿En qué ciudad se encuentra el Mercedes-Benz Stadium?", options: ["Miami", "Nashville", "Atlanta", "Charlotte"], correct: 2, curiosity: "El Mercedes-Benz Stadium tiene un techo retráctil único en forma de ojo." },
+            { id: 15, icon: "fas fa-music", title: "Estadio de Kansas City", question: "¿Cómo se llama el estadio de Kansas City?", options: ["Arrowhead Stadium", "Kauffman Stadium", "GEHA Field", "City Stadium"], correct: 0, curiosity: "Arrowhead es conocido como el estadio más ruidoso del mundo." },
+            { id: 16, icon: "fas fa-horse", title: "Lincoln Financial Field", question: "¿En qué ciudad se encuentra este estadio?", options: ["Boston", "Filadelfia", "Baltimore", "Washington DC"], correct: 1, curiosity: "Este estadio será sede de varios partidos del Mundial 2026." },
+            { id: 17, icon: "fas fa-star", title: "Rose Bowl", question: "¿En qué año se inauguró el Rose Bowl?", options: ["1922", "1932", "1942", "1952"], correct: 0, curiosity: "El Rose Bowl es uno de los estadios más históricos de EE.UU." },
+            { id: 18, icon: "fas fa-gem", title: "Estadio de Monterrey", question: "¿Cuál es el apodo del Estadio BBVA?", options: ["El Gigante de Acero", "La Fortaleza", "El Coloso del Norte", "El Monumental"], correct: 0, curiosity: "El Estadio BBVA tiene una capacidad de más de 50,000 espectadores." },
+            { id: 19, icon: "fas fa-umbrella-beach", title: "Q2 Stadium", question: "¿En qué ciudad se encuentra el Q2 Stadium?", options: ["Houston", "Dallas", "Austin", "San Antonio"], correct: 2, curiosity: "El Q2 Stadium es la casa del Austin FC en la MLS." },
+            { id: 20, icon: "fas fa-wind", title: "State Farm Stadium", question: "¿Qué característica tiene el State Farm Stadium?", options: ["Techo retráctil", "Césped móvil", "Pantalla gigante", "Todas las anteriores"], correct: 3, curiosity: "El State Farm Stadium tiene techo retráctil y césped móvil." },
+
+            // Formato del Torneo (21-40)
+            { id: 21, icon: "fas fa-users", title: "Equipos Participantes", question: "¿Cuántos equipos participarán en el Mundial 2026?", options: ["32", "40", "48", "56"], correct: 2, curiosity: "Será el primer Mundial con 48 equipos." },
+            { id: 22, icon: "fas fa-list-ol", title: "Total de Partidos", question: "¿Cuántos partidos se jugarán en total?", options: ["64", "80", "96", "104"], correct: 3, curiosity: "Se jugarán 104 partidos, el mayor número en la historia." },
+            { id: 23, icon: "fas fa-layer-group", title: "Grupos", question: "¿Cuántos grupos habrá en la fase inicial?", options: ["8", "10", "12", "16"], correct: 2, curiosity: "Habrá 12 grupos de 4 equipos cada uno." },
+            { id: 24, icon: "fas fa-arrow-right", title: "Clasificación", question: "¿Cuántos equipos pasan de cada grupo?", options: ["1", "2", "3", "4"], correct: 1, curiosity: "Los dos primeros de cada grupo avanzan a la siguiente fase." },
+            { id: 25, icon: "fas fa-calendar", title: "Duración", question: "¿Cuántos días durará aproximadamente el torneo?", options: ["28 días", "32 días", "39 días", "45 días"], correct: 2, curiosity: "El torneo durará aproximadamente 39 días." },
+            { id: 26, icon: "fas fa-play", title: "Fecha de Inicio", question: "¿En qué mes iniciará el Mundial 2026?", options: ["Mayo", "Junio", "Julio", "Agosto"], correct: 1, curiosity: "El Mundial iniciará en junio de 2026." },
+            { id: 27, icon: "fas fa-flag-checkered", title: "Fecha Final", question: "¿En qué mes será la final del Mundial?", options: ["Junio", "Julio", "Agosto", "Septiembre"], correct: 1, curiosity: "La final será en julio de 2026." },
+            { id: 28, icon: "fas fa-trophy", title: "Campeón Defensor", question: "¿Quién es el campeón defensor del Mundial?", options: ["Brasil", "Francia", "Argentina", "Alemania"], correct: 2, curiosity: "Argentina es el campeón defensor tras ganar en Qatar 2022." },
+            { id: 29, icon: "fas fa-medal", title: "Fase Eliminatoria", question: "¿Cuántos equipos pasan a octavos de final?", options: ["16", "24", "32", "36"], correct: 2, curiosity: "32 equipos avanzarán a la fase eliminatoria." },
+            { id: 30, icon: "fas fa-gamepad", title: "Partidos por Equipo", question: "¿Cuántos partidos mínimos jugará cada equipo en fase de grupos?", options: ["2", "3", "4", "5"], correct: 1, curiosity: "Cada equipo jugará al menos 3 partidos en fase de grupos." },
+            { id: 31, icon: "fas fa-sync", title: "Formato Anterior", question: "¿Cuántos equipos había en el Mundial anterior (2022)?", options: ["28", "30", "32", "36"], correct: 2, curiosity: "El formato de 32 equipos se usó desde 1998 hasta 2022." },
+            { id: 32, icon: "fas fa-plus", title: "Expansión", question: "¿Cuántos equipos más participarán comparado con 2022?", options: ["8", "12", "16", "20"], correct: 2, curiosity: "Se expandirá de 32 a 48 equipos, 16 más que en 2022." },
+            { id: 33, icon: "fas fa-map", title: "Distribución", question: "¿Cuántos partidos se jugarán en Estados Unidos?", options: ["60", "70", "78", "85"], correct: 2, curiosity: "Estados Unidos será sede de la mayoría de los partidos." },
+            { id: 34, icon: "fas fa-map-pin", title: "Partidos en México", question: "¿Cuántos partidos se jugarán en México?", options: ["10", "13", "15", "18"], correct: 1, curiosity: "México será sede de 13 partidos del torneo." },
+            { id: 35, icon: "fas fa-map-signs", title: "Partidos en Canadá", question: "¿Cuántos partidos se jugarán en Canadá?", options: ["8", "10", "13", "15"], correct: 2, curiosity: "Canadá será sede de 13 partidos del torneo." },
+            { id: 36, icon: "fas fa-redo", title: "Prórroga", question: "¿Cuántos tiempos extra se juegan si hay empate en eliminatorias?", options: ["1 tiempo de 15 min", "2 tiempos de 15 min", "1 tiempo de 30 min", "2 tiempos de 30 min"], correct: 1, curiosity: "Se juegan dos tiempos extra de 15 minutos cada uno." },
+            { id: 37, icon: "fas fa-bullseye", title: "Penales", question: "¿Cuántos penales se tiran inicialmente en una tanda?", options: ["3", "4", "5", "6"], correct: 2, curiosity: "Se tiran 5 penales inicialmente, y si persiste el empate, muerte súbita." },
+            { id: 38, icon: "fas fa-chart-line", title: "Puntos por Victoria", question: "¿Cuántos puntos se otorgan por victoria en fase de grupos?", options: ["1", "2", "3", "4"], correct: 2, curiosity: "Se otorgan 3 puntos por victoria, 1 por empate, 0 por derrota." },
+            { id: 39, icon: "fas fa-balance-scale", title: "Desempate", question: "¿Qué se evalúa primero si hay empate en puntos?", options: ["Goles a favor", "Diferencia de goles", "Enfrentamiento directo", "Tarjetas amarillas"], correct: 1, curiosity: "La diferencia de goles es el primer criterio de desempate." },
+            { id: 40, icon: "fas fa-shoe-prints", title: "Sedes Confirmadas", question: "¿En qué año se confirmaron las 16 sedes?", options: ["2018", "2020", "2022", "2023"], correct: 1, curiosity: "Las 16 sedes fueron confirmadas en junio de 2022." },
+
+            // Historia del Mundial (41-60)
+            { id: 41, icon: "fas fa-history", title: "Primer Mundial", question: "¿En qué año se celebró el primer Mundial?", options: ["1926", "1928", "1930", "1934"], correct: 2, curiosity: "El primer Mundial se celebró en Uruguay en 1930." },
+            { id: 42, icon: "fas fa-crown", title: "Más Títulos", question: "¿Qué país ha ganado más Copas del Mundo?", options: ["Alemania", "Italia", "Argentina", "Brasil"], correct: 3, curiosity: "Brasil ha ganado 5 Copas del Mundo, el récord histórico." },
+            { id: 43, icon: "fas fa-user-tie", title: "Máximo Goleador", question: "¿Quién es el máximo goleador en la historia de los Mundiales?", options: ["Pelé", "Ronaldo", "Miroslav Klose", "Gerd Müller"], correct: 2, curiosity: "Miroslav Klose tiene 16 goles, el récord histórico." },
+            { id: 44, icon: "fas fa-user", title: "Messi en Mundiales", question: "¿Cuántos Mundiales ha jugado Lionel Messi?", options: ["3", "4", "5", "6"], correct: 2, curiosity: "Messi ha jugado 5 Mundiales (2006, 2010, 2014, 2018, 2022)." },
+            { id: 45, icon: "fas fa-tv", title: "Primera Transmisión", question: "¿En qué año se transmitió el primer Mundial por TV?", options: ["1930", "1950", "1954", "1958"], correct: 2, curiosity: "El Mundial de 1954 en Suiza fue el primero transmitido por televisión." },
+            { id: 46, icon: "fas fa-globe", title: "Mundial en Asia", question: "¿En qué año se celebró el primer Mundial en Asia?", options: ["1994", "1998", "2002", "2006"], correct: 2, curiosity: "Corea del Sur y Japón 2002 fue el primer Mundial en Asia." },
+            { id: 47, icon: "fas fa-sun", title: "Mundial en África", question: "¿En qué año se celebró el primer Mundial en África?", options: ["1998", "2002", "2006", "2010"], correct: 3, curiosity: "Sudáfrica 2010 fue el primer Mundial en el continente africano." },
+            { id: 48, icon: "fas fa-snowflake", title: "Mundial en Invierno", question: "¿Qué Mundial se jugó en invierno (noviembre-diciembre)?", options: ["2010", "2014", "2018", "2022"], correct: 3, curiosity: "Qatar 2022 fue el primer Mundial en invierno por el calor extremo." },
+            { id: 49, icon: "fas fa-video", title: "VAR", question: "¿En qué Mundial se implementó el VAR por primera vez?", options: ["2010", "2014", "2018", "2022"], correct: 2, curiosity: "El VAR se implementó por primera vez en Rusia 2018." },
+            { id: 50, icon: "fas fa-running", title: "Récord de Asistencia", question: "¿En qué Mundial hubo mayor asistencia total?", options: ["1994 USA", "2006 Alemania", "2014 Brasil", "2018 Rusia"], correct: 0, curiosity: "USA 1994 tuvo más de 3.5 millones de espectadores." },
+            { id: 51, icon: "fas fa-fist-raised", title: "Maracanazo", question: "¿En qué año ocurrió el 'Maracanazo'?", options: ["1930", "1950", "1954", "1958"], correct: 1, curiosity: "El Maracanazo fue en 1950, cuando Uruguay venció a Brasil en la final." },
+            { id: 52, icon: "fas fa-hand-paper", title: "Mano de Dios", question: "¿En qué Mundial fue la 'Mano de Dios' de Maradona?", options: ["1982", "1986", "1990", "1994"], correct: 1, curiosity: "Fue en México 1986, en el partido contra Inglaterra." },
+            { id: 53, icon: "fas fa-head-side-virus", title: "Mundial Cancelado", question: "¿En qué años se canceló el Mundial por guerras?", options: ["1914-1918", "1939-1945", "1942 y 1946", "1950-1953"], correct: 2, curiosity: "No hubo Mundiales en 1942 y 1946 por la Segunda Guerra Mundial." },
+            { id: 54, icon: "fas fa-trophy", title: "Trofeo Actual", question: "¿Cómo se llama el trofeo actual del Mundial?", options: ["Trofeo Jules Rimet", "Copa FIFA", "Trofeo Mundial", "Copa de Oro"], correct: 1, curiosity: "El trofeo actual se llama Copa FIFA del Mundo." },
+            { id: 55, icon: "fas fa-star", title: "Estrellas en Camisetas", question: "¿Qué representa cada estrella en las camisetas de los equipos?", options: ["Participaciones", "Títulos mundiales", "Victorias consecutivas", "Goles históricos"], correct: 1, curiosity: "Cada estrella representa un título mundial ganado." },
+            { id: 56, icon: "fas fa-music", title: "Mascota 2026", question: "¿Cómo se llama la mascota del Mundial 2026?", options: ["Aún no se anuncia", "Zayu", "Clutch", "La'eeb"], correct: 0, curiosity: "La mascota del Mundial 2026 aún no ha sido anunciada oficialmente." },
+            { id: 57, icon: "fas fa-paint-brush", title: "Logo 2026", question: "¿Qué representa el logo del Mundial 2026?", options: ["Un balón", "El trofeo con los tres países", "Un estadio", "Un mapa"], correct: 1, curiosity: "El logo muestra el trofeo con las iniciales de USA, México y Canadá." },
+            { id: 58, icon: "fas fa-ball", title: "Balón Oficial", question: "¿Cada cuántos años se cambia el diseño del balón oficial?", options: ["Cada Mundial", "Cada 2 Mundiales", "Cada 4 Mundiales", "Nunca"], correct: 0, curiosity: "Cada Mundial tiene su propio balón oficial con diseño único." },
+            { id: 59, icon: "fas fa-user-friends", title: "Árbitros", question: "¿Cuántos árbitros principales hay en un partido?", options: ["1", "2", "3", "4"], correct: 0, curiosity: "Hay un árbitro principal y asistentes, incluyendo el VAR." },
+            { id: 60, icon: "fas fa-clock", title: "Duración Partido", question: "¿Cuántos minutos dura un partido oficial?", options: ["80", "90", "100", "120"], correct: 1, curiosity: "Los partidos duran 90 minutos divididos en dos tiempos de 45." },
+
+            // Selecciones y Jugadores (61-80)
+            { id: 61, icon: "fas fa-flag", title: "Selección Local", question: "¿Cuántas selecciones locales participarán automáticamente?", options: ["1", "2", "3", "4"], correct: 2, curiosity: "USA, México y Canadá clasifican automáticamente como locales." },
+            { id: 62, icon: "fas fa-map-marker-alt", title: "Clasificación", question: "¿Cuántos equipos se clasificarán por eliminatorias?", options: ["42", "45", "48", "50"], correct: 1, curiosity: "45 equipos se clasificarán por eliminatorias continentales." },
+            { id: 63, icon: "fas fa-star", title: "Brasil", question: "¿Cuántos Mundiales ha ganado Brasil?", options: ["3", "4", "5", "6"], correct: 2, curiosity: "Brasil es el único pentacampeón del mundo." },
+            { id: 64, icon: "fas fa-crown", title: "Alemania", question: "¿Cuántos Mundiales ha ganado Alemania?", options: ["3", "4", "5", "6"], correct: 1, curiosity: "Alemania ha ganado 4 Copas del Mundo." },
+            { id: 65, icon: "fas fa-trophy", title: "Italia", question: "¿Cuántos Mundiales ha ganado Italia?", options: ["3", "4", "5", "6"], correct: 1, curiosity: "Italia ha ganado 4 Copas del Mundo." },
+            { id: 66, icon: "fas fa-futbol", title: "Argentina", question: "¿Cuántos Mundiales ha ganado Argentina?", options: ["2", "3", "4", "5"], correct: 1, curiosity: "Argentina ha ganado 3 Copas del Mundo (1978, 1986, 2022)." },
+            { id: 67, icon: "fas fa-user", title: "Mbappé", question: "¿De qué país es Kylian Mbappé?", options: ["Bélgica", "Francia", "Senegal", "Camerún"], correct: 1, curiosity: "Mbappé es la estrella de la selección francesa." },
+            { id: 68, icon: "fas fa-user", title: "Haaland", question: "¿De qué país es Erling Haaland?", options: ["Suecia", "Dinamarca", "Noruega", "Finlandia"], correct: 2, curiosity: "Haaland es el goleador noruego del Manchester City." },
+            { id: 69, icon: "fas fa-user", title: "Vinícius Jr", question: "¿De qué país es Vinícius Jr?", options: ["Portugal", "España", "Argentina", "Brasil"], correct: 3, curiosity: "Vinícius Jr es la joven estrella de la selección brasileña." },
+            { id: 70, icon: "fas fa-user", title: "Modric", question: "¿De qué país es Luka Modric?", options: ["Serbia", "Croacia", "Bosnia", "Eslovenia"], correct: 1, curiosity: "Modric es el capitán y leyenda de Croacia." },
+            { id: 71, icon: "fas fa-user", title: "De Bruyne", question: "¿De qué país es Kevin De Bruyne?", options: ["Países Bajos", "Bélgica", "Francia", "Alemania"], correct: 1, curiosity: "De Bruyne es el mediocampista estrella de Bélgica." },
+            { id: 72, icon: "fas fa-user", title: "Salah", question: "¿De qué país es Mohamed Salah?", options: ["Marruecos", "Argelia", "Egipto", "Túnez"], correct: 2, curiosity: "Salah es la estrella egipcia del Liverpool." },
+            { id: 73, icon: "fas fa-user", title: "Son", question: "¿De qué país es Son Heung-min?", options: ["Japón", "China", "Corea del Sur", "Corea del Norte"], correct: 2, curiosity: "Son es la estrella surcoreana del Tottenham." },
+            { id: 74, icon: "fas fa-user", title: "Kane", question: "¿De qué país es Harry Kane?", options: ["Escocia", "Gales", "Inglaterra", "Irlanda"], correct: 2, curiosity: "Kane es el capitán y goleador de Inglaterra." },
+            { id: 75, icon: "fas fa-user", title: "Pedri", question: "¿De qué país es Pedri?", options: ["Portugal", "Argentina", "Brasil", "España"], correct: 3, curiosity: "Pedri es la joven promesa de la selección española." },
+            { id: 76, icon: "fas fa-users", title: "Selección Más Exitosa", question: "¿Qué selección ha llegado a más finales de Mundial?", options: ["Brasil", "Alemania", "Argentina", "Italia"], correct: 1, curiosity: "Alemania ha llegado a 8 finales de Copa del Mundo." },
+            { id: 77, icon: "fas fa-trophy", title: "Campeón 2018", question: "¿Quién ganó el Mundial de Rusia 2018?", options: ["Croacia", "Francia", "Bélgica", "Brasil"], correct: 1, curiosity: "Francia ganó su segundo título en Rusia 2018." },
+            { id: 78, icon: "fas fa-medal", title: "Subcampeón 2022", question: "¿Quién fue subcampeón en Qatar 2022?", options: ["Brasil", "Francia", "Croacia", "Inglaterra"], correct: 1, curiosity: "Francia fue subcampeón tras perder la final contra Argentina." },
+            { id: 79, icon: "fas fa-star", title: "Revelación 2022", question: "¿Quién ganó el premio al mejor jugador joven en 2022?", options: ["Mbappé", "Enzo Fernández", "Julián Álvarez", "Gavi"], correct: 1, curiosity: "Enzo Fernández ganó el premio al mejor jugador joven en Qatar 2022." },
+            { id: 80, icon: "fas fa-glove", title: "Mejor Portero 2022", question: "¿Quién ganó el Guante de Oro en 2022?", options: ["Lloris", "Martínez", "Courtois", "Livakovic"], correct: 1, curiosity: "Emiliano Martínez ganó el Guante de Oro en Qatar 2022." },
+
+            // Curiosidades y Datos (81-100)
+            { id: 81, icon: "fas fa-dollar-sign", title: "Inversión", question: "¿Cuánto se estima que costará organizar el Mundial 2026?", options: ["$2 mil millones", "$5 mil millones", "$10 mil millones", "Más de $15 mil millones"], correct: 3, curiosity: "Será el Mundial más costoso de la historia." },
+            { id: 82, icon: "fas fa-eye", title: "Audiencia", question: "¿Cuántas personas se espera que vean el Mundial 2026?", options: ["2 mil millones", "3 mil millones", "5 mil millones", "Más de 6 mil millones"], correct: 2, curiosity: "Se espera una audiencia global de más de 5 mil millones." },
+            { id: 83, icon: "fas fa-plane", title: "Turismo", question: "¿Cuántos turistas se esperan para el Mundial 2026?", options: ["10 millones", "20 millones", "30 millones", "Más de 40 millones"], correct: 2, curiosity: "Se esperan más de 30 millones de visitantes." },
+            { id: 84, icon: "fas fa-wifi", title: "Tecnología", question: "¿Qué nueva tecnología se espera en el Mundial 2026?", options: ["VAR mejorado", "SemIAutomático", "IA avanzada", "Todas las anteriores"], correct: 3, curiosity: "Se implementarán las tecnologías más avanzadas en arbitraje." },
+            { id: 85, icon: "fas fa-leaf", title: "Sostenibilidad", question: "¿Qué enfoque tendrá el Mundial 2026?", options: ["Neutralidad de carbono", "100% renovable", "Cero residuos", "Todas las anteriores"], correct: 0, curiosity: "Se busca que sea el Mundial más sostenible de la historia." },
+            { id: 86, icon: "fas fa-money-bill", title: "Premio", question: "¿Cuánto será el premio en dinero para el campeón?", options: ["$30 millones", "$50 millones", "$80 millones", "Más de $100 millones"], correct: 3, curiosity: "El premio total superará los $400 millones para todos los equipos." },
+            { id: 87, icon: "fas fa-shield-alt", title: "Seguridad", question: "¿Cuántos agentes de seguridad se desplegarán?", options: ["50,000", "100,000", "150,000", "Más de 200,000"], correct: 2, curiosity: "Se desplegarán más de 150,000 agentes de seguridad." },
+            { id: 88, icon: "fas fa-hotel", title: "Alojamiento", question: "¿Cuántas habitaciones de hotel se necesitan?", options: ["200,000", "400,000", "600,000", "Más de 800,000"], correct: 3, curiosity: "Se necesitan más de 800,000 habitaciones para alojar a todos." },
+            { id: 89, icon: "fas fa-utensils", title: "Comida", question: "¿Cuántas toneladas de comida se consumirán?", options: ["5,000", "10,000", "20,000", "Más de 30,000"], correct: 3, curiosity: "Se consumirán más de 30,000 toneladas de comida." },
+            { id: 90, icon: "fas fa-tint", title: "Agua", question: "¿Cuántos litros de agua se consumirán?", options: ["50 millones", "100 millones", "200 millones", "Más de 300 millones"], correct: 2, curiosity: "Se consumirán más de 200 millones de litros de agua." },
+            { id: 91, icon: "fas fa-newspaper", title: "Cobertura", question: "¿Cuántos periodistas se acreditarán?", options: ["10,000", "20,000", "30,000", "Más de 40,000"], correct: 1, curiosity: "Más de 20,000 periodistas cubrirán el evento." },
+            { id: 92, icon: "fas fa-camera", title: "Cámaras", question: "¿Cuántas cámaras se usarán por partido?", options: ["20", "30", "40", "Más de 50"], correct: 3, curiosity: "Se usarán más de 50 cámaras por partido para la transmisión." },
+            { id: 93, icon: "fas fa-broadcast-tower", title: "Transmisión", question: "¿En cuántos idiomas se transmitirá?", options: ["20", "30", "40", "Más de 50"], correct: 2, curiosity: "Se transmitirá en más de 40 idiomas diferentes." },
+            { id: 94, icon: "fas fa-mobile-alt", title: "Apps Oficiales", question: "¿Cuántas apps oficiales habrá?", options: ["1", "3", "5", "Más de 10"], correct: 1, curiosity: "Habrá al menos 3 apps oficiales para diferentes servicios." },
+            { id: 95, icon: "fas fa-gamepad", title: "Videojuegos", question: "¿Qué videojuego tendrá el modo oficial del Mundial?", options: ["FIFA", "eFootball", "Football Manager", "Todos"], correct: 0, curiosity: "EA Sports FIFA tendrá el modo oficial del Mundial 2026." },
+            { id: 96, icon: "fas fa-music", title: "Canción Oficial", question: "¿Cuándo se lanza la canción oficial?", options: ["1 año antes", "6 meses antes", "3 meses antes", "1 mes antes"], correct: 1, curiosity: "La canción oficial se lanza aproximadamente 6 meses antes." },
+            { id: 97, icon: "fas fa-volunteer", title: "Voluntarios", question: "¿Cuántos voluntarios se necesitan?", options: ["20,000", "40,000", "60,000", "Más de 80,000"], correct: 2, curiosity: "Se necesitan más de 60,000 voluntarios para el torneo." },
+            { id: 98, icon: "fas fa-ambulance", title: "Servicios Médicos", question: "¿Cuántos hospitales estarán en alerta?", options: ["50", "100", "150", "Más de 200"], correct: 2, curiosity: "Más de 150 hospitales estarán en alerta durante el torneo." },
+            { id: 99, icon: "fas fa-bus", title: "Transporte", question: "¿Cuántos buses se usarán para transporte?", options: ["1,000", "2,000", "3,000", "Más de 4,000"], correct: 3, curiosity: "Se usarán más de 4,000 buses para transporte de equipos y aficionados." },
+            { id: 100, icon: "fas fa-globe-americas", title: "Impacto", question: "¿Qué impacto económico se espera?", options: ["$10 mil millones", "$20 mil millones", "$30 mil millones", "Más de $40 mil millones"], correct: 3, curiosity: "Se espera un impacto económico de más de $40 mil millones." }
         ];
 
         const curiosities = [
@@ -479,53 +634,93 @@
             "El torneo durará aproximadamente 39 días, iniciando en junio y finalizando en julio.",
             "Cada equipo jugará al menos 3 partidos en la fase de grupos.",
             "Se espera que más de 5 millones de espectadores asistan al torneo.",
-            "Será el primer Mundial con tecnología de VAR avanzada en todos los estadios."
+            "Será el primer Mundial con tecnología de VAR avanzada en todos los estadios.",
+            "Estados Unidos será sede de la mayoría de los partidos: 78 de 104.",
+            "El Estadio Azteca será el primero en albergar tres Copas del Mundo.",
+            "Se construirán nuevos estadios y se renovarán los existentes.",
+            "El premio en dinero superará los $400 millones en total.",
+            "Más de 60,000 voluntarios trabajarán en el torneo.",
+            "Se espera un impacto económico de más de $40 mil millones.",
+            "La final se jugará en el MetLife Stadium de Nueva Jersey.",
+            "Canadá será sede por primera vez de partidos de Copa del Mundo masculina.",
+            "Se implementarán las tecnologías más avanzadas en arbitraje.",
+            "El torneo será el más sostenible de la historia.",
+            "Más de 20,000 periodistas cubrirán el evento.",
+            "Se usarán más de 50 cámaras por partido para la transmisión."
         ];
 
-        let completedCards = [];
+        let completedQuestions = [];
         let correctAnswers = 0;
-        let currentCard = null;
+        let currentQuestion = null;
+        let currentPage = 1;
+        const questionsPerPage = 12;
 
         function initGame() {
-            renderCards();
+            renderQuestions();
+            renderPagination();
             updateProgress();
             changeDailyCuriosity();
         }
 
-        function renderCards() {
+        function renderQuestions() {
             const gameSection = document.getElementById('gameSection');
             gameSection.innerHTML = '';
 
-            cardsData.forEach(card => {
+            const startIndex = (currentPage - 1) * questionsPerPage;
+            const endIndex = startIndex + questionsPerPage;
+            const pageQuestions = questionsData.slice(startIndex, endIndex);
+
+            pageQuestions.forEach(question => {
                 const cardElement = document.createElement('div');
-                cardElement.className = `card ${completedCards.includes(card.id) ? 'completed' : ''}`;
+                cardElement.className = `card ${completedQuestions.includes(question.id) ? 'completed' : ''}`;
                 cardElement.innerHTML = `
-                    <div class="sticker">✅</div>
-                    <div class="card-icon">${card.icon}</div>
-                    <h3>${card.title}</h3>
-                    <p><strong>📍</strong> ${card.location}</p>
-                    <p>${completedCards.includes(card.id) ? '¡Completado! Haz clic para ver la curiosidad.' : 'Haz clic para responder la pregunta y completar este estadio.'}</p>
-                    <button class="btn" onclick="openQuestion(${card.id})">
-                        ${completedCards.includes(card.id) ? 'Ver Curiosidad' : 'Responder'}
+                    <div class="sticker"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-icon"><i class="${question.icon}"></i></div>
+                    <h3>${question.title}</h3>
+                    <p>${completedQuestions.includes(question.id) ? '<i class="fas fa-info-circle"></i> ¡Completado! Haz clic para ver la curiosidad.' : '<i class="fas fa-question-circle"></i> Haz clic para responder esta pregunta.'}</p>
+                    <button class="btn" onclick="openQuestion(${question.id})">
+                        ${completedQuestions.includes(question.id) ? '<i class="fas fa-eye"></i> Ver Curiosidad' : '<i class="fas fa-play"></i> Responder'}
                     </button>
                 `;
                 gameSection.appendChild(cardElement);
             });
         }
 
-        function openQuestion(cardId) {
-            currentCard = cardsData.find(c => c.id === cardId);
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(questionsData.length / questionsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.onclick = () => changePage(i);
+                pagination.appendChild(pageBtn);
+            }
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderQuestions();
+            renderPagination();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openQuestion(questionId) {
+            currentQuestion = questionsData.find(q => q.id === questionId);
             const modal = document.getElementById('questionModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalQuestion = document.getElementById('modalQuestion');
             const modalOptions = document.getElementById('modalOptions');
             const closeBtn = document.getElementById('closeBtn');
 
-            modalTitle.textContent = currentCard.title;
-            modalQuestion.textContent = currentCard.question;
+            modalTitle.innerHTML = `<i class="${currentQuestion.icon}"></i> ${currentQuestion.title}`;
+            modalQuestion.textContent = currentQuestion.question;
             modalOptions.innerHTML = '';
 
-            currentCard.options.forEach((option, index) => {
+            currentQuestion.options.forEach((option, index) => {
                 const optionElement = document.createElement('div');
                 optionElement.className = 'option';
                 optionElement.textContent = option;
@@ -536,7 +731,7 @@
             closeBtn.style.display = 'none';
             modal.style.display = 'flex';
 
-            if (completedCards.includes(cardId)) {
+            if (completedQuestions.includes(questionId)) {
                 showCuriosity();
             }
         }
@@ -545,18 +740,18 @@
             const options = document.querySelectorAll('.option');
             options.forEach(opt => opt.style.pointerEvents = 'none');
 
-            if (selectedIndex === currentCard.correct) {
+            if (selectedIndex === currentQuestion.correct) {
                 element.classList.add('correct');
-                if (!completedCards.includes(currentCard.id)) {
-                    completedCards.push(currentCard.id);
+                if (!completedQuestions.includes(currentQuestion.id)) {
+                    completedQuestions.push(currentQuestion.id);
                     correctAnswers++;
                     updateProgress();
-                    renderCards();
+                    renderQuestions();
                 }
                 setTimeout(showCuriosity, 1000);
             } else {
                 element.classList.add('incorrect');
-                options[currentCard.correct].classList.add('correct');
+                options[currentQuestion.correct].classList.add('correct');
                 setTimeout(() => {
                     document.getElementById('closeBtn').style.display = 'inline-block';
                 }, 1500);
@@ -568,7 +763,7 @@
             const modalOptions = document.getElementById('modalOptions');
             const closeBtn = document.getElementById('closeBtn');
 
-            modalQuestion.innerHTML = `<strong>💡 Curiosidad:</strong><br><br>${currentCard.curiosity}`;
+            modalQuestion.innerHTML = `<strong><i class="fas fa-lightbulb"></i> Curiosidad:</strong><br><br>${currentQuestion.curiosity}`;
             modalOptions.innerHTML = '';
             closeBtn.style.display = 'inline-block';
             closeBtn.onclick = closeModal;
@@ -579,17 +774,24 @@
         }
 
         function updateProgress() {
-            const percentage = Math.round((completedCards.length / cardsData.length) * 100);
+            const percentage = Math.round((completedQuestions.length / questionsData.length) * 100);
             document.getElementById('progressBar').style.width = percentage + '%';
             document.getElementById('progressBar').textContent = percentage + '% Completado';
-            document.getElementById('completedCards').textContent = completedCards.length;
+            document.getElementById('completedCards').textContent = completedQuestions.length;
             document.getElementById('correctAnswers').textContent = correctAnswers;
 
-            if (percentage === 100) {
-                setTimeout(() => {
-                    alert('🎉 ¡Felicidades! Has completado el álbum del Mundial 2026. Eres un verdadero experto.');
-                }, 500);
+            if (completedQuestions.length === 100) {
+                setTimeout(showCompletionBadge, 500);
             }
+        }
+
+        function showCompletionBadge() {
+            const badge = document.getElementById('completionBadge');
+            badge.style.display = 'block';
+        }
+
+        function closeBadge() {
+            document.getElementById('completionBadge').style.display = 'none';
         }
 
         function changeDailyCuriosity() {
@@ -597,7 +799,6 @@
             document.getElementById('dailyCuriosity').textContent = randomCuriosity;
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('questionModal');
             if (event.target === modal) {
@@ -605,7 +806,6 @@
             }
         }
 
-        // Initialize game
         initGame();
     </script>
 </body>
