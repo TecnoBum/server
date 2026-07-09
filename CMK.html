@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Menkanta - Café de Especialidad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --color-primary: #2C1810;
+            --color-secondary: #6B4423;
+            --color-accent: #D4A574;
+            --color-light: #FAF7F2;
+            --color-dark: #1A0F0A;
+            --color-cream: #E8DFD0;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header Mobile-First */
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 1rem;
+            max-width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+            z-index: 1001;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--color-accent);
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            background: white;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.65rem;
+            color: var(--color-accent);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--color-primary);
+            list-style: none;
+            padding: 6rem 2rem 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .nav-links.active {
+            right: 0;
+        }
+
+        .nav-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .nav-links a i {
+            width: 24px;
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+            padding-left: 0.5rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section Mobile */
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(rgba(26, 15, 10, 0.75), rgba(26, 15, 10, 0.75)),
+                        url('https://i.postimg.cc/CM33bKRp/Copilot-20260709-123141.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: var(--color-cream);
+            line-height: 1.5;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.4);
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Instagram Feed Section */
+        .instagram-section {
+            padding: 3rem 0;
+            background: white;
+        }
+
+        .instagram-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .instagram-header h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .instagram-header p {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #E1306C;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #E1306C;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .instagram-link:hover {
+            background: #E1306C;
+            color: white;
+        }
+
+        .instagram-feed {
+            padding: 0 1rem;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background: var(--color-cream);
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-overlay i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .instagram-load-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Carrusel Mobile */
+        .carousel-section {
+            padding: 3rem 0;
+            background: var(--color-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            margin: 0 1rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .carousel-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .carousel-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .carousel-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.95);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:active {
+            background: var(--color-accent);
+        }
+
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-cream);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: var(--color-accent);
+            transform: scale(1.2);
+            border-color: var(--color-primary);
+        }
+
+        /* Productos Mobile */
+        .products {
+            padding: 3rem 0;
+            background: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .product-card {
+            background: var(--color-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 5;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--color-accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn-description {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-description:active {
+            background: var(--color-secondary);
+            transform: scale(0.98);
+        }
+
+        /* Modal Mobile */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 1rem;
+            right: 1rem;
+            float: right;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s;
+            z-index: 10;
+            margin: 1rem;
+            color: var(--color-primary);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .modal-body {
+            padding: 2rem 1.5rem;
+        }
+
+        .modal-body h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-body .price {
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--color-cream);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: var(--color-light);
+            border-radius: 12px;
+        }
+
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .detail-text h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.2rem;
+            font-size: 0.9rem;
+        }
+
+        .detail-text p {
+            color: #777;
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* About Mobile */
+        .about {
+            padding: 3rem 0;
+            background: var(--color-light);
+        }
+
+        .about-content {
+            padding: 0 1rem;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.2rem 0.8rem;
+            background: white;
+            border-radius: 12px;
+            border-bottom: 3px solid var(--color-accent);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            display: block;
+        }
+
+        .stat-label {
+            color: #777;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Footer Mobile */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h3 {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .social-links a.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .social-links a:active {
+            transform: scale(0.95);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #777;
+            font-size: 0.85rem;
+            margin: 0 1rem;
+        }
+
+        /* Tablet and Desktop */
+        @media (min-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+
+            .container {
+                max-width: 768px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                padding: 0;
+                display: flex;
+                gap: 2rem;
+                box-shadow: none;
+            }
+
+            .nav-links li {
+                margin-bottom: 0;
+            }
+
+            .nav-links a {
+                border-bottom: none;
+                padding: 0;
+                font-size: 0.95rem;
+            }
+
+            .nav-links a:hover {
+                padding-left: 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 4rem 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .carousel-slide img {
+                height: 400px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 1rem;
+            }
+
+            .modal-overlay.active {
+                align-items: center;
+            }
+
+            .modal-content {
+                border-radius: 24px;
+                max-width: 600px;
+                margin: 2rem;
+            }
+
+            .about-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+
+            .about-image {
+                margin-bottom: 0;
+            }
+
+            .about-image img {
+                height: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1000px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Loading skeleton for Instagram */
+        .skeleton {
+            background: linear-gradient(90deg, var(--color-cream) 25%, #f0e6d2 50%, var(--color-cream) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://i.postimg.cc/TYPRH1RD/Copilot-20260709-122952.png" alt="" class="logo-img" onerror="this.src='https://via.placeholder.com/50x50/D4A574/2C1810?text=MC'">
+                    <div class="logo-text">
+                        <h1>MENKANTA</h1>
+                        <p>La pausa que necesitas</p>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio" onclick="toggleMenu()"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#instagram" onclick="toggleMenu()"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#productos" onclick="toggleMenu()"><i class="fas fa-shopping-bag"></i> Productos</a></li>
+                    <li><a href="#nosotros" onclick="toggleMenu()"><i class="fas fa-info-circle"></i> Nosotros</a></li>
+                    <li><a href="#contacto" onclick="toggleMenu()"><i class="fas fa-envelope"></i> Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h2>El Arte del Café Perfecto</h2>
+            <p>Descubre nuestra selección de cafés de especialidad, tostados artesanalmente</p>
+            <a href="#productos" class="btn-primary">
+                <i class="fas fa-arrow-down"></i> Explorar Colección
+            </a>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-section" id="instagram">
+        <div class="container">
+            <div class="instagram-header">
+                <h2><i class="fab fa-instagram" style="color: #E1306C;"></i> Síguenos en Instagram</h2>
+                <p>Descubre nuestras últimas publicaciones y únete a la comunidad Menkanta</p>
+                <a href="https://www.instagram.com/me_enkanta_cafe/" target="_blank" class="instagram-link">
+                    <i class="fab fa-instagram"></i> @me_enkanta_cafe
+                </a>
+            </div>
+            
+            <!-- Instagram Feed Widget -->
+            <div class="instagram-feed">
+                <div class="instagram-grid" id="instagramGrid">
+                    <!-- Instagram posts will be loaded here -->
+                    <div class="instagram-item skeleton"></div>
+                    <div class="instagram-item skeleton"></div>
+                    <div class="instagram-item skeleton"></div>
+                    <div class="instagram-item skeleton"></div>
+                    <div class="instagram-item skeleton"></div>
+                    <div class="instagram-item skeleton"></div>
+                </div>
+                
+                <div class="instagram-load-more">
+                    <a href="https://www.instagram.com/me_enkanta_cafe/" target="_blank" class="btn-primary" style="display: inline-flex;">
+                        <i class="fab fa-instagram"></i> Ver más en Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrusel -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Productos Destacados</h2>
+                <p>Descubre nuestras mejores selecciones</p>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="https://i.postimg.cc/CM33bKRp/Copilot-20260709-123141.png" alt="Café Premium">
+                        <div class="carousel-content">
+                            <h3>Ethiopia Yirgacheffe</h3>
+                            <p>Notas florales y cítricas</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://i.postimg.cc/CM33bKRp/Copilot-20260709-123141.png" alt="Tueste">
+                        <div class="carousel-content">
+                            <h3>Colombia Huila</h3>
+                            <p>Dulce caramelo y acidez</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://i.postimg.cc/CM33bKRp/Copilot-20260709-123141.png" alt="Barista">
+                        <div class="carousel-content">
+                            <h3>Blend Signature</h3>
+                            <p>Mezcla exclusiva</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section class="products" id="productos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Cafés</h2>
+                <p>Cada origen cuenta una historia</p>
+            </div>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Best Seller</span>
+                        <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&h=400&fit=crop" alt="Espresso" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-fire"></i> Tueste Medio
+                        </div>
+                        <h3>Espresso Intenso</h3>
+                        <div class="product-price">€14.90</div>
+                        <button class="btn-description" onclick="openModal('espresso')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=600&h=400&fit=crop" alt="Grano" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-leaf"></i> 100% Arábica
+                        </div>
+                        <h3>Colombia Supremo</h3>
+                        <div class="product-price">€16.90</div>
+                        <button class="btn-description" onclick="openModal('colombia')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Nuevo</span>
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&h=400&fit=crop" alt="Orgánico" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-seedling"></i> Orgánico
+                        </div>
+                        <h3>Ethiopia Natural</h3>
+                        <div class="product-price">€19.90</div>
+                        <button class="btn-description" onclick="openModal('ethiopia')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b9e66dd?w=600&h=400&fit=crop" alt="Blend" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-mug-hot"></i> Mezcla Especial
+                        </div>
+                        <h3>House Blend</h3>
+                        <div class="product-price">€15.90</div>
+                        <button class="btn-description" onclick="openModal('blend')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=600&h=400&fit=crop" alt="Descafeinado" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-moon"></i> Sin Cafeína
+                        </div>
+                        <h3>Descafeinado Swiss</h3>
+                        <div class="product-price">€17.90</div>
+                        <button class="btn-description" onclick="openModal('descafeinado')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <span class="product-badge">Edición Limitada</span>
+                        <img src="https://images.unsplash.com/photo-1511537632536-b7a475d42177?w=600&h=400&fit=crop" alt="Pack" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">
+                            <i class="fas fa-gift"></i> Pack Degustación
+                        </div>
+                        <h3>World Tour</h3>
+                        <div class="product-price">€34.90</div>
+                        <button class="btn-description" onclick="openModal('pack')">
+                            <i class="fas fa-eye"></i> Ver Descripción
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="" alt="" class="modal-image" id="modalImage">
+            <div class="modal-body">
+                <h2 id="modalTitle"></h2>
+                <span class="price" id="modalPrice"></span>
+                <p id="modalDescription"></p>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="detail-text">
+                            <h4>Origen</h4>
+                            <p id="modalOrigin"></p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="detail-text">
+                            <h4>Tueste</h4>
+                            <p id="modalRoast"></p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="detail-text">
+                            <h4>Aroma</h4>
+                            <p id="modalAroma"></p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="detail-text">
+                            <h4>Intensidad</h4>
+                            <p id="modalIntensity"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=600&fit=crop" alt="Sobre Nosotros">
+                </div>
+                <div class="about-text">
+                    <h2>Pasión por el Café desde 2015</h2>
+                    <p>En Menkanta no solo vendemos café, creamos experiencias. Cada grano es seleccionado manualmente de las mejores fincas del mundo.</p>
+                    <p>Nuestros maestros tostadores trabajan en pequeños lotes para preservar las características únicas de cada origen.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <div class="stat-label">Orígenes</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50k</span>
+                            <div class="stat-label">Clientes</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <div class="stat-label">Comercio Justo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-coffee"></i> Menkanta</h3>
+                    <p>Café de especialidad tostado artesanalmente.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/me_enkanta_cafe/" target="_blank" class="instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Contacto</h3>
+                    <p>Calle del Café, 123<br>28001 Madrid</p>
+                    <a href="tel:+34912345678"><i class="fas fa-phone"></i> +34 912 345 678</a><br>
+                    <a href="mailto:hola@menkanta.com"><i class="fas fa-envelope"></i> hola@menkanta.com</a>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Horario</h3>
+                    <p>Lun - Vie: 8:00 - 20:00<br>Sáb: 9:00 - 14:00</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-newspaper"></i> Newsletter</h3>
+                    <p>Suscríbete para recibir ofertas.</p>
+                    <form style="margin-top: 1rem;">
+                        <input type="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: none; width: 100%; margin-bottom: 0.5rem; font-family: inherit;">
+                        <button class="btn-primary" style="width: 100%; padding: 0.8rem; font-size: 0.9rem;">
+                            <i class="fas fa-paper-plane"></i> Suscribirse
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Menkanta Coffee Roasters. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Instagram Feed - Using SnapWidget or Elfsight (Free options)
+        // Para hacer funcionar el feed de Instagram automáticamente, necesitas:
+        // 1. Crear una cuenta en SnapWidget.com o Elfsight.com
+        // 2. Conectar tu cuenta de Instagram
+        // 3. Copiar el código embed y reemplazar el div #instagramGrid
+        
+        // Ejemplo de cómo se vería con SnapWidget:
+        function loadInstagramFeed() {
+            // Esto es un ejemplo - deberás reemplazarlo con tu widget real
+            const instagramGrid = document.getElementById('instagramGrid');
+            
+            // Ejemplo de posts (deberás obtenerlos de tu widget)
+            const samplePosts = [
+                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1511920170033-f5be3ce58917?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1514432324607-a09d9b9e66dd?w=400&h=400&fit=crop',
+                'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400&h=400&fit=crop'
+            ];
+            
+            instagramGrid.innerHTML = samplePosts.map(url => `
+                <a href="https://www.instagram.com/me_enkanta_cafe/" target="_blank" class="instagram-item">
+                    <img src="${url}" alt="Instagram Post" loading="lazy">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Cargar feed al iniciar
+        document.addEventListener('DOMContentLoaded', loadInstagramFeed);
+
+        // Mobile Menu
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('navLinks').classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Carrusel
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = 3;
+
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        setInterval(() => moveCarousel(1), 5000);
+
+        // Modal
+        const productsData = {
+            espresso: {
+                title: "Espresso Intenso",
+                price: "€14.90",
+                image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=800&h=600&fit=crop",
+                description: "Un espresso clásico con cuerpo completo y crema dorada. Este blend está compuesto por granos de Brasil, Colombia y Etiopía, creando un equilibrio perfecto.",
+                origin: "Blend Multiorigen",
+                roast: "Tueste Medio-Oscuro",
+                aroma: "Chocolate negro, avellana",
+                intensity: "8/10"
+            },
+            colombia: {
+                title: "Colombia Supremo",
+                price: "€16.90",
+                image: "https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=800&h=600&fit=crop",
+                description: "Café de altura cultivado en las montañas de Huila. Caracterizado por su acidez brillante y notas dulces de caramelo y frutos rojos.",
+                origin: "Huila, Colombia - 1800msnm",
+                roast: "Tueste Medio",
+                aroma: "Caramelo, manzana verde",
+                intensity: "6/10"
+            },
+            ethiopia: {
+                title: "Ethiopia Natural",
+                price: "€19.90",
+                image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&h=600&fit=crop",
+                description: "Un café excepcional de Yirgacheffe, procesado de forma natural. Notas explosivas de arándano, jazmín y bergamota.",
+                origin: "Yirgacheffe, Etiopía - 2000msnm",
+                roast: "Tueste Medio-Claro",
+                aroma: "Flores blancas, cítricos",
+                intensity: "5/10"
+            },
+            blend: {
+                title: "House Blend",
+                price: "€15.90",
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b9e66dd?w=800&h=600&fit=crop",
+                description: "Nuestra firma. Una mezcla balanceada con cuerpo medio, acidez equilibrada y un final dulce persistente.",
+                origin: "Blend Signature",
+                roast: "Tueste Medio",
+                aroma: "Nuez, chocolate, miel",
+                intensity: "7/10"
+            },
+            descafeinado: {
+                title: "Descafeinado Swiss Water",
+                price: "€17.90",
+                image: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=800&h=600&fit=crop",
+                description: "Descafeinado utilizando el método Swiss Water, un proceso 100% natural sin químicos que preserva los compuestos de sabor.",
+                origin: "Colombia & Brasil",
+                roast: "Tueste Medio",
+                aroma: "Cacao, almendra, panela",
+                intensity: "6/10"
+            },
+            pack: {
+                title: "World Tour - Pack Degustación",
+                price: "€34.90",
+                image: "https://images.unsplash.com/photo-1511537632536-b7a475d42177?w=800&h=600&fit=crop",
+                description: "Un viaje alrededor del mundo en 3 cafés: Ethiopia Yirgacheffe, Colombia Huila y Brasil Santos. Incluye guía de cata.",
+                origin: "3 Orígenes Diferentes",
+                roast: "Varía según origen",
+                aroma: "Experiencia completa",
+                intensity: "Varía 5-8/10"
+            }
+        };
+
+        function openModal(productId) {
+            const product = productsData[productId];
+            if (!product) return;
+
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalTitle').textContent = product.title;
+            document.getElementById('modalPrice').textContent = product.price;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalOrigin').textContent = product.origin;
+            document.getElementById('modalRoast').textContent = product.roast;
+            document.getElementById('modalAroma').textContent = product.aroma;
+            document.getElementById('modalIntensity').textContent = product.intensity;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'modalOverlay' || event.target.closest('.modal-close')) {
+                document.getElementById('modalOverlay').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Touch swipe for carousel
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carousel = document.querySelector('.carousel-container');
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) moveCarousel(1);
+            if (touchEndX - touchStartX > 50) moveCarousel(-1);
+        });
+    </script>
+
+    <!-- 
+    INSTRUCCIONES PARA ACTIVAR EL FEED DE INSTAGRAM:
+    
+    OPCIÓN 1 - SnapWidget (Recomendado - Gratis):
+    1. Ve a https://snapwidget.com/
+    2. Crea una cuenta gratuita
+    3. Conecta tu cuenta de Instagram (@me_enkanta_cafe)
+    4. Configura el widget (grid layout, 6 imágenes, etc.)
+    5. Copia el código iframe o embed
+    6. Reemplaza el contenido del div con id="instagramGrid"
+    
+    OPCIÓN 2 - Elfsight:
+    1. Ve a https://elfsight.com/instagram-feed-instalink/
+    2. Crea un widget gratuito
+    3. Conecta Instagram
+    4. Personaliza el diseño
+    5. Copia el código y reemplaza el div #instagramGrid
+    
+    OPCIÓN 3 - LightWidget:
+    1. Ve a https://lightwidget.com/
+    2. Crea tu widget
+    3. Usa el código proporcionado
+    
+    El código actual muestra imágenes de ejemplo. Para que se actualice automáticamente
+    con tus publicaciones de Instagram, debes usar uno de estos servicios.
+    -->
+</body>
+</html>
