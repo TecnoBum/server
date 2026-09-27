@@ -40,7 +40,7 @@ texto_enlace=Seguir canal
 
 ---
 
-visible=no
+visible=si
 tipo=urgente
 titulo=Mantenimiento programado
 mensaje=La aplicación estará en mantenimiento el próximo fin de semana.
