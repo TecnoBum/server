@@ -1,0 +1,47 @@
+# ============================================================
+#  CONFIGURACIÓN REMOTA · La Pelota Cubana
+#  Edita este archivo y súbelo a tu hosting.
+#  La aplicación lo leerá automáticamente al abrir.
+# ============================================================
+#  CÓMO FUNCIONA:
+#  - Cada anuncio es un bloque de campos "clave=valor".
+#  - Separa varios anuncios con una línea de tres guiones:  ---
+#  - Las líneas que empiezan con # son comentarios (se ignoran).
+#
+#  CAMPOS DISPONIBLES (todos opcionales menos titulo/mensaje):
+#    visible      =  si | no          (muestra u oculta el anuncio)
+#    tipo         =  aviso | importante | urgente
+#                   aviso       -> tarjeta azul
+#                   importante  -> tarjeta roja/naranja
+#                   urgente     -> tarjeta roja + ventana emergente al abrir
+#    titulo       =  Título del anuncio
+#    mensaje      =  Texto del anuncio
+#    fecha        =  Fecha (opcional, texto libre)
+#    autor        =  Quién publica (opcional)
+#    enlace       =  URL de un botón (opcional)
+#    texto_enlace =  Texto de ese botón (opcional)
+# ============================================================
+
+visible=si
+tipo=importante
+titulo=¡Bienvenidos a la 65 Serie Nacional!
+mensaje=Sigue todos los juegos, marcadores y noticias del béisbol cubano en tiempo real desde La Pelota Cubana.
+fecha=04/10/2026
+autor=La Pelota Cubana
+
+---
+
+visible=si
+tipo=aviso
+titulo=Únete a la comunidad
+mensaje=Sigue nuestro canal oficial de WhatsApp para recibir noticias y convocatorias al instante.
+enlace=https://whatsapp.com/channel/0029VbC5vO635fM2sACqKt2g
+texto_enlace=Seguir canal
+
+---
+
+visible=no
+tipo=urgente
+titulo=Mantenimiento programado
+mensaje=La aplicación estará en mantenimiento el próximo fin de semana.
+fecha=12/10/2026
