@@ -37,7 +37,7 @@ MOSTRAR_BOTON_MVP=si
 # ============================================================
 #  📢  AVISO SUPERIOR
 # ============================================================
-TOP_NOTICE_VERSION=1
+TOP_NOTICE_VERSION=0
 TOP_NOTICE_TEXT= ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
 
 
