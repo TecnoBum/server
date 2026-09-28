@@ -1,10 +1,24 @@
 # ============================================================
 # PINAR EN VIVO - Configuracion de la seccion INICIO
 # ============================================================
-# Formato: CLAVE=VALOR
-# Comentarios: lineas que empiezan con # o ;
-# URLs de imagenes: deben ser publicas y directas (.jpg/.png/.webp)
+# Formato: CLAVE=VALOR   ·   Comentarios: # o ;
+# Las lineas ausentes mantienen el valor por defecto del HTML.
 # ============================================================
+
+# ------------------ AVISO SUPERIOR (Top Notice) ------------
+# Se muestra arriba del todo. El usuario lo cierra con la X.
+# Version: súbela (v1 -> v2 -> v3...) cada vez que quieras
+# que el aviso vuelva a mostrarse a TODOS los usuarios.
+TOP_NOTICE_ENABLED=true
+TOP_NOTICE_VERSION=1
+TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
+
+# ------------------ CINTILLO / TICKER -----------------------
+# Texto que se desplaza horizontalmente. Ideal para titulares.
+TICKER_ENABLED=true
+TICKER_LABEL=EN VIVO
+TICKER_TEXT=⚾ Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
+TICKER_SPEED=28
 
 # ------------------ HERO PRINCIPAL --------------------------
 HERO_TITLE=Vegueros de Pinar del Río
@@ -16,8 +30,17 @@ HERO_IMG_2=https://ejemplo.com/foto2.jpg
 HERO_IMG_3=https://ejemplo.com/foto3.jpg
 HERO_IMG_4=https://ejemplo.com/foto4.jpg
 HERO_IMG_5=https://ejemplo.com/foto5.jpg
-# HERO_IMG_6=https://ejemplo.com/foto6.jpg
-# HERO_IMG_7=https://ejemplo.com/foto7.jpg
+
+# ------------------ BANNER PROMOCIONAL ----------------------
+BANNER_ENABLED=true
+BANNER_IMAGE=https://ejemplo.com/banner.jpg
+BANNER_TITLE=65 Serie Nacional 2026
+BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
+BANNER_BTN_TEXT=Saber más
+BANNER_BTN_URL=https://www.beisbolcubano.cu/
+# BANNER_BTN_URL acepta:
+#   - URL completa (https://...)  -> abre navegador externo/interno
+#   - Nombre de sección (estadisticas, roster, historia, galeria, tv, radio...) -> navega dentro
 
 # ------------------ CUENTA REGRESIVA ------------------------
 COUNTDOWN_BADGE=65 Serie Nacional
@@ -26,9 +49,7 @@ COUNTDOWN_DATE=4 de octubre de 2026
 COUNTDOWN_DAYS_LABEL=días
 COUNTDOWN_TODAY_TITLE=Comienza la Pasión
 COUNTDOWN_TODAY_SUB=El béisbol cubano vuelve a los diamantes. ¡A vibrar con los Vegueros!
-# Fecha/hora de inicio (YYYY-MM-DD HH:MM)
 COUNTDOWN_TARGET=2026-10-04 00:00
-# Fecha/hora en que se oculta el widget
 COUNTDOWN_HIDE=2026-10-04 14:00
 
 # ------------------ TARJETAS DE DATOS -----------------------
@@ -40,6 +61,51 @@ STAT_3_LABEL=Casa
 STAT_3_VALUE=Capitán San Luis
 STAT_4_LABEL=Provincia
 STAT_4_VALUE=Pinar del Río
+
+# ------------------ ENLACES RÁPIDOS -------------------------
+# Hasta 9 accesos directos en una cuadrícula 3x3.
+# LINK_N_ICON admite: link, home, news, radio, tv, trophy, stats,
+#                     users, gallery, history, stadium, whatsapp, video, fire
+# LINK_N_URL admite URL completa o nombre de sección interna.
+LINK_1_TEXT=Estadísticas
+LINK_1_URL=estadisticas
+LINK_1_ICON=stats
+
+LINK_2_TEXT=Roster
+LINK_2_URL=roster
+LINK_2_ICON=users
+
+LINK_3_TEXT=TV en Vivo
+LINK_3_URL=tv
+LINK_3_ICON=tv
+
+LINK_4_TEXT=Radio
+LINK_4_URL=radio
+LINK_4_ICON=radio
+
+LINK_5_TEXT=Galería
+LINK_5_URL=galeria
+LINK_5_ICON=gallery
+
+LINK_6_TEXT=Historia
+LINK_6_URL=historia
+LINK_6_ICON=history
+
+LINK_7_TEXT=Estadio
+LINK_7_URL=estadio
+LINK_7_ICON=stadium
+
+LINK_8_TEXT=WhatsApp
+LINK_8_URL=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
+LINK_8_ICON=whatsapp
+
+LINK_9_TEXT=Noticias
+LINK_9_URL=https://www.beisbolcubano.cu/
+LINK_9_ICON=news
+
+# ------------------ FRASE DEL DÍA ---------------------------
+QUOTE_TEXT=El béisbol se juega con el corazón, y Pinar del Río tiene el corazón más grande de Cuba.
+QUOTE_AUTHOR=Afición Veguera
 
 # ------------------ CHIPS -----------------------------------
 CHIP_1=Tierra de campeones
@@ -61,3 +127,22 @@ BTN_SCORE_TEXT=Ver Marcador Oficial
 BTN_PRED_TEXT=Ver Predicciones
 BTN_WA_TEXT=Seguir canal de WhatsApp
 BTN_MVP_TEXT=Ver MVP de la Semana
+
+# ------------------ ALERTA MODAL ----------------------------
+# ALERT_ENABLED=true/false  ->  encendido/apagado
+# ALERT_ONCE=true           ->  solo se muestra una vez por versión
+# ALERT_VERSION             ->  al cambiarla (ej. 2, 3...) reaparece a todos
+# ALERT_DELAY               ->  ms antes de aparecer (ej. 1500 = 1.5s)
+# ALERT_ICON                ->  info | warning | error | success | star | fire
+# ALERT_BTN_URL             ->  URL completa (https://...) o sección interna
+ALERT_ENABLED=true
+ALERT_ONCE=true
+ALERT_VERSION=1
+ALERT_DELAY=1500
+ALERT_ICON=star
+ALERT_TITLE=¡Bienvenido Veguero!
+ALERT_SUBTITLE=Novedades de la app
+ALERT_MESSAGE=Ya está disponible la información actualizada de la 65 Serie Nacional. Revisa las estadísticas, el roster completo y síguenos en WhatsApp para no perderte ningún detalle.
+ALERT_BTN_TEXT=Ver Estadísticas
+ALERT_BTN_URL=estadisticas
+ALERT_DISMISS_TEXT=Más tarde
