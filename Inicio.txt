@@ -2,47 +2,80 @@
 # PINAR EN VIVO - Configuracion de la seccion INICIO
 # ============================================================
 # Formato: CLAVE=VALOR   ·   Comentarios: # o ;
-# Las lineas ausentes mantienen el valor por defecto del HTML.
+# Las claves de tipo MOSTRAR_* aceptan SIEMPRE:
+#     si  = mostrar   (también: s, yes, true, 1, on, visible)
+#     no  = ocultar   (también: n, false, 0, off, ocultar)
+# Si la clave NO aparece, el elemento se muestra por defecto.
 # ============================================================
 
-# ------------------ AVISO SUPERIOR (Top Notice) ------------
-# Se muestra arriba del todo. El usuario lo cierra con la X.
-# Version: súbela (v1 -> v2 -> v3...) cada vez que quieras
-# que el aviso vuelva a mostrarse a TODOS los usuarios.
-TOP_NOTICE_ENABLED=True
+
+# ============================================================
+#  ⚙️  TOGGLES GENERALES (si / no)
+# ============================================================
+MOSTRAR_SPLASH=si
+MOSTRAR_MARCADOR=si
+MOSTRAR_AVISO=si
+MOSTRAR_CINTILLO=si
+MOSTRAR_HERO=si
+MOSTRAR_BANNER=si
+MOSTRAR_CUENTA=si
+MOSTRAR_DATOS=si
+MOSTRAR_CHIPS=si
+MOSTRAR_CARD1=si
+MOSTRAR_CARD2=si
+MOSTRAR_CARD3=si
+MOSTRAR_ENLACES=si
+MOSTRAR_FRASE=si
+MOSTRAR_ALERTA=si
+
+# Botones dentro de la Card 2 (Comunidad Veguera)
+MOSTRAR_BOTON_MARCADOR=si
+MOSTRAR_BOTON_PREDICCIONES=si
+MOSTRAR_BOTON_WHATSAPP=si
+MOSTRAR_BOTON_MVP=si
+
+
+# ============================================================
+#  📢  AVISO SUPERIOR
+# ============================================================
 TOP_NOTICE_VERSION=1
 TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
 
-# ------------------ CINTILLO / TICKER -----------------------
-# Texto que se desplaza horizontalmente. Ideal para titulares.
-TICKER_ENABLED=true
+
+# ============================================================
+#  🎞️  CINTILLO / TICKER
+# ============================================================
 TICKER_LABEL=EN VIVO
 TICKER_TEXT=⚾ Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
 TICKER_SPEED=28
 
-# ------------------ HERO PRINCIPAL --------------------------
+
+# ============================================================
+#  🖼️  HERO + CARRUSEL
+# ============================================================
 HERO_TITLE=Vegueros de Pinar del Río
 HERO_SUBTITLE=La tierra de campeones, en vivo
 
-# ------------------ CARRUSEL (hasta 15 imagenes) ------------
 HERO_IMG_1=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-HERO_IMG_2=https://ejemplo.com/foto2.jpg
-HERO_IMG_3=https://ejemplo.com/foto3.jpg
-HERO_IMG_4=https://ejemplo.com/foto4.jpg
-HERO_IMG_5=https://ejemplo.com/foto5.jpg
+HERO_IMG_2=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
+HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
+HERO_IMG_4=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
+HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
 
-# ------------------ BANNER PROMOCIONAL ----------------------
-BANNER_ENABLED=true
-BANNER_IMAGE=https://ejemplo.com/banner.jpg
+
+# ============================================================
+#  🎯  BANNER PROMOCIONAL
+# ============================================================
+BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
 BANNER_TITLE=65 Serie Nacional 2026
 BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
-# BANNER_BTN_URL acepta:
-#   - URL completa (https://...)  -> abre navegador externo/interno
-#   - Nombre de sección (estadisticas, roster, historia, galeria, tv, radio...) -> navega dentro
 
-# ------------------ CUENTA REGRESIVA ------------------------
+
+# ============================================================
+#  ⏳  CUENTA REGRESIVA
+# ============================================================
 COUNTDOWN_BADGE=65 Serie Nacional
 COUNTDOWN_TITLE=Inauguración de la 65 SNB
 COUNTDOWN_DATE=4 de octubre de 2026
@@ -52,7 +85,10 @@ COUNTDOWN_TODAY_SUB=El béisbol cubano vuelve a los diamantes. ¡A vibrar con lo
 COUNTDOWN_TARGET=2026-10-04 00:00
 COUNTDOWN_HIDE=2026-10-04 14:00
 
-# ------------------ TARJETAS DE DATOS -----------------------
+
+# ============================================================
+#  📊  TARJETAS DE DATOS
+# ============================================================
 STAT_1_LABEL=Apodo
 STAT_1_VALUE=Vegueros
 STAT_2_LABEL=Liga
@@ -62,11 +98,12 @@ STAT_3_VALUE=Capitán San Luis
 STAT_4_LABEL=Provincia
 STAT_4_VALUE=Pinar del Río
 
-# ------------------ ENLACES RÁPIDOS -------------------------
-# Hasta 9 accesos directos en una cuadrícula 3x3.
-# LINK_N_ICON admite: link, home, news, radio, tv, trophy, stats,
-#                     users, gallery, history, stadium, whatsapp, video, fire
-# LINK_N_URL admite URL completa o nombre de sección interna.
+
+# ============================================================
+#  🔗  ENLACES RÁPIDOS
+# ============================================================
+# Iconos válidos: link, home, news, radio, tv, trophy, stats,
+#                 users, gallery, history, stadium, whatsapp, video, fire
 LINK_1_TEXT=Estadísticas
 LINK_1_URL=estadisticas
 LINK_1_ICON=stats
@@ -103,16 +140,25 @@ LINK_9_TEXT=Noticias
 LINK_9_URL=https://www.beisbolcubano.cu/
 LINK_9_ICON=news
 
-# ------------------ FRASE DEL DÍA ---------------------------
+
+# ============================================================
+#  💬  FRASE DEL DÍA
+# ============================================================
 QUOTE_TEXT=El béisbol se juega con el corazón, y Pinar del Río tiene el corazón más grande de Cuba.
 QUOTE_AUTHOR=Afición Veguera
 
-# ------------------ CHIPS -----------------------------------
+
+# ============================================================
+#  🏷️  CHIPS
+# ============================================================
 CHIP_1=Tierra de campeones
 CHIP_2=Radio y TV en vivo
 CHIP_3=Marcadores al instante
 
-# ------------------ TARJETAS INFORMATIVAS -------------------
+
+# ============================================================
+#  📰  TARJETAS INFORMATIVAS
+# ============================================================
 CARD_1_TITLE=Pinar en Vivo
 CARD_1_TEXT=Tu aplicación dedicada al béisbol de Pinar del Río. Sigue en tiempo real a los Vegueros, lee las noticias del sitio oficial del béisbol cubano, revive la historia de la provincia, explora el Estadio Capitán San Luis y disfruta de transmisiones de radio y televisión en vivo.
 
@@ -122,21 +168,20 @@ CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp pa
 CARD_3_TITLE=Transmisión en vivo
 CARD_3_TEXT=Presiona el botón flotante amarillo para escuchar Radio Guamá: el mismo botón pausa y reanuda la transmisión en vivo. Puedes cerrar el reproductor oficial y seguir escuchando en segundo plano mientras navegas por la app.
 
-# ------------------ TEXTOS DE BOTONES -----------------------
+
+# ============================================================
+#  🔘  TEXTOS DE BOTONES (Card 2)
+# ============================================================
 BTN_SCORE_TEXT=Ver Marcador Oficial
 BTN_PRED_TEXT=Ver Predicciones
 BTN_WA_TEXT=Seguir canal de WhatsApp
 BTN_MVP_TEXT=Ver MVP de la Semana
 
-# ------------------ ALERTA MODAL ----------------------------
-# ALERT_ENABLED=true/false  ->  encendido/apagado
-# ALERT_ONCE=true           ->  solo se muestra una vez por versión
-# ALERT_VERSION             ->  al cambiarla (ej. 2, 3...) reaparece a todos
-# ALERT_DELAY               ->  ms antes de aparecer (ej. 1500 = 1.5s)
-# ALERT_ICON                ->  info | warning | error | success | star | fire
-# ALERT_BTN_URL             ->  URL completa (https://...) o sección interna
-ALERT_ENABLED=true
-ALERT_ONCE=true
+
+# ============================================================
+#  🚨  ALERTA MODAL
+# ============================================================
+ALERT_ONCE=si
 ALERT_VERSION=1
 ALERT_DELAY=1500
 ALERT_ICON=star
