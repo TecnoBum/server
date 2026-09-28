@@ -72,6 +72,15 @@ BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
 
+# ============================================================
+#  🎯  BANNER PROMOCIONAL
+# ============================================================
+BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+BANNER_TITLE=65 Serie Nacional 2026
+BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
+BANNER_BTN_TEXT=Saber más
+BANNER_BTN_URL=https://www.beisbolcubano.cu/
+
 
 # ============================================================
 #  ⏳  CUENTA REGRESIVA
