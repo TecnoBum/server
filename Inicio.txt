@@ -9,7 +9,7 @@
 # Se muestra arriba del todo. El usuario lo cierra con la X.
 # Version: súbela (v1 -> v2 -> v3...) cada vez que quieras
 # que el aviso vuelva a mostrarse a TODOS los usuarios.
-TOP_NOTICE_ENABLED=false
+TOP_NOTICE_ENABLED=True
 TOP_NOTICE_VERSION=1
 TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
 
