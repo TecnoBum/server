@@ -45,7 +45,7 @@ TOP_NOTICE_TEXT= ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para 
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=EN VIVO
-TICKER_TEXT= Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
+TICKER_TEXT= 🇯🇵 Hoy está de cumpleaños Randy Román Martínez, lanzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
 TICKER_SPEED=28
 
 
