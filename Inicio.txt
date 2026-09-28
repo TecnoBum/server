@@ -2,9 +2,8 @@
 # PINAR EN VIVO - Configuracion de la seccion INICIO
 # ============================================================
 # Formato: CLAVE=VALOR   ·   Comentarios: # o ;
-# Las claves de tipo MOSTRAR_* aceptan SIEMPRE:
-#     si  = mostrar   (también: s, yes, true, 1, on, visible)
-#     no  = ocultar   (también: n, false, 0, off, ocultar)
+# Las claves MOSTRAR_* aceptan: si / no
+#   (también: s, yes, true, 1, on, visible  /  n, false, 0, off, ocultar)
 # Si la clave NO aparece, el elemento se muestra por defecto.
 # ============================================================
 
@@ -102,8 +101,8 @@ STAT_4_VALUE=Pinar del Río
 # ============================================================
 #  🔗  ENLACES RÁPIDOS
 # ============================================================
-# Iconos válidos: link, home, news, radio, tv, trophy, stats,
-#                 users, gallery, history, stadium, whatsapp, video, fire
+# Iconos: link, home, news, radio, tv, trophy, stats,
+#         users, gallery, history, stadium, whatsapp, video, fire
 LINK_1_TEXT=Estadísticas
 LINK_1_URL=estadisticas
 LINK_1_ICON=stats
