@@ -68,7 +68,7 @@ HERO_IMG_6=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2
 # ============================================================
 BANNER_IMAGE=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKxljrgw1kaf54pIDcEmVEQSd5w7D7WsoZELXcceTDVkRQAuF-hdSF2S8&s=10
 BANNER_TITLE=🇯🇵 Hoy está de cumpleaños Randy Román Martínez
-BANNER_TEXT=anzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
+BANNER_TEXT=Lanzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
 
