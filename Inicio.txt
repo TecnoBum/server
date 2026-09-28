@@ -66,18 +66,9 @@ HERO_IMG_6=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
 # ============================================================
-BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-BANNER_TITLE=65 Serie Nacional 2026
-BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
-BANNER_BTN_TEXT=Saber más
-BANNER_BTN_URL=https://www.beisbolcubano.cu/
-
-# ============================================================
-#  🎯  BANNER PROMOCIONAL
-# ============================================================
-BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-BANNER_TITLE=65 Serie Nacional 2026
-BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
+BANNER_IMAGE=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKxljrgw1kaf54pIDcEmVEQSd5w7D7WsoZELXcceTDVkRQAuF-hdSF2S8&s=10
+BANNER_TITLE=🇯🇵 Hoy está de cumpleaños Randy Román Martínez
+BANNER_TEXT=anzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
 
