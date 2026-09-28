@@ -38,14 +38,14 @@ MOSTRAR_BOTON_MVP=si
 #  📢  AVISO SUPERIOR
 # ============================================================
 TOP_NOTICE_VERSION=1
-TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
+TOP_NOTICE_TEXT= ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
 
 
 # ============================================================
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=EN VIVO
-TICKER_TEXT=⚾ Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
+TICKER_TEXT= Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
 TICKER_SPEED=28
 
 
