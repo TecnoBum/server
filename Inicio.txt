@@ -55,11 +55,12 @@ TICKER_SPEED=28
 HERO_TITLE=Vegueros de Pinar del Río
 HERO_SUBTITLE=La tierra de campeones, en vivo
 
-HERO_IMG_1=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-HERO_IMG_2=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
-HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
-HERO_IMG_4=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
-HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
+HERO_IMG_1=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvW28NcA2FZyEFUrdQaFBNxUtBYjKveinzI2vSH8UvjmtrDmmTmfsMt-s&s=10
+HERO_IMG_2=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
+HERO_IMG_4=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
+HERO_IMG_5=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
+HERO_IMG_6=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
 
 
 # ============================================================
