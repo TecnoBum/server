@@ -1,0 +1,63 @@
+# ============================================================
+# PINAR EN VIVO - Configuracion de la seccion INICIO
+# ============================================================
+# Formato: CLAVE=VALOR
+# Comentarios: lineas que empiezan con # o ;
+# URLs de imagenes: deben ser publicas y directas (.jpg/.png/.webp)
+# ============================================================
+
+# ------------------ HERO PRINCIPAL --------------------------
+HERO_TITLE=Vegueros de Pinar del Río
+HERO_SUBTITLE=La tierra de campeones, en vivo
+
+# ------------------ CARRUSEL (hasta 15 imagenes) ------------
+HERO_IMG_1=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+HERO_IMG_2=https://ejemplo.com/foto2.jpg
+HERO_IMG_3=https://ejemplo.com/foto3.jpg
+HERO_IMG_4=https://ejemplo.com/foto4.jpg
+HERO_IMG_5=https://ejemplo.com/foto5.jpg
+# HERO_IMG_6=https://ejemplo.com/foto6.jpg
+# HERO_IMG_7=https://ejemplo.com/foto7.jpg
+
+# ------------------ CUENTA REGRESIVA ------------------------
+COUNTDOWN_BADGE=65 Serie Nacional
+COUNTDOWN_TITLE=Inauguración de la 65 SNB
+COUNTDOWN_DATE=4 de octubre de 2026
+COUNTDOWN_DAYS_LABEL=días
+COUNTDOWN_TODAY_TITLE=Comienza la Pasión
+COUNTDOWN_TODAY_SUB=El béisbol cubano vuelve a los diamantes. ¡A vibrar con los Vegueros!
+# Fecha/hora de inicio (YYYY-MM-DD HH:MM)
+COUNTDOWN_TARGET=2026-10-04 00:00
+# Fecha/hora en que se oculta el widget
+COUNTDOWN_HIDE=2026-10-04 14:00
+
+# ------------------ TARJETAS DE DATOS -----------------------
+STAT_1_LABEL=Apodo
+STAT_1_VALUE=Vegueros
+STAT_2_LABEL=Liga
+STAT_2_VALUE=Serie Nacional
+STAT_3_LABEL=Casa
+STAT_3_VALUE=Capitán San Luis
+STAT_4_LABEL=Provincia
+STAT_4_VALUE=Pinar del Río
+
+# ------------------ CHIPS -----------------------------------
+CHIP_1=Tierra de campeones
+CHIP_2=Radio y TV en vivo
+CHIP_3=Marcadores al instante
+
+# ------------------ TARJETAS INFORMATIVAS -------------------
+CARD_1_TITLE=Pinar en Vivo
+CARD_1_TEXT=Tu aplicación dedicada al béisbol de Pinar del Río. Sigue en tiempo real a los Vegueros, lee las noticias del sitio oficial del béisbol cubano, revive la historia de la provincia, explora el Estadio Capitán San Luis y disfruta de transmisiones de radio y televisión en vivo.
+
+CARD_2_TITLE=Comunidad Veguera
+CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp para noticias al instante, revisa cada semana al MVP de la Serie Nacional y consulta los marcadores oficiales en vivo.
+
+CARD_3_TITLE=Transmisión en vivo
+CARD_3_TEXT=Presiona el botón flotante amarillo para escuchar Radio Guamá: el mismo botón pausa y reanuda la transmisión en vivo. Puedes cerrar el reproductor oficial y seguir escuchando en segundo plano mientras navegas por la app.
+
+# ------------------ TEXTOS DE BOTONES -----------------------
+BTN_SCORE_TEXT=Ver Marcador Oficial
+BTN_PRED_TEXT=Ver Predicciones
+BTN_WA_TEXT=Seguir canal de WhatsApp
+BTN_MVP_TEXT=Ver MVP de la Semana
