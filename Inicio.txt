@@ -13,7 +13,7 @@
 # ============================================================
 MOSTRAR_SPLASH=si
 MOSTRAR_MARCADOR=si
-MOSTRAR_AVISO=si
+MOSTRAR_AVISO=no
 MOSTRAR_CINTILLO=si
 MOSTRAR_HERO=si
 MOSTRAR_BANNER=si
@@ -46,7 +46,7 @@ TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp p
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=EN VIVO
-TICKER_TEXT=⚾ Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
+TICKER_TEXT=AHORA!!!💚⚾ Abanderamiento del equipo Vegueros de Pinar del Río. - Parque José Martí de la Ciudad
 TICKER_SPEED=28
 
 
@@ -66,9 +66,9 @@ HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
 # ============================================================
-BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-BANNER_TITLE=65 Serie Nacional 2026
-BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
+BANNER_IMAGE=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
+BANNER_TITLE=Ahora
+BANNER_TEXT=💚⚾ Abanderamiento del equipo Vegueros de Pinar del Río. Parque José Martí de la Ciudad
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
 
