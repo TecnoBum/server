@@ -213,7 +213,7 @@ PUB_SUBTITULO=Contenido actualizado automáticamente
 PUB_1_ACTIVO=si
 PUB_1_ETIQUETA=Destacado
 PUB_1_FECHA=29/09/2026
-PUB_1_TITULO=Hoy
+PUB_1_TITULO=Hoy es el Abanderamiento del equipo Vegueros
 PUB_1_IMAGEN=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
 PUB_1_CONTENIDO=💚⚾ Abanderamiento del equipo Vegueros de Pinar del Río.
 Parque José Martí de la Ciudad
@@ -221,23 +221,41 @@ PUB_1_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
 # ---------- PUBLICACIÓN 2 ----------
-PUB_2_ACTIVO=no
+PUB_2_ACTIVO=si
 PUB_2_ETIQUETA=Entrevista
 PUB_2_FECHA=27/09/2026
 PUB_2_TITULO=Alfonso Urquiola: "Este equipo tiene hambre de título"
-PUB_2_IMAGEN=
+PUB_2_IMAGEN=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-RSXa9R1a_mouQrfzavq1XXQbXR5n4hLxSVN0GFCE8XiEL81bhAKvt0&s=10
 PUB_2_CONTENIDO=El director de los Vegueros habló en exclusiva sobre la preparación del equipo de cara a la 65 Serie Nacional.|"Hemos trabajado muy duro la defensa y el pitcheo, ese era nuestro punto débil el año pasado", aseguró.
-PUB_2_ENLACE=
+PUB_2_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
 # ---------- PUBLICACIÓN 3 ----------
 PUB_3_ACTIVO=si
-PUB_3_ETIQUETA=Novedad
-PUB_3_FECHA=26/09/2026
-PUB_3_TITULO=Nuevo roster oficial anunciado para la 65 SNB
-PUB_3_IMAGEN=
-PUB_3_CONTENIDO=La dirección provincial dio a conocer la lista oficial de 32 jugadores que representarán a Pinar del Río en la próxima temporada.|Destacan los regresos de <b>Liván Moinelo</b> y <b>Raidel Martínez</b> desde el béisbol profesional japonés.
-PUB_3_ENLACE=
+PUB_3_ETIQUETA=Actualización
+PUB_3_FECHA=28/09/2026
+PUB_3_TITULO=⚾📱 ¡Faltan solo 6 días para el inicio de la 65 SNB y Pinar en Vivo lanza una nueva actualización de su aplicación!
+PUB_3_IMAGEN=https://i.postimg.cc/Qxym7jBd/Whats-App-Image-2026-09-28-at-2-43-49-PM.jpg
+PUB_3_CONTENIDO=Ya puedes llevar toda la pasión de nuestros Vegueros directamente en tu teléfono.
+
+📲 Pinar en Vivo es la aplicación oficial del canal, creada para que puedas disfrutar de toda la información y contenido de Pinar del Río desde un solo lugar.
+
+📻 Radio en vivo
+📺 TV en vivo
+⚾ Información y actualidad del béisbol pinareño
+📰 Noticias y novedades
+📊 Resultados y contenido deportivo
+📈📉Predicciones y competencias
+🎁Crea tu cuenta en la sección de predicciones y participa por premios al final de la serie (Pelota de béisbol firmada por todos los miembros del equipo) 🔥 Todo sobre el béisbol Pinareño al alcance de tu mano.
+
+👉 Descárgala ahora desde Apklis:
+https://apklis.cu/application/pinar.envivo.app
+
+⭐ Cuando la pruebes, déjanos tu valoración en Apklis. Tu opinión es muy importante para seguir mejorando.
+
+📢 ¡Compártela con tus amigos y con todos los fanáticos de los Vegueros! 💚⚾
+@PinarEnVivo
+PUB_3_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
 # ---------- PUBLICACIÓN 4 ----------
