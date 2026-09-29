@@ -61,7 +61,7 @@ HERO_IMG_2=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa
 HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
 HERO_IMG_4=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
 HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
-
+HERO_IMG_6=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
 
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
@@ -92,8 +92,8 @@ COUNTDOWN_HIDE=2026-10-04 14:00
 STAT_1_LABEL=Apodo
 STAT_1_VALUE=Vegueros
 STAT_2_LABEL=Liga
-STAT_2_VALUE=Serie Nacional
-STAT_3_LABEL=Casa
+STAT_2_VALUE=Serie Nacional 65
+STAT_3_LABEL=Estadio
 STAT_3_VALUE=Capitán San Luis
 STAT_4_LABEL=Provincia
 STAT_4_VALUE=Pinar del Río
@@ -212,15 +212,16 @@ PUB_SUBTITULO=Contenido actualizado automáticamente
 # ---------- PUBLICACIÓN 1 ----------
 PUB_1_ACTIVO=si
 PUB_1_ETIQUETA=Destacado
-PUB_1_FECHA=28/09/2026
-PUB_1_TITULO=Vegueros se impone 8-3 a Industriales en el Capitán San Luis
-PUB_1_IMAGEN=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-PUB_1_CONTENIDO=Los Vegueros dominaron de principio a fin el primer juego de la serie particular ante Industriales.|Yancarlos García lanzó 7 entradas en blanco con 9 ponches, mientras la ofensiva conectó 12 hits.|La serie continúa mañana a las 7:15 pm.
-PUB_1_ENLACE=https://www.beisbolcubano.cu/
+PUB_1_FECHA=29/09/2026
+PUB_1_TITULO=Hoy
+PUB_1_IMAGEN=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
+PUB_1_CONTENIDO=💚⚾ Abanderamiento del equipo Vegueros de Pinar del Río.
+Parque José Martí de la Ciudad
+PUB_1_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
 # ---------- PUBLICACIÓN 2 ----------
-PUB_2_ACTIVO=si
+PUB_2_ACTIVO=no
 PUB_2_ETIQUETA=Entrevista
 PUB_2_FECHA=27/09/2026
 PUB_2_TITULO=Alfonso Urquiola: "Este equipo tiene hambre de título"
