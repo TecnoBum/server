@@ -2,7 +2,7 @@
 # PINAR EN VIVO - Configuracion de la seccion INICIO
 # ============================================================
 # Formato: CLAVE=VALOR   ·   Comentarios: # o ;
-# Las claves MOSTRAR_* aceptan: si / no
+# Las claves MOSTRAR_* y *_ACTIVO aceptan: si / no
 #   (también: s, yes, true, 1, on, visible  /  n, false, 0, off, ocultar)
 # Si la clave NO aparece, el elemento se muestra por defecto.
 # ============================================================
@@ -13,8 +13,8 @@
 # ============================================================
 MOSTRAR_SPLASH=si
 MOSTRAR_MARCADOR=si
-MOSTRAR_AVISO=no
-MOSTRAR_CINTILLO=no
+MOSTRAR_AVISO=si
+MOSTRAR_CINTILLO=si
 MOSTRAR_HERO=si
 MOSTRAR_BANNER=si
 MOSTRAR_CUENTA=si
@@ -26,6 +26,7 @@ MOSTRAR_CARD3=si
 MOSTRAR_ENLACES=si
 MOSTRAR_FRASE=si
 MOSTRAR_ALERTA=si
+MOSTRAR_PUBLICACIONES=si
 
 # Botones dentro de la Card 2 (Comunidad Veguera)
 MOSTRAR_BOTON_MARCADOR=si
@@ -38,14 +39,14 @@ MOSTRAR_BOTON_MVP=si
 #  📢  AVISO SUPERIOR
 # ============================================================
 TOP_NOTICE_VERSION=1
-TOP_NOTICE_TEXT= ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
+TOP_NOTICE_TEXT=🏆 ¡Nuevo contenido disponible! Revisa el canal de WhatsApp para no perderte nada.
 
 
 # ============================================================
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=EN VIVO
-TICKER_TEXT= 🇯🇵 Hoy está de cumpleaños Randy Román Martínez, lanzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
+TICKER_TEXT=⚾ Vegueros trabaja de cara a la 65 Serie Nacional · Nuevos refuerzos anunciados esta semana · Sigue toda la actualidad en el canal de WhatsApp
 TICKER_SPEED=28
 
 
@@ -55,20 +56,19 @@ TICKER_SPEED=28
 HERO_TITLE=Vegueros de Pinar del Río
 HERO_SUBTITLE=La tierra de campeones, en vivo
 
-HERO_IMG_1=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvW28NcA2FZyEFUrdQaFBNxUtBYjKveinzI2vSH8UvjmtrDmmTmfsMt-s&s=10
-HERO_IMG_2=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
-HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
-HERO_IMG_4=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
-HERO_IMG_5=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
-HERO_IMG_6=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
+HERO_IMG_1=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+HERO_IMG_2=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
+HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
+HERO_IMG_4=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
+HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
 
 
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
 # ============================================================
-BANNER_IMAGE=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKxljrgw1kaf54pIDcEmVEQSd5w7D7WsoZELXcceTDVkRQAuF-hdSF2S8&s=10
-BANNER_TITLE=🇯🇵 Hoy está de cumpleaños Randy Román Martínez
-BANNER_TEXT=Lanzador pinareño de los Dragones de Chunichi. 🎉 Muchas Felicidades y Éxitos para él 🎉
+BANNER_IMAGE=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+BANNER_TITLE=65 Serie Nacional 2026
+BANNER_TEXT=Arranca el 4 de octubre. Vive cada out, cada hit y cada victoria con Pinar en Vivo.
 BANNER_BTN_TEXT=Saber más
 BANNER_BTN_URL=https://www.beisbolcubano.cu/
 
@@ -191,3 +191,69 @@ ALERT_MESSAGE=Ya está disponible la información actualizada de la 65 Serie Nac
 ALERT_BTN_TEXT=Ver Estadísticas
 ALERT_BTN_URL=estadisticas
 ALERT_DISMISS_TEXT=Más tarde
+
+
+# ============================================================
+#  📄  PUBLICACIONES (100% desde este archivo)
+# ============================================================
+# Cada publicación se define con 6 claves: PUB_N_TITULO, PUB_N_FECHA,
+# PUB_N_CONTENIDO, PUB_N_IMAGEN, PUB_N_ENLACE, PUB_N_ETIQUETA.
+# - Soporta hasta 5 publicaciones (PUB_1 ... PUB_5).
+# - PUB_N_ACTIVO=no  → oculta la publicación sin borrarla.
+# - En el CONTENIDO puedes usar HTML básico: <b>, <i>, <a href="...">, etc.
+# - El símbolo "|" se convierte en salto de línea.
+# - Si dejas título y contenido vacíos, la publicación no se muestra.
+# ============================================================
+
+PUB_TITULO=Publicaciones
+PUB_SUBTITULO=Contenido actualizado automáticamente
+
+
+# ---------- PUBLICACIÓN 1 ----------
+PUB_1_ACTIVO=si
+PUB_1_ETIQUETA=Destacado
+PUB_1_FECHA=28/09/2026
+PUB_1_TITULO=Vegueros se impone 8-3 a Industriales en el Capitán San Luis
+PUB_1_IMAGEN=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+PUB_1_CONTENIDO=Los Vegueros dominaron de principio a fin el primer juego de la serie particular ante Industriales.|Yancarlos García lanzó 7 entradas en blanco con 9 ponches, mientras la ofensiva conectó 12 hits.|La serie continúa mañana a las 7:15 pm.
+PUB_1_ENLACE=https://www.beisbolcubano.cu/
+
+
+# ---------- PUBLICACIÓN 2 ----------
+PUB_2_ACTIVO=si
+PUB_2_ETIQUETA=Entrevista
+PUB_2_FECHA=27/09/2026
+PUB_2_TITULO=Alfonso Urquiola: "Este equipo tiene hambre de título"
+PUB_2_IMAGEN=
+PUB_2_CONTENIDO=El director de los Vegueros habló en exclusiva sobre la preparación del equipo de cara a la 65 Serie Nacional.|"Hemos trabajado muy duro la defensa y el pitcheo, ese era nuestro punto débil el año pasado", aseguró.
+PUB_2_ENLACE=
+
+
+# ---------- PUBLICACIÓN 3 ----------
+PUB_3_ACTIVO=si
+PUB_3_ETIQUETA=Novedad
+PUB_3_FECHA=26/09/2026
+PUB_3_TITULO=Nuevo roster oficial anunciado para la 65 SNB
+PUB_3_IMAGEN=
+PUB_3_CONTENIDO=La dirección provincial dio a conocer la lista oficial de 32 jugadores que representarán a Pinar del Río en la próxima temporada.|Destacan los regresos de <b>Liván Moinelo</b> y <b>Raidel Martínez</b> desde el béisbol profesional japonés.
+PUB_3_ENLACE=
+
+
+# ---------- PUBLICACIÓN 4 ----------
+PUB_4_ACTIVO=no
+PUB_4_ETIQUETA=
+PUB_4_FECHA=
+PUB_4_TITULO=
+PUB_4_IMAGEN=
+PUB_4_CONTENIDO=
+PUB_4_ENLACE=
+
+
+# ---------- PUBLICACIÓN 5 ----------
+PUB_5_ACTIVO=no
+PUB_5_ETIQUETA=
+PUB_5_FECHA=
+PUB_5_TITULO=
+PUB_5_IMAGEN=
+PUB_5_CONTENIDO=
+PUB_5_ENLACE=
