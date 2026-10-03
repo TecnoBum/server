@@ -67,12 +67,11 @@ HERO_IMG_7=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
 # ============================================================
-BANNER_IMAGE=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
-BANNER_TITLE=Hoy fué el Abanderamiento del equipo Vegueros
-BANNER_TEXT=Todos los detalles en la sección de Publicaciones
-BANNER_BTN_TEXT=Saber más
-BANNER_BTN_URL=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
-
+BANNER_IMAGE=https://imgmedia.larepublica.pe/1200x735/larepublica/original/2024/07/13/66935471859f0317c7577956.jpg
+BANNER_TITLE=EN VIVO 65 Serie Nacional de Béisbol 
+BANNER_TEXT=1er Juego Industriales vs Pinar del Río
+BANNER_BTN_TEXT=Ver En Vivo
+BANNER_BTN_URL=https://www.youtube.com/watch?v=MPAGg26A8cg
 
 # ============================================================
 #  ⏳  CUENTA REGRESIVA
