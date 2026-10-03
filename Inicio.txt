@@ -185,11 +185,11 @@ ALERT_ONCE=si
 ALERT_VERSION=1
 ALERT_DELAY=1500
 ALERT_ICON=star
-ALERT_TITLE=¡Bienvenido Veguero!
-ALERT_SUBTITLE=Novedades de la app
-ALERT_MESSAGE=Ya está disponible la información actualizada de la 65 Serie Nacional. Revisa las estadísticas, el roster completo y síguenos en WhatsApp para no perderte ningún detalle.
-ALERT_BTN_TEXT=Ver Estadísticas
-ALERT_BTN_URL=estadisticas
+ALERT_TITLE=¡Actuallización Disponible!
+ALERT_SUBTITLE=Pinar en Vivo
+ALERT_MESSAGE=Ya está disponible una nueva versión de la aplicación. Descargala y dejanos tus valoraciones en Apklis.
+ALERT_BTN_TEXT=Descargar
+ALERT_BTN_URL=https://apklis.cu/application/pinar.envivo.app
 ALERT_DISMISS_TEXT=Más tarde
 
 
