@@ -38,7 +38,7 @@ MOSTRAR_BOTON_MVP=si
 # ============================================================
 #  📢  AVISO SUPERIOR
 # ============================================================
-TOP_NOTICE_VERSION=1
+TOP_NOTICE_VERSION=0
 TOP_NOTICE_TEXT=☀️🌦️ Dom 1pm, Habana: 🌡️ 30-32°C |💧 Húmedo | ⛈️ Posible lluvia
 
 
@@ -46,8 +46,8 @@ TOP_NOTICE_TEXT=☀️🌦️ Dom 1pm, Habana: 🌡️ 30-32°C |💧 Húmedo | 
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=El Clima
-TICKER_TEXT=☀️🌦️ Dom 1pm, Habana: 🌡️ 30-32°C |💧 Húmedo | ⛈️ Posible lluvia
-TICKER_SPEED=28
+TICKER_TEXT=Parte del tiempo — Estadio Latinoamericano (Cerro), domingo, 1:00 p.m. 🌡️ Temperatura: 31-32°C. 💧 Humedad: alta. 🌬️ Viento: suave del sureste ☁️ Cielo: parcialmente nublado. ⛈️ Lluvia: posibles chubascos o tormentas eléctricas. | Estaremos al tanto de las informaciones para compartirlas por esta vía.
+TICKER_SPEED=30
 
 
 # ============================================================
