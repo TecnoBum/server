@@ -63,7 +63,7 @@ HERO_IMG_3=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-ind
 HERO_IMG_4=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-2.jpg
 HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
 HERO_IMG_6=https://cdn.mediawpaccore.net/wp-content/uploads/2024/07/17193435/IMG_3347.jpeg
-HERO_IMG_7=https://tse3.mm.bing.net/th/id/OIP.OAldRuSU-qj_8_VJUIAJ9gHaLK?r=0&w=531&h=800&rs=1&pid=ImgDetMain&o=7&rm=3
+HERO_IMG_7=https://www.granma.cu/file/img/2019/09/medium/f0145557.jpg
 HERO_IMG_8=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
 HERO_IMG_9=https://tse4.mm.bing.net/th/id/OIP.SXcpZJ33Ctz6BrcMhQoikwHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3
 HERO_IMG_10=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
