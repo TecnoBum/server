@@ -18,7 +18,7 @@ MOSTRAR_CINTILLO=si
 MOSTRAR_HERO=si
 MOSTRAR_BANNER=si
 MOSTRAR_CUENTA=si
-MOSTRAR_DATOS=si
+MOSTRAR_DATOS=no
 MOSTRAR_CHIPS=no
 MOSTRAR_CARD1=si
 MOSTRAR_CARD2=si
@@ -45,8 +45,8 @@ TOP_NOTICE_TEXT=☀️🌦️ Dom 1pm, Habana: 🌡️ 30-32°C |💧 Húmedo | 
 # ============================================================
 #  🎞️  CINTILLO / TICKER
 # ============================================================
-TICKER_LABEL=EN VIVO
-TICKER_TEXT=AHORA!!!💚⚾ Abanderamiento del equipo Vegueros de Pinar del Río. - Parque José Martí de la Ciudad
+TICKER_LABEL=El Clima
+TICKER_TEXT=☀️🌦️ Dom 1pm, Habana: 🌡️ 30-32°C |💧 Húmedo | ⛈️ Posible lluvia
 TICKER_SPEED=28
 
 
