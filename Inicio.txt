@@ -164,15 +164,15 @@ CHIP_3=Marcadores al instante
 # ============================================================
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
-CARD_1_TITLE=Pinar en Vivo
-CARD_1_TEXT=Datos Estadísticos: ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)
+CARD_1_TITLE=Datos Estadísticos entre los equipos PRI vs IND
+CARD_1_TEXT=En la ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)
 🔢 Estadísticas: Lázaro Roque
 
-CARD_2_TITLE=Comunidad Veguera
-CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp para noticias al instante, revisa cada semana al MVP de la Serie Nacional y consulta los marcadores oficiales en vivo.
+CARD_2_TITLE=Informaciones
+CARD_2_TEXT=📺 Según hemos podido conocer el partido inaugural entre Industriales 🦁 y Pinar del Río 🍃, además de estar disponible por nuestra aplicación, será transmitido mañana por Canal Habana desde la 1:30 PM. 
 
-CARD_3_TITLE=Transmisión en vivo
-CARD_3_TEXT=Presiona el botón flotante amarillo para escuchar Radio Guamá: el mismo botón pausa y reanuda la transmisión en vivo. Puedes cerrar el reproductor oficial y seguir escuchando en segundo plano mientras navegas por la app.
+CARD_3_TITLE=Noticia
+CARD_3_TEXT=Frank Denis Blanco 6️⃣2️⃣ ha sido nombrado como lanzador abridor por los Vegueros 🍃 para el día inaugural de la presente 65 Serie Nacional de Béisbol ⚾️🇨🇺.
 
 
 # ============================================================
@@ -218,10 +218,10 @@ PUB_SUBTITULO=Contenido actualizado automáticamente
 # ---------- PUBLICACIÓN 1 ----------
 PUB_1_ACTIVO=si
 PUB_1_ETIQUETA=Destacado
-PUB_1_FECHA=29/09/2026
-PUB_1_TITULO=Hoy fué el Abanderamiento del equipo Vegueros
-PUB_1_IMAGEN=https://i.postimg.cc/qMrdnWR0/829196667-122178146996980057-8684113111668142624-n.jpg
-PUB_1_CONTENIDO=En el parque José Martí, sitio histórico de la ciudad vueltabajera es abanderado el equipo pinareño a la venidera 65 Serie Nacional de Béisbol. El conjunto, una mezcla de juventud con experiencia al decir de su mentor Alfonso Urquiola Crespo tiene metas internas bien claras que saldrán a cumplir con el afán de entregarle alegrías a nuestro pueblo. El capitán del equipo Jorge Yoan Rojas Martinez, recibió de manos de la miembro del Comité Central del Partido Comunista de Cuba Yamile Ramos Cordero la bandera que defenderán con honor en la competencia. El destacado zurdo Frank Denis Blanco González ratificó el compromiso con el espectáculo beisbolero, al tiempo que agradeció la unidad mantenida hasta el momento. El acto, sirvió además para firmar el código de ética de los participantes a la venidera competencia.
+PUB_1_FECHA=3/10/2026
+PUB_1_TITULO=Frank Denis Blanco 6️⃣2️⃣ 
+PUB_1_IMAGEN=https://www.radioguama.cu/wp-content/uploads/2025/07/0-30-beisbol-32.jpg
+PUB_1_CONTENIDO=Ha sido nombrado como lanzador abridor por los Vegueros 🍃 para el día inaugural de la presente 65 Serie Nacional de Béisbol ⚾️🇨🇺.
 PUB_1_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
@@ -238,10 +238,10 @@ PUB_2_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 # ---------- PUBLICACIÓN 3 ----------
 PUB_3_ACTIVO=si
 PUB_3_ETIQUETA=Actualización
-PUB_3_FECHA=28/09/2026
-PUB_3_TITULO=⚾📱 ¡Faltan solo 6 días para el inicio de la 65 SNB y Pinar en Vivo lanza una nueva actualización de su aplicación!
-PUB_3_IMAGEN=https://i.postimg.cc/Qxym7jBd/Whats-App-Image-2026-09-28-at-2-43-49-PM.jpg
-PUB_3_CONTENIDO=Ya puedes llevar toda la pasión de nuestros Vegueros directamente en tu teléfono.📲 Pinar en Vivo es la aplicación oficial del canal, creada para que puedas disfrutar de toda la información y contenido de Pinar del Río desde un solo lugar. 📻 Radio en vivo 📺 TV en vivo ⚾ Información y actualidad del béisbol pinareño 📰 Noticias y novedades 📊 Resultados y contenido deportivo 📈📉Predicciones y competencias 🎁Crea tu cuenta en la sección de predicciones y participa por premios al final de la serie (Pelota de béisbol firmada por todos los miembros del equipo) 🔥 Todo sobre el béisbol Pinareño al alcance de tu mano. 👉 Descárgala ahora desde Apklis: https://apklis.cu/application/pinar.envivo.app ⭐ Cuando la pruebes, déjanos tu valoración en Apklis. Tu opinión es muy importante para seguir mejorando. 📢 ¡Compártela con tus amigos y con todos los fanáticos de los Vegueros! 💚⚾ @PinarEnVivo
+PUB_3_FECHA=1/10/2026
+PUB_3_TITULO=A punto de escucharse la voz de play-ball en 65 Serie Nacional de Beisbol
+PUB_3_IMAGEN=https://www.jit.cu/images/content/26%2065%20Conferencia%20Prensa%201.jpg
+PUB_3_CONTENIDO=Apenas restan dos días para el inicio de la 65 Serie Nacional de Beisbol, crecen las expectativas y los directivos de la temporada explicaron hoy que no existen obstáculos para que se escuche la voz de play-ball en ocho estadios del país.
 PUB_3_ENLACE=https://whatsapp.com/channel/0029VaQOjh24NViecALKns26
 
 
