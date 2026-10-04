@@ -161,9 +161,7 @@ CHIP_3=Marcadores al instante
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
 CARD_1_TITLE=Pinar en Vivo
-CARD_1_TEXT=‼️ SNB 64 ‼️ 🍃 PRI 4-1 IND 🦁 🏟️ Latinoamericano 🏟️ 🍃 PRI 54-73 IND 🦁 ‼️ DÍA INAUGURAL ENTRE AMBOS ‼️ 🍃 PRI 2-4 IND 🦁 ‼️ HISTÓRICO ‼️ 🍃 PRI 129-128 IND 🦁
-
-🔢 Estadísticas: Lázaro Roque
+CARD_1_TEXT=Datos Estadísticos: ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)🔢 Estadísticas: Lázaro Roque
 
 CARD_2_TITLE=Comunidad Veguera
 CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp para noticias al instante, revisa cada semana al MVP de la Serie Nacional y consulta los marcadores oficiales en vivo.
