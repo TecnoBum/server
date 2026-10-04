@@ -72,11 +72,11 @@ HERO_IMG_10=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
 # ============================================================
-BANNER_IMAGE=https://imgmedia.larepublica.pe/1200x735/larepublica/original/2024/07/13/66935471859f0317c7577956.jpg
-BANNER_TITLE=EN VIVO 65 Serie Nacional de Béisbol 
+BANNER_IMAGE=https://tse3.mm.bing.net/th/id/OIP.tx4Pj1jdQlyIuTqIDqEaqAHaEH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3
+BANNER_TITLE=EN VIVO 65 Serie Nacional de Béisbol (Vía Radio Coco)
 BANNER_TEXT=1er Juego Industriales vs Pinar del Río
-BANNER_BTN_TEXT=Ver En Vivo
-BANNER_BTN_URL=https://www.youtube.com/watch?v=MPAGg26A8cg
+BANNER_BTN_TEXT=Escuchar En Vivo
+BANNER_BTN_URL=https://teveo.cu/live/audio/g4bpuTEZNfR3VX7M
 
 # ============================================================
 #  ⏳  CUENTA REGRESIVA
