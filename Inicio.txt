@@ -164,7 +164,7 @@ CHIP_3=Marcadores al instante
 # ============================================================
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
-CARD_1_TITLE=Datos Estadísticos entre los equipos PRI vs IND
+CARD_1_TITLE=Estadísticas entre los equipos PRI vs IND
 CARD_1_TEXT=En la ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)
 🔢 Estadísticas: Lázaro Roque
 
@@ -173,8 +173,6 @@ CARD_2_TEXT=📺 Según hemos podido conocer el partido inaugural entre Industri
 
 CARD_3_TITLE=Noticia
 CARD_3_TEXT=Frank Denis Blanco 6️⃣2️⃣ ha sido nombrado como lanzador abridor por los Vegueros 🍃 para el día inaugural de la presente 65 Serie Nacional de Béisbol ⚾️🇨🇺.🍃 Actuación de Frank Denis Blanco frente al equipo de Industriales en Series Nacionales | JL: 3 | JG: 0 | JP: 0
-Inn: 1.0 | VB: 7 | H: 4 | C: 3 | CL: 3 | PCL: 27.00 | SO: 0 | BB: 1 | HR (oponente): 0 | AVE (oponente): 571
-
 
 
 # ============================================================
