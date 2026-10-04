@@ -24,7 +24,7 @@ MOSTRAR_CARD1=si
 MOSTRAR_CARD2=si
 MOSTRAR_CARD3=si
 MOSTRAR_ENLACES=si
-MOSTRAR_FRASE=si
+MOSTRAR_FRASE=no
 MOSTRAR_ALERTA=si
 MOSTRAR_PUBLICACIONES=si
 
@@ -161,7 +161,9 @@ CHIP_3=Marcadores al instante
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
 CARD_1_TITLE=Pinar en Vivo
-CARD_1_TEXT=Tu aplicación dedicada al béisbol de Pinar del Río. Sigue en tiempo real a los Vegueros, lee las noticias del sitio oficial del béisbol cubano, revive la historia de la provincia, explora el Estadio Capitán San Luis y disfruta de transmisiones de radio y televisión en vivo.
+CARD_1_TEXT=‼️ SNB 64 ‼️ 🍃 PRI 4-1 IND 🦁 🏟️ Latinoamericano 🏟️ 🍃 PRI 54-73 IND 🦁 ‼️ DÍA INAUGURAL ENTRE AMBOS ‼️ 🍃 PRI 2-4 IND 🦁 ‼️ HISTÓRICO ‼️ 🍃 PRI 129-128 IND 🦁
+
+🔢 Estadísticas: Lázaro Roque
 
 CARD_2_TITLE=Comunidad Veguera
 CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp para noticias al instante, revisa cada semana al MVP de la Serie Nacional y consulta los marcadores oficiales en vivo.
