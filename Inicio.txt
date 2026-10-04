@@ -55,15 +55,19 @@ TICKER_SPEED=28
 #  🖼️  HERO + CARRUSEL
 # ============================================================
 HERO_TITLE=Vegueros de Pinar del Río
-HERO_SUBTITLE=La tierra de campeones, en vivo
+HERO_SUBTITLE=La tierra de campeones
 
-HERO_IMG_1=https://i.postimg.cc/qMrdnWR0/829196667-122178146996980057-8684113111668142624-n.jpg
-HERO_IMG_2=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Xx5uz44A_7eBa3nH19vOPKOOQn85DfS5pVrEt2x4RQ5j_uMmr7dsg4o&s=10
-HERO_IMG_3=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
-HERO_IMG_4=https://www.telepinar.cu/wp-content/uploads/2024/07/Plantilla-fotos-815x544-1-2.jpg
+HERO_IMG_1=https://www.5septiembre.cu/wp-content/uploads/2026/10/65-serie-nacional-de-beisbol.jpg
+HERO_IMG_2=https://imgmedia.larepublica.pe/1200x735/larepublica/original/2024/07/13/66935471859f0317c7577956.jpg
+HERO_IMG_3=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-3.jpg
+HERO_IMG_4=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-2.jpg
 HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
-HERO_IMG_6=https://i.postimg.cc/cHxL0yB7/Whats-App-Image-2026-09-29-at-7-01-10-AM.jpg
-HERO_IMG_7=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+HERO_IMG_6=https://cdn.mediawpaccore.net/wp-content/uploads/2024/07/17193435/IMG_3347.jpeg
+HERO_IMG_7=https://tse3.mm.bing.net/th/id/OIP.eyMrMpO3zDzA5icukd0d2AHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3
+HERO_IMG_8=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFiQQUds0cbJ6ckDo1U_le5ZuXjQ9dhctSFewZx5qr-rLgw-YZqWeDraP&s=10
+HERO_IMG_9=https://assets.swingcompleto.com/__export/1769413074937/sites/swingcompleto/img/2026/01/26/20260126_043754829_Pinar_del_Rxo_anuncia_preseleccixn_para_64_Serie_Nacional_con_importantes_bajas-0.jpg_674994428.jpg
+HERO_IMG_10=https://www.radioguama.cu/wp-content/uploads/2025/06/Pinar-del-Rio-1.jpg
+
 
 # ============================================================
 #  🎯  BANNER PROMOCIONAL
@@ -161,7 +165,8 @@ CHIP_3=Marcadores al instante
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
 CARD_1_TITLE=Pinar en Vivo
-CARD_1_TEXT=Datos Estadísticos: ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)🔢 Estadísticas: Lázaro Roque
+CARD_1_TEXT=Datos Estadísticos: ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)
+🔢 Estadísticas: Lázaro Roque
 
 CARD_2_TITLE=Comunidad Veguera
 CARD_2_TEXT=Únete a la familia pinareña: sigue el canal oficial de WhatsApp para noticias al instante, revisa cada semana al MVP de la Serie Nacional y consulta los marcadores oficiales en vivo.
