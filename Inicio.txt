@@ -164,15 +164,16 @@ CHIP_3=Marcadores al instante
 # ============================================================
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
-CARD_1_TITLE=Estadísticas entre los equipos PRI vs IND
-CARD_1_TEXT=En la ‼️ SNB 64 (🍃 PRI 4-1 IND 🦁) En el 🏟️ Latinoamericano 🏟️ (🍃 PRI 54-73 IND 🦁) En el ‼️ DÍA INAUGURAL ENTRE AMBOS (🍃 PRI 2-4 IND 🦁) ‼️ HISTÓRICO  (🍃 PRI 129-128 IND 🦁)
-🔢 Estadísticas: Lázaro Roque
+CARD_1_TITLE=‼️JUEGO DEL DÍA DE HOY ‼️
+CARD_1_TEXT= 🆚 Industriales 🦁 | 🏟️ Latinoamericano | ⏰ 1:30 PM | 📻  Radio Guamá y Radio Coco | 📺 Apk PinarEnVivo - Canal Habana | 🙌🏻 ABRIDORES 🙌🏻 | 🍃 Jenier Álvarez 🆚 Reemberto Barreto 🦁 | ‼️SNB 65 ‼️ | 🍃 PRI 0-1 IND 🦁
 
-CARD_2_TITLE=Informaciones
-CARD_2_TEXT=📺 Según hemos podido conocer el partido inaugural entre Industriales 🦁 y Pinar del Río 🍃, además de estar disponible por nuestra aplicación, será transmitido mañana por Canal Habana desde la 1:30 PM. 
 
-CARD_3_TITLE=Noticia
-CARD_3_TEXT=Frank Denis Blanco 6️⃣2️⃣ ha sido nombrado como lanzador abridor por los Vegueros 🍃 para el día inaugural de la presente 65 Serie Nacional de Béisbol ⚾️🇨🇺.🍃 Actuación de Frank Denis Blanco frente al equipo de Industriales en Series Nacionales | JL: 3 | JG: 0 | JP: 0
+
+CARD_2_TITLE=
+CARD_2_TEXT=
+
+CARD_3_TITLE=
+CARD_3_TEXT=
 
 
 # ============================================================
