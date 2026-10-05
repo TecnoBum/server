@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0b1020">
+    <title>Béisbol Cubano · Visor</title>
+    <style>
+        /* ============ RESET Y ESTILOS BASE ============ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b1020;
+            --card: #151d38;
+            --line: #26325c;
+            --text: #eef2ff;
+            --muted: #93a0c8;
+            --accent: #e63946;
+            --live: #ff5a5f;
+            --success: #4da3ff;
+            --radius: 14px;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100dvh;
+        }
+
+        /* ============ BARRA SUPERIOR ============ */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: var(--card);
+            border-bottom: 1px solid var(--line);
+            flex-shrink: 0;
+            z-index: 10;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .topbar-left .title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .topbar-left .status {
+            font-size: 0.75rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .topbar-left .status .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--live);
+            margin-right: 4px;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--muted);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn.primary:hover {
+            background: #d92637;
+            border-color: #d92637;
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ============ CONTENEDOR DEL IFRAME ============ */
+        .frame-wrapper {
+            flex: 1;
+            position: relative;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .frame-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: #fff;
+        }
+
+        /* ============ OVERLAY DE CARGA ============ */
+        .loader-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: var(--bg);
+            z-index: 5;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--line);
+            border-top-color: var(--live);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 280px;
+            line-height: 1.5;
+        }
+
+        .loader-text strong {
+            color: var(--text);
+        }
+
+        /* ============ OVERLAY DE ERROR ============ */
+        .error-overlay {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: var(--bg);
+            z-index: 6;
+            padding: 24px;
+        }
+
+        .error-overlay.visible {
+            display: flex;
+        }
+
+        .error-overlay .icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .error-overlay h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .error-overlay p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 360px;
+            line-height: 1.6;
+        }
+
+        .error-overlay .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 8px 10px;
+                gap: 8px;
+            }
+
+            .topbar-left .title {
+                font-size: 0.8rem;
+            }
+
+            .topbar-left .status {
+                display: none;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.72rem;
+            }
+
+            .btn .label {
+                display: none;
+            }
+
+            .btn svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ BARRA SUPERIOR ============ -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div>
+                <div class="title">Béisbol Cubano · Serie Nacional</div>
+                <div class="status" id="statusText">
+                    <span class="dot"></span> Cargando…
+                </div>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <button class="btn" id="btnReload" title="Recargar contenido">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                <span class="label">Recargar</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============ CONTENEDOR PRINCIPAL ============ -->
+    <main class="frame-wrapper" id="frameWrapper">
+
+        <!-- Overlay de carga -->
+        <div class="loader-overlay" id="loaderOverlay">
+            <div class="spinner"></div>
+            <div class="loader-text">
+                <strong>Cargando resultados en vivo…</strong><br>
+                <span id="loaderDetail">Conectando con el servidor</span>
+            </div>
+        </div>
+
+        <!-- Overlay de error -->
+        <div class="error-overlay" id="errorOverlay">
+            <div class="icon">⚠️</div>
+            <h2>No se pudo cargar el contenido</h2>
+            <p id="errorMessage">
+                El sitio externo no respondió. Puede deberse a un problema de red
+                o a restricciones de seguridad del navegador.
+            </p>
+            <div class="actions">
+                <button class="btn primary" id="btnRetry">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                    Reintentar
+                </button>
+            </div>
+        </div>
+
+        <!-- IFRAME PRINCIPAL -->
+        <iframe
+            id="mainFrame"
+            src="about:blank"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-downloads"
+            allow="fullscreen; autoplay; clipboard-read; clipboard-write; geolocation"
+            loading="eager"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Resultados en vivo del béisbol cubano"
+        ></iframe>
+
+    </main>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+    (function() {
+        'use strict';
+
+        // ============================================================
+        // CONFIGURACIÓN
+        // ============================================================
+        const TARGET_URL = 'https://tell-crisp-96f6b029-22501.omnicoder.app/';
+        const MAX_RETRIES = 5;            // Número máximo de reintentos automáticos
+        const RETRY_DELAY_MS = 2000;      // Espera base entre reintentos (se multiplica)
+        const LOAD_TIMEOUT_MS = 20000;    // Tiempo máximo de espera por carga (20s)
+        const AUTO_REFRESH_MS = 60000;    // Auto-recarga cada 60 segundos
+
+        // ============================================================
+        // REFERENCIAS DEL DOM
+        // ============================================================
+        const iframe        = document.getElementById('mainFrame');
+        const loaderOverlay = document.getElementById('loaderOverlay');
+        const errorOverlay  = document.getElementById('errorOverlay');
+        const errorMessage  = document.getElementById('errorMessage');
+        const loaderDetail  = document.getElementById('loaderDetail');
+        const statusText    = document.getElementById('statusText');
+        const btnReload     = document.getElementById('btnReload');
+        const btnRetry      = document.getElementById('btnRetry');
+
+        // ============================================================
+        // ESTADO
+        // ============================================================
+        let retryCount      = 0;
+        let loadTimer       = null;
+        let refreshTimer    = null;
+        let isLoaded        = false;
+        let hasError        = false;
+
+        // ============================================================
+        // UTILIDADES
+        // ============================================================
+
+        /** Actualiza el texto de estado en la barra superior */
+        function setStatus(text, isLive) {
+            statusText.innerHTML = isLive
+                ? '<span class="dot"></span> ' + text
+                : text;
+        }
+
+        /** Muestra el overlay de carga */
+        function showLoader(detail) {
+            loaderDetail.textContent = detail || 'Conectando con el servidor…';
+            loaderOverlay.classList.remove('hidden');
+            errorOverlay.classList.remove('visible');
+        }
+
+        /** Oculta el overlay de carga */
+        function hideLoader() {
+            loaderOverlay.classList.add('hidden');
+        }
+
+        /** Muestra el overlay de error */
+        function showError(msg) {
+            hasError = true;
+            errorMessage.textContent = msg || 'El sitio externo no respondió.';
+            errorOverlay.classList.add('visible');
+            hideLoader();
+            setStatus('Error de carga', false);
+        }
+
+        /** Oculta el overlay de error */
+        function hideError() {
+            hasError = false;
+            errorOverlay.classList.remove('visible');
+        }
+
+        /** Limpia los temporizadores activos */
+        function clearTimers() {
+            if (loadTimer) {
+                clearTimeout(loadTimer);
+                loadTimer = null;
+            }
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+                refreshTimer = null;
+            }
+        }
+
+        /** Programa una recarga automática */
+        function scheduleAutoRefresh() {
+            if (refreshTimer) clearInterval(refreshTimer);
+            refreshTimer = setInterval(function() {
+                if (!hasError) {
+                    console.log('[Visor] Auto-recarga programada');
+                    loadIframe(true);
+                }
+            }, AUTO_REFRESH_MS);
+        }
+
+        // ============================================================
+        // CARGA DEL IFRAME
+        // ============================================================
+
+        /**
+         * Carga la URL objetivo en el iframe.
+         * @param {boolean} isRefresh - Si es true, indica que es una recarga (no cuenta como reintento).
+         */
+        function loadIframe(isRefresh) {
+            if (!isRefresh) {
+                retryCount = 0;
+            }
+            isLoaded = false;
+            hideError();
+            showLoader(isRefresh ? 'Recargando contenido…' : 'Conectando con el servidor…');
+            setStatus(isRefresh ? 'Recargando…' : 'Cargando…', true);
+
+            // Limpiar temporizadores previos
+            clearTimers();
+
+            // Asignar la URL al iframe (forzar recarga)
+            // Usamos un parámetro anti-caché para asegurar que siempre se solicite contenido fresco
+            const cacheBuster = '?_=' + Date.now();
+            const finalUrl = TARGET_URL + (TARGET_URL.indexOf('?') === -1 ? cacheBuster : '&_=' + Date.now());
+
+            console.log('[Visor] Cargando:', finalUrl);
+            iframe.src = finalUrl;
+
+            // Temporizador de seguridad: si no carga en X segundos, consideramos error
+            loadTimer = setTimeout(function() {
+                if (!isLoaded) {
+                    console.warn('[Visor] Timeout de carga alcanzado');
+                    onLoadError('Tiempo de espera agotado. El servidor no respondió a tiempo.');
+                }
+            }, LOAD_TIMEOUT_MS);
+        }
+
+        // ============================================================
+        // MANEJO DE EVENTOS DEL IFRAME
+        // ============================================================
+
+        /** Se ejecuta cuando el iframe termina de cargar */
+        iframe.addEventListener('load', function() {
+            // Nota: el evento 'load' se dispara incluso si la página muestra un error 404
+            // dentro del iframe, pero al menos sabemos que el navegador pudo conectarse.
+            console.log('[Visor] iframe cargado');
+            isLoaded = true;
+            clearTimers();
+            hideLoader();
+            hideError();
+            setStatus('En vivo · Actualizado', true);
+
+            // Programar la siguiente recarga automática
+            scheduleAutoRefresh();
+        });
+
+        /** Se ejecuta si el iframe falla al cargar (ej. error de red) */
+        iframe.addEventListener('error', function(e) {
+            console.error('[Visor] Error en iframe:', e);
+            onLoadError('No se pudo conectar con el sitio externo.');
+        });
+
+        /**
+         * Maneja un error de carga, aplicando reintentos automáticos.
+         * @param {string} message - Mensaje descriptivo del error.
+         */
+        function onLoadError(message) {
+            clearTimers();
+            isLoaded = false;
+
+            if (retryCount < MAX_RETRIES) {
+                retryCount++;
+                const delay = RETRY_DELAY_MS * retryCount;
+                const msg = 'Reintentando (' + retryCount + '/' + MAX_RETRIES + ') en ' + (delay / 1000) + 's…';
+                showLoader(msg);
+                setStatus('Reintentando…', false);
+                console.log('[Visor] ' + msg);
+
+                setTimeout(function() {
+                    loadIframe(true); // true = no reiniciar contador de reintentos
+                }, delay);
+            } else {
+                // Se agotaron los reintentos
+                showError(
+                    'No se pudo cargar el contenido después de ' + MAX_RETRIES + ' intentos. ' +
+                    'Verifica tu conexión a internet o intenta abrir el sitio directamente.'
+                );
+                setStatus('Error de carga', false);
+            }
+        }
+
+        // ============================================================
+        // BOTONES
+        // ============================================================
+
+        /** Botón Recargar */
+        btnReload.addEventListener('click', function() {
+            console.log('[Visor] Recarga manual solicitada');
+            retryCount = 0;
+            loadIframe(true);
+        });
+
+        /** Botón Reintentar (overlay de error) */
+        btnRetry.addEventListener('click', function() {
+            console.log('[Visor] Reintento manual solicitado');
+            retryCount = 0;
+            loadIframe(false);
+        });
+
+        // ============================================================
+        // INICIALIZACIÓN
+        // ============================================================
+
+        function init() {
+            console.log('[Visor] Inicializando visor de Béisbol Cubano');
+            console.log('[Visor] URL objetivo:', TARGET_URL);
+
+            // Iniciar la carga
+            loadIframe(false);
+        }
+
+        // Arrancar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        // ============================================================
+        // LIMPIEZA AL CERRAR
+        // ============================================================
+        window.addEventListener('beforeunload', function() {
+            clearTimers();
+        });
+
+    })();
+    </script>
+
+</body>
+</html>
