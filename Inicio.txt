@@ -14,7 +14,7 @@
 MOSTRAR_SPLASH=si
 MOSTRAR_MARCADOR=si
 MOSTRAR_AVISO=no
-MOSTRAR_CINTILLO=no
+MOSTRAR_CINTILLO=si
 MOSTRAR_HERO=si
 MOSTRAR_BANNER=si
 MOSTRAR_CUENTA=si
@@ -46,8 +46,8 @@ TOP_NOTICE_TEXT=Marcador: PRI 0 - 0 IND
 # ============================================================
 #  🎞️  CINTILLO / TICKER
 # ============================================================
-TICKER_LABEL=El Clima
-TICKER_TEXT=Parte del tiempo — Estadio Latinoamericano (Cerro), domingo, 1:00 p.m. 🌡️ Temperatura: 31-32°C. 💧 Humedad: alta. 🌬️ Viento: suave del sureste ☁️ Cielo: parcialmente nublado. ⛈️ Lluvia: posibles chubascos o tormentas eléctricas. | Estaremos al tanto de las informaciones para compartirlas por esta vía.
+TICKER_LABEL=Importante
+TICKER_TEXT=Debido a las afectaciones en la red nacional y elacceso a Internet anunciado por Etecsa, varias secciones de nuestra aplicación se encuentran presentando fallas. Estamos trabajando para darle solución en el menor tiempo posible. Nuestro equipo pide disculpas por las molestias.
 TICKER_SPEED=28
 
 
