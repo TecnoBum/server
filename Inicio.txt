@@ -47,7 +47,7 @@ TOP_NOTICE_TEXT=Marcador: PRI 0 - 0 IND
 #  🎞️  CINTILLO / TICKER
 # ============================================================
 TICKER_LABEL=Importante
-TICKER_TEXT=Por problemas tecnológicos y energéticos la señal de Radio Guama no está disponible en la aplicación en estos momentos. Esperamos volver a tenerla lo antes posible, Equipo Pinar En Vivo.
+TICKER_TEXT=Por problemas tecnológicos y energéticos algunas de las secciones de nuestra aplicación no están disponibles o funcionan con lentitud en estos momentos. De igual manera se están implementando cambios y mejoras en las secciones del Marcador, Predicciones, Tabla de Posiciones y Publicaciones. Equipo Pinar En Vivo.
 TICKER_SPEED=28
 
 
