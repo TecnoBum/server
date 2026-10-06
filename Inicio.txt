@@ -76,7 +76,7 @@ BANNER_IMAGE=https://tse3.mm.bing.net/th/id/OIP.tx4Pj1jdQlyIuTqIDqEaqAHaEH?r=0&r
 BANNER_TITLE=EN VIVO 65 Serie Nacional de Béisbol
 BANNER_TEXT=Juego Industriales vs Pinar del Río
 BANNER_BTN_TEXT=Ver En Vivo
-BANNER_BTN_URL=https://www.youtube.com/live/eKDWpslrgeo?si=PFXtaFIF3AAnfugU
+BANNER_BTN_URL=https://www.youtube.com/@PlayCubanoDeportes
 # ============================================================
 #  ⏳  CUENTA REGRESIVA
 # ============================================================
