@@ -57,7 +57,7 @@ TICKER_SPEED=28
 HERO_TITLE=Vegueros de Pinar del Río
 HERO_SUBTITLE=La tierra de campeones
 
-HERO_IMG_1=https://www.radiosanctispiritus.cu/es/wp-content/uploads/Beisbol-SNB-65.jpg
+HERO_IMG_1=https://i.postimg.cc/rsyvGtyK/photo-2026-10-06-10-21-32.jpg
 HERO_IMG_2=https://imgmedia.larepublica.pe/1200x735/larepublica/original/2024/07/13/66935471859f0317c7577956.jpg
 HERO_IMG_3=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-3.jpg
 HERO_IMG_4=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-2.jpg
@@ -164,7 +164,7 @@ CHIP_3=Marcadores al instante
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
 CARD_1_TITLE=‼️JUEGO DEL DÍA DE HOY ‼️
-CARD_1_TEXT= 🆚 Industriales 🦁 | 🏟️ Latinoamericano | ⏰ 1:30 PM | 📻  Radio Guamá y Radio Coco | 📺 Apk PinarEnVivo - Canal Habana | 🙌🏻 ABRIDORES 🙌🏻 | 🍃 Jenier Álvarez 🆚 Reemberto Barreto 🦁 | ‼️SNB 65 ‼️ | 🍃 PRI 0-1 IND 🦁
+CARD_1_TEXT= 🆚 Industriales 🦁 | 🏟️ Latinoamericano | ⏰ 1:30 PM | 📻  Radio Guamá y Radio Coco | 📺 Apk PinarEnVivo - Canal Habana | 🙌🏻 ABRIDORES 🙌🏻 🍃 Gabriel Cantero 🆚 Jordan W. Bustamante 🦁 | ‼️SNB 65 ‼️🍃 PRI 1-1 IND 🦁
 
 
 
