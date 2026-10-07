@@ -29,10 +29,10 @@ MOSTRAR_ALERTA=si
 MOSTRAR_PUBLICACIONES=si
 
 # Botones dentro de la Card 2 (Comunidad Veguera)
-MOSTRAR_BOTON_MARCADOR=no
-MOSTRAR_BOTON_PREDICCIONES=no
-MOSTRAR_BOTON_WHATSAPP=no
-MOSTRAR_BOTON_MVP=no
+MOSTRAR_BOTON_MARCADOR=si
+MOSTRAR_BOTON_PREDICCIONES=si
+MOSTRAR_BOTON_WHATSAPP=si
+MOSTRAR_BOTON_MVP=si
 
 
 # ============================================================
@@ -163,10 +163,8 @@ CHIP_3=Marcadores al instante
 # ============================================================
 #  📰  TARJETAS INFORMATIVAS
 # ============================================================
-CARD_1_TITLE=‼️JUEGO DEL DÍA DE HOY ‼️
-CARD_1_TEXT= 🆚 Industriales 🦁 | 🏟️ Latinoamericano | ⏰ 1:30 PM | 📻  Radio Guamá y Radio Coco | 📺 Apk PinarEnVivo - Canal Habana | 🙌🏻 ABRIDORES 🙌🏻 🍃 Gabriel Cantero 🆚 Jordan W. Bustamante 🦁 | ‼️SNB 65 ‼️🍃 PRI 1-1 IND 🦁
-
-
+CARD_1_TITLE=
+CARD_1_TEXT= 
 
 CARD_2_TITLE=
 CARD_2_TEXT=
