@@ -14,7 +14,7 @@
 MOSTRAR_SPLASH=si
 MOSTRAR_MARCADOR=si
 MOSTRAR_AVISO=no
-MOSTRAR_CINTILLO=si
+MOSTRAR_CINTILLO=no
 MOSTRAR_HERO=si
 MOSTRAR_BANNER=no
 MOSTRAR_CUENTA=si
@@ -57,10 +57,10 @@ TICKER_SPEED=28
 HERO_TITLE=Vegueros de Pinar del Río
 HERO_SUBTITLE=La tierra de campeones
 
-HERO_IMG_1=https://i.postimg.cc/rsyvGtyK/photo-2026-10-06-10-21-32.jpg
-HERO_IMG_2=https://imgmedia.larepublica.pe/1200x735/larepublica/original/2024/07/13/66935471859f0317c7577956.jpg
-HERO_IMG_3=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-3.jpg
-HERO_IMG_4=https://www.periodicovictoria.cu/wp-content/uploads/2024/07/pinar-industriales-2.jpg
+HERO_IMG_1=https://assets.swingcompleto.com/__export/1769413074937/sites/swingcompleto/img/2026/01/26/20260126_043754829_Pinar_del_Rxo_anuncia_preseleccixn_para_64_Serie_Nacional_con_importantes_bajas-0.jpg_674994428.jpg
+HERO_IMG_2=https://www.trabajadores.cu/wp-content/uploads/2015/12/estadio_beisbol_pinar_fpt2.jpg
+HERO_IMG_3=https://i.ytimg.com/vi/P9QoWad-Vdg/maxresdefault.jpg
+HERO_IMG_4=https://th.bing.com/th/id/R.98617f73aa0f48fb417b6bf12cfde5e7?rik=FJxvjML7tXmqqw&riu=http%3a%2f%2fmedia.cubadebate.cu%2fwp-content%2fuploads%2f2015%2f03%2fisla-de-la-juventud-play-off.jpg&ehk=iXbUNhuLpjtmjsWtBEWVoYmtYuAG1xqeCxGAuXlokDA%3d&risl=&pid=ImgRaw&r=0
 HERO_IMG_5=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR7cFIURbRKloW2l0t85xDvQXjLhYgxyxjR1pkH5hqs7jJPIH5hyqj7GLA&s=10
 HERO_IMG_6=https://cdn.mediawpaccore.net/wp-content/uploads/2024/07/17193435/IMG_3347.jpeg
 HERO_IMG_7=https://www.granma.cu/file/img/2019/09/medium/f0145557.jpg
