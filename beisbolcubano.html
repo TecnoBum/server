@@ -350,11 +350,17 @@
         // ============================================================
         // CONFIGURACIÓN
         // ============================================================
-        const TARGET_URL = 'https://tell-crisp-96f6b029-22501.omnicoder.app/';
+        const TARGET_URL = 'https://vault-accident-692bd25d-23372.omnicoder.app/';
         const MAX_RETRIES = 5;            // Número máximo de reintentos automáticos
         const RETRY_DELAY_MS = 2000;      // Espera base entre reintentos (se multiplica)
         const LOAD_TIMEOUT_MS = 20000;    // Tiempo máximo de espera por carga (20s)
-        const AUTO_REFRESH_MS = 60000;    // Auto-recarga cada 60 segundos
+
+        // NOTA IMPORTANTE:
+        // Se ha ELIMINADO la auto-recarga periódica forzada.
+        // Esa recarga reasignaba iframe.src con un cache-buster, lo que rompía
+        // el estado interno del SPA (ruta/hash) y devolvía al usuario al inicio.
+        // El sitio objetivo ya se actualiza por sí solo de forma silenciosa
+        // mediante sus propios mecanismos internos de polling.
 
         // ============================================================
         // REFERENCIAS DEL DOM
@@ -373,7 +379,6 @@
         // ============================================================
         let retryCount      = 0;
         let loadTimer       = null;
-        let refreshTimer    = null;
         let isLoaded        = false;
         let hasError        = false;
 
@@ -421,21 +426,6 @@
                 clearTimeout(loadTimer);
                 loadTimer = null;
             }
-            if (refreshTimer) {
-                clearInterval(refreshTimer);
-                refreshTimer = null;
-            }
-        }
-
-        /** Programa una recarga automática */
-        function scheduleAutoRefresh() {
-            if (refreshTimer) clearInterval(refreshTimer);
-            refreshTimer = setInterval(function() {
-                if (!hasError) {
-                    console.log('[Visor] Auto-recarga programada');
-                    loadIframe(true);
-                }
-            }, AUTO_REFRESH_MS);
         }
 
         // ============================================================
@@ -444,7 +434,7 @@
 
         /**
          * Carga la URL objetivo en el iframe.
-         * @param {boolean} isRefresh - Si es true, indica que es una recarga (no cuenta como reintento).
+         * @param {boolean} isRefresh - Si es true, indica que es una recarga manual.
          */
         function loadIframe(isRefresh) {
             if (!isRefresh) {
@@ -458,10 +448,11 @@
             // Limpiar temporizadores previos
             clearTimers();
 
-            // Asignar la URL al iframe (forzar recarga)
-            // Usamos un parámetro anti-caché para asegurar que siempre se solicite contenido fresco
-            const cacheBuster = '?_=' + Date.now();
-            const finalUrl = TARGET_URL + (TARGET_URL.indexOf('?') === -1 ? cacheBuster : '&_=' + Date.now());
+            // Solo añadimos cache-buster en la carga inicial o recarga manual,
+            // nunca en un ciclo automático (que ya no existe).
+            const finalUrl = isRefresh
+                ? TARGET_URL + (TARGET_URL.indexOf('?') === -1 ? '?_=' + Date.now() : '&_=' + Date.now())
+                : TARGET_URL;
 
             console.log('[Visor] Cargando:', finalUrl);
             iframe.src = finalUrl;
@@ -481,17 +472,15 @@
 
         /** Se ejecuta cuando el iframe termina de cargar */
         iframe.addEventListener('load', function() {
-            // Nota: el evento 'load' se dispara incluso si la página muestra un error 404
-            // dentro del iframe, pero al menos sabemos que el navegador pudo conectarse.
             console.log('[Visor] iframe cargado');
             isLoaded = true;
             clearTimers();
             hideLoader();
             hideError();
-            setStatus('En vivo · Actualizado', true);
+            setStatus('En vivo · Actualización automática', true);
 
-            // Programar la siguiente recarga automática
-            scheduleAutoRefresh();
+            // NO programamos ninguna recarga automática.
+            // El propio sitio se encarga de refrescar sus datos en segundo plano.
         });
 
         /** Se ejecuta si el iframe falla al cargar (ej. error de red) */
@@ -517,10 +506,9 @@
                 console.log('[Visor] ' + msg);
 
                 setTimeout(function() {
-                    loadIframe(true); // true = no reiniciar contador de reintentos
+                    loadIframe(true);
                 }, delay);
             } else {
-                // Se agotaron los reintentos
                 showError(
                     'No se pudo cargar el contenido después de ' + MAX_RETRIES + ' intentos. ' +
                     'Verifica tu conexión a internet o intenta abrir el sitio directamente.'
@@ -533,7 +521,7 @@
         // BOTONES
         // ============================================================
 
-        /** Botón Recargar */
+        /** Botón Recargar (uso manual) */
         btnReload.addEventListener('click', function() {
             console.log('[Visor] Recarga manual solicitada');
             retryCount = 0;
@@ -552,7 +540,7 @@
         // ============================================================
 
         function init() {
-            console.log('[Visor] Inicializando visor de Béisbol Cubano');
+            console.log('[Visor] Inicializando visor');
             console.log('[Visor] URL objetivo:', TARGET_URL);
 
             // Iniciar la carga
