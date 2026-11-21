@@ -21,6 +21,6 @@
 #   página en el navegador.
 # --------------------------------------------------
 
-titulo=Tu Noticia
-mensaje=Bienvenido a la Nueva Versión
+titulo=Actualización Disponible 
+mensaje=Versión 9.1.1
 enlace=
