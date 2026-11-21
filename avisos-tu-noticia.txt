@@ -22,5 +22,5 @@
 # --------------------------------------------------
 
 titulo=Tu Noticia
-mensaje=
+mensaje=Bienvenido a la Nueva Versión
 enlace=
