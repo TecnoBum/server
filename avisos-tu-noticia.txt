@@ -50,13 +50,16 @@
 titulo=Tu Noticia
 mensaje=
 enlace=
+
 modal_titulo=Tu Noticia
 modal_mensaje=
 modal_boton=Entendido
 modal_enlace=
+
 banner_titulo=
 banner_texto=
 banner_enlace=
-widget_clima=no
-widget_tasas=no
-widget_efemeride=no
+
+widget_clima=si
+widget_tasas=si
+widget_efemeride=si
