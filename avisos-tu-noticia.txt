@@ -52,7 +52,28 @@ mensaje=
 enlace=
 
 modal_titulo=Tu Noticia
-modal_mensaje=
+modal_mensaje=Centro de Pronósticos
+Instituto de Meteorología
+
+23 de noviembre de 2026 Hora: 2:30 pm
+
+Aviso Especial No. 1.
+
+…lluvias fuertes e intensas en la región occidental de Cuba…
+
+Sobre el sudeste del golfo de México y cerca del occidente cubano, durante las próximas horas, las condiciones meteorológicas serán propicias para un incremento de la inestabilidad atmosférica. El aire cálido, húmedo e inestable en combinación con otros factores en niveles bajos, medios y altos, darán lugar a la posible formación de una zona de bajas presiones al final de la noche de mañana martes, la cual se moverá al nordeste hacia la península de La Florida y las Bahamas.
+
+Esta situación incrementará la probabilidad de chubascos, lluvias y tormentas eléctricas en el occidente del país desde la tarde y noche de mañana martes 24 y durante el miércoles 25, que luego se extenderán a las regiones central y oriental. Las lluvias serán fuertes e intensas en algunas localidades del occidente. En áreas de chubascos y tormentas eléctricas se incrementará la fuerza de los vientos, la altura de las olas y no se descarta de manera aislada la ocurrencia de tiempo severo.
+
+Posteriormente, un frente frío avanzará por el golfo de México, interactuando con esta situación meteorológica y llegará a la región occidental entre la noche del miércoles 25 y la madrugada del jueves 26, lo que mantendrá alta la probabilidad de lluvias.
+
+Un próximo aviso especial se emitirá en caso de ser necesario.
+
+Centro de Pronósticos
+Instituto de Meteorología.
+
+
+
 modal_boton=Entendido
 modal_enlace=
 
