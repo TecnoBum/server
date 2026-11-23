@@ -1,4 +1,4 @@
-# Avisos y modal en pantalla — Tu Noticia v9.2
+# Avisos, modal, banner y widgets — Tu Noticia v9.3
 # --------------------------------------------------
 # CÓMO FUNCIONA:
 # - La app revisa este archivo CADA 10 MINUTOS y también cada vez
@@ -10,8 +10,18 @@
 #   muestra UNA VENTANA en la pantalla al abrirla, con el título,
 #   el texto y el botón que pongas aquí. No se repite hasta que
 #   cambies el texto. Si "modal_mensaje" está VACÍO, no hay modal.
-# - Para enviar un aviso o un modal nuevo: escribe el texto,
-#   guarda y sube el archivo a GitHub. Para pararlo: vacía el campo.
+# - BANNER: si "banner_texto" tiene texto, aparece una tarjeta
+#   arriba de las noticias, con el título y el texto que pongas.
+#   Cada usuario puede cerrarla con la X; vuelve a aparecer solo
+#   si cambias el texto. "banner_enlace" es opcional: si pones una
+#   URL, al tocar el banner se abre esa página.
+# - WIDGETS: tarjetas que aparecen arriba de las noticias.
+#   Pon "si" para activar y "no" (o vacío) para apagar:
+#   widget_clima = clima de hoy en La Habana
+#   widget_tasas = dólar y euro del mercado informal
+#   widget_efemeride = un hecho de hoy en la historia
+# - Para activar algo: escribe el texto, guarda y sube el archivo
+#   a GitHub. Para pararlo: vacía el campo o pon "no".
 #
 # REGLAS DEL ARCHIVO:
 # - Una opción por línea, con el formato clave=valor (sin espacios
@@ -30,14 +40,23 @@
 # --------------------------------------------------
 #
 # EJEMPLO DE MODAL ACTIVO (quita el # de la línea para activarlo):
-#modal_mensaje=¡Ya está disponible la versión 9.2.0 con nuevas secciones!
+#modal_mensaje=¡Ya está disponible la versión 9.3.0 con nuevas secciones!
+# EJEMPLO DE BANNER ACTIVO:
+#banner_titulo=¡Nueva versión disponible!
+#banner_texto=Tu Noticia 9.3.0 ya está en Apklis con secciones nuevas y la IA.
+#banner_enlace=https://apklis.cu/application/Tu.Noticia
 # --------------------------------------------------
 
 titulo=Tu Noticia
-mensaje=¡Ya está disponible la versión 9.2.0 con nuevas secciones!
-enlace=https://www.apklis.cu/application/Tu.Noticia
-
+mensaje=
+enlace=
 modal_titulo=Tu Noticia
-modal_mensaje=¡Ya está disponible la versión 9.2.0 con nuevas secciones!
+modal_mensaje=
 modal_boton=Entendido
-modal_enlace=https://www.apklis.cu/application/Tu.Noticia
+modal_enlace=
+banner_titulo=
+banner_texto=
+banner_enlace=
+widget_clima=no
+widget_tasas=no
+widget_efemeride=no
