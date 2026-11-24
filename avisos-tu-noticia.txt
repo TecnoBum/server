@@ -48,7 +48,7 @@
 # --------------------------------------------------
 
 titulo=Tu Noticia
-mensaje=
+mensaje=🌤️🛰️11:00 AM || Tenemos predominio de nublados en gran parte del Occidente y Centro con algunos chubascos y lluvias dispersos. Parcialmente nublado hacia localidades de la región Oriental.
 enlace=
 
 modal_titulo=Tu Noticia
