@@ -56,10 +56,10 @@ modal_mensaje=
 modal_boton=Entendido
 modal_enlace=
 
-banner_titulo=Aviso Especial No. 1 – Centro de Pronósticos, Instituto de Meteorología (23/11/2026, 2:30 pm)
-banner_texto=Se prevé un incremento de la inestabilidad atmosférica sobre el sudeste del golfo de México y cerca del occidente cubano, con posible formación de una zona de bajas presiones al final de la noche del martes 24, que se moverá al nordeste hacia Florida y Bahamas. Esto aumentará la probabilidad de chubascos, lluvias y tormentas eléctricas en el occidente de Cuba desde la tarde/noche del martes 24 y durante el miércoles 25, extendiéndose luego al centro y oriente. Las lluvias serán fuertes e intensas en algunas localidades occidentales, con incremento de vientos y olas en áreas de tormentas, y posibilidad aislada de tiempo severo. Posteriormente, un frente frío llegará al occidente entre la noche del miércoles 25 y la madrugada del jueves 26, manteniendo alta la probabilidad de lluvias. Se emitirá otro aviso si es necesario.
+banner_titulo=
+banner_texto=
 banner_enlace=
 
-widget_clima=no
+widget_clima=si
 widget_tasas=no
 widget_efemeride=no
