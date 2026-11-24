@@ -60,6 +60,6 @@ banner_titulo=
 banner_texto=
 banner_enlace=
 
-widget_clima=si
+widget_clima=no
 widget_tasas=no
 widget_efemeride=no
