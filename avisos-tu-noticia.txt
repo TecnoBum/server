@@ -47,9 +47,9 @@
 #banner_enlace=https://apklis.cu/application/Tu.Noticia
 # --------------------------------------------------
 
-titulo=Tu Noticia
-mensaje=🌤️🛰️11:00 AM || Tenemos predominio de nublados en gran parte del Occidente y Centro con algunos chubascos y lluvias dispersos. Parcialmente nublado hacia localidades de la región Oriental.
-enlace=
+titulo=Actualización Disponible
+mensaje=Versión: v9.4.1 
+enlace=https://www.apklis.cu/application/Tu.Noticia
 
 modal_titulo=Tu Noticia
 modal_mensaje=
@@ -60,6 +60,6 @@ banner_titulo=
 banner_texto=
 banner_enlace=
 
-widget_clima=no
-widget_tasas=no
-widget_efemeride=no
+widget_clima=si
+widget_tasas=si
+widget_efemeride=si
